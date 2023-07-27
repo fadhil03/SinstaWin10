@@ -7,6 +7,29 @@ public class OperatingSystemScrollView : MonoBehaviour
     public RectTransform content;
     public GameObject listItemPrefab;
     public float verticalSpacing = 1000f;
+    public float scrollSpeed = 25f; // Kecepatan scroll, sesuaikan dengan kebutuhan
+
+    private void Update()
+    {
+        // Mengambil input mouse scroll
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+
+        // Menghitung perubahan scroll dengan kecepatan scroll
+        float scrollDelta = scrollInput * scrollSpeed;
+
+        // Mengambil posisi scroll saat ini
+        float currentScrollPosition = scrollRect.verticalNormalizedPosition;
+
+        // Menambahkan perubahan scroll ke posisi scroll saat ini
+        float newScrollPosition = currentScrollPosition + scrollDelta;
+
+        // Memastikan bahwa nilai scroll berada dalam rentang 0 hingga 1
+        newScrollPosition = Mathf.Clamp01(newScrollPosition);
+
+        // Mengatur posisi scroll baru
+        scrollRect.verticalNormalizedPosition = newScrollPosition;
+    }
+
 
     private void Start()
     {
@@ -61,7 +84,7 @@ public class OperatingSystemScrollView : MonoBehaviour
             listItem.transform.SetParent(content, false);
 
             // Setel posisi, rotasi, dan skala objek
-            float yPos = -i * (listItem.GetComponent<RectTransform>().rect.height + verticalSpacing) - 50f;
+            float yPos = -i * (listItem.GetComponent<RectTransform>().rect.height + verticalSpacing) - 70f;
             listItem.transform.localPosition = new Vector3(547, yPos, 0);
             listItem.transform.localRotation = Quaternion.identity;
             listItem.transform.localScale = Vector3.one;
@@ -73,8 +96,9 @@ public class OperatingSystemScrollView : MonoBehaviour
             textComponents[2].text = dateModified[i];
         }
 
-        // Perbarui layout dari content
-        LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+        // Hitung ukuran content berdasarkan jumlah item dan ukuran setiap item
+        float totalHeight = (listItemPrefab.GetComponent<RectTransform>().rect.height + verticalSpacing) * operatingSystems.Length;
+        content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalHeight);
 
         // Reset posisi Scroll View ke atas
         scrollRect.normalizedPosition = new Vector2(0, 1);
