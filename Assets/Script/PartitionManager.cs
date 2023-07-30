@@ -7,15 +7,11 @@ public class PartitionManager : MonoBehaviour
 {
     public GameObject scrollViewContent;
     public GameObject buttonTemplate;
-    private int buttonCount = 5; // Jumlah button awal, bisa Anda ubah sesuai kebutuhan.
     private int newButtonCount = 0; // Melacak berapa kali button "New" ditekan.
 
     // Start is called before the first frame update
     void Start()
     {
-        CreateInitialButtons();
-
-        // Tambahkan event listener untuk tombol "New"
         Button newButton = GameObject.Find("ButtonNew").GetComponent<Button>();
         newButton.onClick.AddListener(OnNewButtonClicked);
     }
@@ -25,26 +21,25 @@ public class PartitionManager : MonoBehaviour
     {
     }
 
-    // Method untuk membuat button-button awal
-    void CreateInitialButtons()
+    public void OnNewButtonClicked()
     {
-        for (int i = 0; i < buttonCount; i++)
+        InputField sizeInputField = GameObject.Find("SizeInputField").GetComponent<InputField>();
+        if (int.TryParse(sizeInputField.text, out int partitionSizeInMB))
         {
-            CreateNewButton();
+            CreateNewButton(partitionSizeInMB);
+        }
+        else
+        {
+            Debug.Log("Invalid input for partition size!");
         }
     }
 
-    // Method untuk membuat satu button baru
-    void CreateNewButton()
+    void CreateNewButton(int partitionSizeInMB)
     {
-        GameObject newButton = Instantiate(buttonTemplate, scrollViewContent.transform);
-        newButton.GetComponentInChildren<Text>().text = "Button " + (newButtonCount + 1);
-        newButtonCount++;
-    }
+        int partitionSizeInGB = partitionSizeInMB / 1000; // Konversi dari MB ke GB
 
-    // Method untuk menangani aksi saat button "New" ditekan
-    public void OnNewButtonClicked()
-    {
-        CreateNewButton();
+        GameObject newButton = Instantiate(buttonTemplate, scrollViewContent.transform);
+        newButton.GetComponentInChildren<Text>().text = "Partition Size: " + partitionSizeInGB + " GB";
+        newButtonCount++;
     }
 }
