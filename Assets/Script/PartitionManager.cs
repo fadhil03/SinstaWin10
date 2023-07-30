@@ -7,7 +7,8 @@ public class PartitionManager : MonoBehaviour
 {
     public GameObject scrollViewContent;
     public GameObject buttonTemplate;
-    private int newButtonCount = 0; // Melacak berapa kali button "New" ditekan.
+    private int unallocatedSpaceInGB = 500;
+    private int newButtonCount = 0; // Melacak berapa kali button "ButtonNew" ditekan.
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,20 @@ public class PartitionManager : MonoBehaviour
         InputField sizeInputField = GameObject.Find("SizeInputField").GetComponent<InputField>();
         if (int.TryParse(sizeInputField.text, out int partitionSizeInMB))
         {
-            CreateNewButton(partitionSizeInMB);
+            // Konversi dari MB ke GB
+            int partitionSizeInGB = partitionSizeInMB / 1000;
+
+            // Cek apakah ukuran partisi yang dimasukkan tidak melebihi Unallocated Space yang tersedia
+            if (partitionSizeInGB <= unallocatedSpaceInGB)
+            {
+                CreateNewButton(partitionSizeInGB);
+                unallocatedSpaceInGB -= partitionSizeInGB; // Kurangi Unallocated Space berdasarkan ukuran partisi yang baru dibuat
+                Debug.Log("Sisa Unlocaled: " + unallocatedSpaceInGB);
+            }
+            else
+            {
+                Debug.Log("Insufficient Unallocated Space!");
+            }
         }
         else
         {
@@ -34,10 +48,8 @@ public class PartitionManager : MonoBehaviour
         }
     }
 
-    void CreateNewButton(int partitionSizeInMB)
+    void CreateNewButton(int partitionSizeInGB)
     {
-        int partitionSizeInGB = partitionSizeInMB / 1000; // Konversi dari MB ke GB
-
         GameObject newButton = Instantiate(buttonTemplate, scrollViewContent.transform);
         newButton.GetComponentInChildren<Text>().text = "Partition Size: " + partitionSizeInGB + " GB";
         newButtonCount++;
