@@ -7,17 +7,12 @@ public class PartitionManager : MonoBehaviour
 {
     public GameObject scrollViewContent;
     public GameObject buttonTemplate;
-    private int[] possibleSizes = { 128, 256, 512, 1024 };
-    private int unallocatedSpaceInGB;
+    private int unallocatedSpaceInGB = 500;
     private int newButtonCount = 0; // Melacak berapa kali button "ButtonNew" ditekan.
 
     // Start is called before the first frame update
     void Start()
     {
-        int randomIndex = Random.Range(0, possibleSizes.Length);
-        unallocatedSpaceInGB = possibleSizes[randomIndex];
-        Debug.Log("Unallocated Space: " + unallocatedSpaceInGB + " GB");
-
         Button newButton = GameObject.Find("ButtonNew").GetComponent<Button>();
         newButton.onClick.AddListener(OnNewButtonClicked);
     }
@@ -33,13 +28,14 @@ public class PartitionManager : MonoBehaviour
         if (int.TryParse(sizeInputField.text, out int partitionSizeInMB))
         {
             // Konversi dari MB ke GB
-            int partitionSizeInGB = partitionSizeInMB / 1024;
+            int partitionSizeInGB = partitionSizeInMB / 1000;
 
             // Cek apakah ukuran partisi yang dimasukkan tidak melebihi Unallocated Space yang tersedia
             if (partitionSizeInGB <= unallocatedSpaceInGB)
             {
                 CreateNewButton(partitionSizeInGB);
                 unallocatedSpaceInGB -= partitionSizeInGB; // Kurangi Unallocated Space berdasarkan ukuran partisi yang baru dibuat
+                Debug.Log("Sisa Unlocaled: " + unallocatedSpaceInGB);
             }
             else
             {
@@ -55,18 +51,7 @@ public class PartitionManager : MonoBehaviour
     void CreateNewButton(int partitionSizeInGB)
     {
         GameObject newButton = Instantiate(buttonTemplate, scrollViewContent.transform);
-
-        // Akses komponen-komponen text pada button baru dan atur teksnya sesuai dengan data yang diinginkan
-        Text tvNamePartition = newButton.transform.Find("tvNamePartition").GetComponent<Text>();
-        Text tvTotalSize = newButton.transform.Find("tvTotalSize").GetComponent<Text>();
-        Text tvFreeSpace = newButton.transform.Find("tvFreeSpace").GetComponent<Text>();
-        Text tvTypePartition = newButton.transform.Find("tvTypePartition").GetComponent<Text>();
-
-        tvNamePartition.text = "Partition " + newButtonCount;
-        tvTotalSize.text = partitionSizeInGB + " GB";
-        tvFreeSpace.text = partitionSizeInGB + " GB";
-        tvTypePartition.text = "Type: NTFS";
-
+        newButton.GetComponentInChildren<Text>().text = "Partition Size: " + partitionSizeInGB + " GB";
         newButtonCount++;
     }
 }
