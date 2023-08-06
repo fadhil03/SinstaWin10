@@ -17,6 +17,11 @@ public class PartitionManager : MonoBehaviour
         int randomIndex = Random.Range(0, possibleSizes.Length);
         unallocatedSpaceInGB = possibleSizes[randomIndex];
         Debug.Log("Unallocated Space: " + unallocatedSpaceInGB + " GB");
+        Text unallocatedSpaceText = GameObject.Find("UnallocatedSpaceText").GetComponent<Text>();
+        Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
+        unallocatedSpaceText.text = unallocatedSpaceInGB + " GB";
+        freeSpaceText.text = unallocatedSpaceInGB + " GB";
+
 
         Button newButton = GameObject.Find("ButtonNew").GetComponent<Button>();
         newButton.onClick.AddListener(OnNewButtonClicked);
@@ -40,6 +45,11 @@ public class PartitionManager : MonoBehaviour
             {
                 CreateNewButton(partitionSizeInGB);
                 unallocatedSpaceInGB -= partitionSizeInGB; // Kurangi Unallocated Space berdasarkan ukuran partisi yang baru dibuat
+                Text unallocatedSpaceText = GameObject.Find("UnallocatedSpaceText").GetComponent<Text>();
+                Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
+                unallocatedSpaceText.text = unallocatedSpaceInGB + " GB";
+                freeSpaceText.text = unallocatedSpaceInGB + " GB";
+
             }
             else
             {
@@ -62,11 +72,13 @@ public class PartitionManager : MonoBehaviour
         Text tvFreeSpace = newButton.transform.Find("tvFreeSpace").GetComponent<Text>();
         Text tvTypePartition = newButton.transform.Find("tvTypePartition").GetComponent<Text>();
 
-        tvNamePartition.text = "Partition " + newButtonCount;
+        tvNamePartition.text = "Drive 0 Partition " + newButtonCount;
         tvTotalSize.text = partitionSizeInGB + " GB";
         tvFreeSpace.text = partitionSizeInGB + " GB";
         tvTypePartition.text = "Type: NTFS";
 
         newButtonCount++;
     }
+
+
 }
