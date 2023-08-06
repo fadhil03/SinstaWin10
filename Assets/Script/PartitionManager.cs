@@ -7,6 +7,7 @@ public class PartitionManager : MonoBehaviour
 {
     public GameObject scrollViewContent;
     public GameObject buttonTemplate;
+    public GameObject objUnallocatedSpace;
     private int[] possibleSizes = { 128, 256, 512, 1024 };
     private int unallocatedSpaceInGB;
     private int newButtonCount = 0; // Melacak berapa kali button "ButtonNew" ditekan.
@@ -38,7 +39,7 @@ public class PartitionManager : MonoBehaviour
         if (int.TryParse(sizeInputField.text, out int partitionSizeInMB))
         {
             // Konversi dari MB ke GB
-            int partitionSizeInGB = partitionSizeInMB / 1024;
+            int partitionSizeInGB = partitionSizeInMB / 1000;
 
             // Cek apakah ukuran partisi yang dimasukkan tidak melebihi Unallocated Space yang tersedia
             if (partitionSizeInGB <= unallocatedSpaceInGB)
@@ -49,6 +50,14 @@ public class PartitionManager : MonoBehaviour
                 Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
                 unallocatedSpaceText.text = unallocatedSpaceInGB + " GB";
                 freeSpaceText.text = unallocatedSpaceInGB + " GB";
+                if (unallocatedSpaceInGB == 0)
+                {
+                    // Hide, disable, or remove the objUnallocatedSpace GameObject
+                    // objUnallocatedSpace.SetActive(false);
+                    // OR: objUnallocatedSpace.GetComponent<Renderer>().enabled = false;
+                    // OR:
+                    Destroy(objUnallocatedSpace);
+                }
 
             }
             else
