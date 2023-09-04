@@ -8,13 +8,23 @@ public class PartitionManager : MonoBehaviour
     public GameObject scrollViewContent;
     public GameObject buttonTemplate;
     public GameObject objUnallocatedSpace;
+    public GameObject sizePartition;
+    public Button btnDelete;
+    public Button btnFormat;
+    public Button btnNew;
+
     private int[] possibleSizes = { 128, 256, 512, 1024 };
     private int unallocatedSpaceInGB;
     private int newButtonCount = 0; // Melacak berapa kali button "ButtonNew" ditekan.
+    private bool isUnallocatedSpaceSelected = false;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        btnDelete.interactable = false;
+        btnFormat.interactable = false;
+
         int randomIndex = Random.Range(0, possibleSizes.Length);
         unallocatedSpaceInGB = possibleSizes[randomIndex];
         Debug.Log("Unallocated Space: " + unallocatedSpaceInGB + " GB");
@@ -26,6 +36,13 @@ public class PartitionManager : MonoBehaviour
 
         Button newButton = GameObject.Find("ButtonNew").GetComponent<Button>();
         newButton.onClick.AddListener(OnNewButtonClicked);
+
+        btnNew.onClick.AddListener(OnBtnNewClicked);
+
+        sizePartition.SetActive(false);
+
+        Button selectUnallocatedSpaceButton = objUnallocatedSpace.GetComponent<Button>();
+        selectUnallocatedSpaceButton.onClick.AddListener(OnUnallocatedSpaceSelected);
     }
 
     // Update is called once per frame
@@ -33,8 +50,30 @@ public class PartitionManager : MonoBehaviour
     {
     }
 
+    public void OnUnallocatedSpaceSelected()
+    {
+        isUnallocatedSpaceSelected = true;
+    }
+
+    void OnBtnNewClicked()
+    {
+        // ...
+
+        // Setelah tombol "btnNew" ditekan, aktifkan kembali objek "SizePartition"
+        sizePartition.SetActive(true);
+
+        // ...
+    }
+
     public void OnNewButtonClicked()
     {
+
+        if (!isUnallocatedSpaceSelected)
+        {
+            Debug.Log("Please select unallocated space first.");
+            return;
+        }
+
         InputField sizeInputField = GameObject.Find("SizeInputField").GetComponent<InputField>();
         if (int.TryParse(sizeInputField.text, out int partitionSizeInMB))
         {
@@ -85,6 +124,9 @@ public class PartitionManager : MonoBehaviour
         tvTotalSize.text = partitionSizeInGB + " GB";
         tvFreeSpace.text = partitionSizeInGB + " GB";
         tvTypePartition.text = "Type: NTFS";
+
+        btnDelete.interactable = true;
+        btnFormat.interactable = true;
 
         newButtonCount++;
     }
