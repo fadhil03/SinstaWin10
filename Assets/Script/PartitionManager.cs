@@ -57,12 +57,8 @@ public class PartitionManager : MonoBehaviour
 
     void OnBtnNewClicked()
     {
-        // ...
-
         // Setelah tombol "btnNew" ditekan, aktifkan kembali objek "SizePartition"
         sizePartition.SetActive(true);
-
-        // ...
     }
 
     public void OnNewButtonClicked()
@@ -96,6 +92,7 @@ public class PartitionManager : MonoBehaviour
                     // OR: objUnallocatedSpace.GetComponent<Renderer>().enabled = false;
                     // OR:
                     Destroy(objUnallocatedSpace);
+                    btnNew.interactable = false;
                 }
 
             }
@@ -127,6 +124,7 @@ public class PartitionManager : MonoBehaviour
 
         btnDelete.interactable = true;
         btnFormat.interactable = true;
+        sizePartition.SetActive(false);
 
         newButtonCount++;
     }
