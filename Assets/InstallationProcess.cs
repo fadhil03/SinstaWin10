@@ -14,6 +14,8 @@ public class InstallationProcess : MonoBehaviour
     public GameObject imageComplete4;
     public GameObject nextPanel;
     public GameObject currentPanel;
+    public bool run = false;
+    public Button btnNextPanel7;
 
     private int copyingFilesStartTime = 0; // 5 menit dalam detik
     private int gettingFilesStartTime = 15; // 10 menit dalam detik
@@ -28,6 +30,8 @@ public class InstallationProcess : MonoBehaviour
 
     private IEnumerator Start()
     {
+        btnNextPanel7.onClick.AddListener(OnBtnNextPanel7Click);
+        yield return new WaitUntil(() => run == true);
         // Set teks awal yang tidak bold
         SetTextBold(copyingFiles, false);
         SetTextBold(gettingFiles, false);
@@ -58,6 +62,7 @@ public class InstallationProcess : MonoBehaviour
 
     private IEnumerator StartLoading(Text text, int startTime, GameObject image, Text progressText, int loadingDuration)
     {
+        Debug.Log("Nilai start time adalah: " + startTime);
         yield return new WaitForSeconds(startTime);
 
         // Membuat teks menjadi tidak bold dan menyembunyikan gambar
@@ -69,6 +74,7 @@ public class InstallationProcess : MonoBehaviour
         while (currentTime <= loadingDuration)
         {
             // Hitung persentase progress
+            Debug.Log("Nilai start time adalah: " + startTime);
             float progress = (float)currentTime / (float)loadingDuration * 100f;
             // Tampilkan persentase progress
             progressText.text = Mathf.Round(progress) + "%";
@@ -104,10 +110,17 @@ public class InstallationProcess : MonoBehaviour
         nextPanel.SetActive(true);
     }
 
+
+
     private void SetTextBold(Text text, bool isBold)
     {
         FontStyle style = isBold ? FontStyle.Bold : FontStyle.Normal;
         text.fontStyle = style;
+    }
+
+    void OnBtnNextPanel7Click()
+    {
+        run = true;
     }
 
     // ...
