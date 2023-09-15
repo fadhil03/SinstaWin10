@@ -14,10 +14,13 @@ public class CountDownRestart : MonoBehaviour
     public GameObject previousPanel;
     public Text tvCountdown;
     private float startTime;
+    public Button nextScene;
+    private bool isDelayed = false;
+
 
 
     // Start is called before the first frame update
-   private IEnumerator Start()
+    private IEnumerator Start()
 {
         Debug.Log("Status run" + run);
         if (previousPanel.activeSelf)
@@ -34,28 +37,44 @@ public class CountDownRestart : MonoBehaviour
     
     timeRemaining = maxTime;
         Debug.Log("Status run" + run);
+        nextScene.onClick.AddListener(NextSceneButtonClicked);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timeRemaining > 0)
+        if(timeRemaining >= 0)
         {
             timeRemaining -= Time.deltaTime;
             timerLinearImage.fillAmount = timeRemaining / maxTime;
-            Debug.Log("Restarting in " + timeRemaining + " floar");
-            int timeInSec = Mathf.RoundToInt(timeRemaining);
+            int timeInSec = Mathf.CeilToInt(timeRemaining);
             tvCountdown.text = "Restarting in " + timeInSec + " seconds";
-            Debug.Log("Restarting in " + timeInSec + " seconds");
+
+            Debug.Log("timeRemaining: " + timeRemaining);
+            Debug.Log("Time.deltaTime: " + Time.deltaTime);
+            Debug.Log("timerLinearImage.fillAmount: " + timerLinearImage.fillAmount);
+            Debug.Log("maxTime: " + maxTime);
+            Debug.Log("timeInSec: " + timeInSec);
+            Debug.Log("tvCountdown.text: " + tvCountdown.text);
+            Debug.Log("=====================================");
         }
         else
         {
-            //SceneManager.LoadScene(Bios);
+            StartCoroutine(DelayedAction());
         }
     }
 
-    private void OnEnable()
+    private void NextSceneButtonClicked()
     {
-        
+        // Memuat scene dengan nama "InBootable"
+        SceneManager.LoadScene("Bios");
+    }
+
+    IEnumerator DelayedAction()
+    {
+        isDelayed = true;
+        yield return new WaitForSeconds(1f); // delay 1 detik
+        SceneManager.LoadScene("Bios");                                       // Eksekusi kode Anda di sini
+        isDelayed = false;
     }
 }

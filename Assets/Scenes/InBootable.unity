@@ -13081,6 +13081,7 @@ MonoBehaviour:
   run: 0
   previousPanel: {fileID: 1405007939}
   tvCountdown: {fileID: 1630734739}
+  nextScene: {fileID: 597294125}
 --- !u!114 &1556368764
 MonoBehaviour:
   m_ObjectHideFlags: 0

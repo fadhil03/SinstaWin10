@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InBootable.unity
     guid: b5b6b53fd006ab94897cce9f93db7dcb
+  - enabled: 1
+    path: Assets/Scenes/Bios.unity
+    guid: 411b81683f31e7e45982939accb97b1a
   m_configObjects: {}
