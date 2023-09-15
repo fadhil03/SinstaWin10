@@ -31,6 +31,7 @@ public class InstallationProcess : MonoBehaviour
     private IEnumerator Start()
     {
         btnNextPanel7.onClick.AddListener(OnBtnNextPanel7Click);
+        nextPanel.SetActive(false);
         yield return new WaitUntil(() => run == true);
         // Set teks awal yang tidak bold
         SetTextBold(copyingFiles, false);
@@ -57,7 +58,7 @@ public class InstallationProcess : MonoBehaviour
     private void Update()
     {
         int currentTime = (int)Time.time;
-        Debug.Log("Nilai current time adalah: " + currentTime);
+        //Debug.Log("Nilai current time adalah: " + currentTime);
     }
 
     private IEnumerator StartLoading(Text text, int startTime, GameObject image, Text progressText, int loadingDuration)
