@@ -12106,7 +12106,7 @@ MonoBehaviour:
   nextPanel: {fileID: 1556368761}
   currentPanel: {fileID: 1405007939}
   run: 0
-  btnNextPanel7: {fileID: 0}
+  btnNextPanel7: {fileID: 1250916691}
   progressTextCopyingFiles: {fileID: 1556247540}
   progressTextGettingFiles: {fileID: 762601053}
   progressTextInstallingFeatures: {fileID: 1237159107}
