@@ -13,11 +13,25 @@ public class BiosButtonController : MonoBehaviour
     private Color unselectedTextColor = new Color32(0xBB, 0xBB, 0xBB, 0xFF);
     private Color highlightedTextColor = new Color32(0x00, 0x00, 0xAA, 0xFF);
 
+    private bool isMobile;
+
     private void Start()
     {
+        // Cek jika perangkat saat ini adalah mobile
+        isMobile = SystemInfo.deviceType == DeviceType.Handheld;
+
         foreach (Button button in buttons)
         {
-            button.onClick.AddListener(() => OnButtonClicked(button));
+            if (isMobile)
+            {
+                // Hanya tambahkan event click pada perangkat mobile
+                button.onClick.AddListener(() => OnButtonClicked(button));
+            }
+            else
+            {
+                // Hapus semua event click pada perangkat selain mobile
+                button.onClick.RemoveAllListeners();
+            }
         }
     }
 
@@ -49,16 +63,24 @@ public class BiosButtonController : MonoBehaviour
             buttonText.color = textColor;
         }
 
-        // Change text color when button is highlighted
-        EventTrigger eventTrigger = button.gameObject.AddComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerEnter;
-        entry.callback.AddListener((eventData) => { buttonText.color = highlightedTextColor; });
-        eventTrigger.triggers.Add(entry);
+        if (isMobile)
+        {
+            // Change text color when button is highlighted only on mobile
+            EventTrigger eventTrigger = button.gameObject.GetComponent<EventTrigger>();
+            if (eventTrigger == null)
+            {
+                eventTrigger = button.gameObject.AddComponent<EventTrigger>();
+            }
 
-        entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerExit;
-        entry.callback.AddListener((eventData) => { buttonText.color = textColor; });
-        eventTrigger.triggers.Add(entry);
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerEnter;
+            entry.callback.AddListener((eventData) => { buttonText.color = highlightedTextColor; });
+            eventTrigger.triggers.Add(entry);
+
+            entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerExit;
+            entry.callback.AddListener((eventData) => { buttonText.color = textColor; });
+            eventTrigger.triggers.Add(entry);
+        }
     }
 }
