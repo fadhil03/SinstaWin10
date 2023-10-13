@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TextToggleListener : MonoBehaviour
 {
     [SerializeField] private Toggle toggle; // Toggle yang akan dimonitor
-    [SerializeField] private Text textComponent; // Komponen Text yang akan diubah
+    [SerializeField] private TextMeshProUGUI textComponent; // Komponen Text yang akan diubah
     [SerializeField] private string textWhenToggleOn = "Is On Text"; // Teks ketika toggle aktif
     [SerializeField] private string textWhenToggleOff = "Is Off Text"; // Teks ketika toggle tidak aktif
     [SerializeField] private Color textColorWhenToggleOn = Color.white; // Warna teks ketika toggle aktif

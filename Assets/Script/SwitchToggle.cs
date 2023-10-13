@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +26,9 @@ public class SwitchToggle : MonoBehaviour
 
         backgroundDefaultColor = backgroundImage.color;
         textDesc = GetComponentInChildren<Text>();
+
+        toggle.isOn = true;
+
         toggle.onValueChanged.AddListener(OnSwitch);
         if (toggle.isOn)
             OnSwitch(true);
