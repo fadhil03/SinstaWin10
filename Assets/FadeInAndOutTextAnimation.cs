@@ -11,7 +11,7 @@ public class FadeInAndOutTextAnimation : MonoBehaviour
 
     private int currentIndex = 0;
 
-    void Start()
+    void Awake()
     {
         // Pastikan semua komponen teks nonaktif pada awal permainan
         foreach (Text textComponent in textComponents)
@@ -31,7 +31,16 @@ public class FadeInAndOutTextAnimation : MonoBehaviour
             textComponents[currentIndex].enabled = true;
 
             // Animasi fade in
-            yield return StartCoroutine(FadeInText(textComponents[currentIndex]));
+            if (currentIndex == 2) // Element 2 and 6 fade in together
+            {
+                yield return StartCoroutine(FadeInText(textComponents[currentIndex]));
+                textComponents[5].enabled = true;
+                yield return StartCoroutine(FadeInText(textComponents[5]));
+            }
+            else
+            {
+                yield return StartCoroutine(FadeInText(textComponents[currentIndex]));
+            }
 
             // Tunggu sejenak sebelum memulai animasi fade out
             if (currentIndex < delaysBetweenTexts.Length)
@@ -40,7 +49,17 @@ public class FadeInAndOutTextAnimation : MonoBehaviour
             }
 
             // Animasi fade out
-            yield return StartCoroutine(FadeOutText(textComponents[currentIndex]));
+            if (currentIndex == 4) // Element 4 and 6 fade out together
+            {
+                yield return StartCoroutine(FadeOutText(textComponents[currentIndex]));
+                yield return StartCoroutine(FadeOutText(textComponents[5]));
+                textComponents[5].enabled = false;
+                Destroy(textComponents[5]);
+            }
+            else
+            {
+                yield return StartCoroutine(FadeOutText(textComponents[currentIndex]));
+            }
 
             // Nonaktifkan komponen teks pada index saat ini
             textComponents[currentIndex].enabled = false;
@@ -62,7 +81,7 @@ public class FadeInAndOutTextAnimation : MonoBehaviour
         {
             float alpha = Mathf.Lerp(0f, 1f, elapsedTime / fadeInDuration);
             textComponent.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
-            Debug.Log("Alpha color = " + alpha);
+            //Debug.Log("Alpha color = " + alpha);
 
             elapsedTime += Time.deltaTime;
             yield return null;
