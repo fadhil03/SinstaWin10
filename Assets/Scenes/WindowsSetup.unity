@@ -1681,8 +1681,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 1844143988}
-  nextPanel: {fileID: 944090301}
+  currentPanel: {fileID: 0}
+  nextPanel: {fileID: 0}
+  selectedObject: {fileID: 0}
 --- !u!1 &518553651 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7911742219008483298, guid: dcf21a2f76fad9040a30744ac5707924, type: 3}
@@ -5994,8 +5995,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 1405788068}
-  nextPanel: {fileID: 830547717}
+  currentPanel: {fileID: 0}
+  nextPanel: {fileID: 0}
+  selectedObject: {fileID: 0}
 --- !u!1 &1523075230 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7911742219008483298, guid: dcf21a2f76fad9040a30744ac5707924, type: 3}
@@ -6198,8 +6200,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 638885363}
-  nextPanel: {fileID: 1405788068}
+  currentPanel: {fileID: 0}
+  nextPanel: {fileID: 0}
+  selectedObject: {fileID: 0}
 --- !u!1 &1545164052
 GameObject:
   m_ObjectHideFlags: 0
@@ -6813,8 +6816,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 830547717}
-  nextPanel: {fileID: 1844143988}
+  currentPanel: {fileID: 0}
+  nextPanel: {fileID: 0}
+  selectedObject: {fileID: 0}
 --- !u!1 &1750196656
 GameObject:
   m_ObjectHideFlags: 0
@@ -7010,8 +7014,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 1405788068}
-  nextPanel: {fileID: 944090301}
+  currentPanel: {fileID: 0}
+  nextPanel: {fileID: 0}
+  selectedObject: {fileID: 0}
 --- !u!1 &1757366680
 GameObject:
   m_ObjectHideFlags: 0
@@ -7496,9 +7501,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611c2a0bd3c3c0f4e8f2953b797a70e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panels: []
+  panels:
+  - {fileID: 638885363}
+  - {fileID: 1405788068}
+  - {fileID: 830547717}
+  - {fileID: 1844143988}
+  - {fileID: 944090301}
+  - {fileID: 619829684}
+  - {fileID: 1204352552}
+  - {fileID: 879487572}
+  - {fileID: 0}
   currentPanel: {fileID: 1223576404}
   nextPanel: {fileID: 638885363}
+  selectedObject: {fileID: 4199390835409709925, guid: 9129ac23377159648bb493b50807fbd2, type: 3}
 --- !u!1 &1829107091
 GameObject:
   m_ObjectHideFlags: 0
@@ -8009,8 +8024,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 1204352552}
-  nextPanel: {fileID: 619829684}
+  currentPanel: {fileID: 0}
+  nextPanel: {fileID: 0}
+  selectedObject: {fileID: 0}
 --- !u!1 &2023640147
 GameObject:
   m_ObjectHideFlags: 0
@@ -8501,8 +8517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 619829684}
-  nextPanel: {fileID: 1204352552}
+  currentPanel: {fileID: 0}
+  nextPanel: {fileID: 0}
+  selectedObject: {fileID: 0}
 --- !u!1 &2075048343
 GameObject:
   m_ObjectHideFlags: 0

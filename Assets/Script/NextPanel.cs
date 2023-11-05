@@ -3,11 +3,9 @@ using UnityEngine.UI;
 
 public class NextPanel : MonoBehaviour
 {
-    public GameObject[] panels; // Array untuk menyimpan semua panel yang ingin dinonaktifkan
-
+    public GameObject[] panels;
     public GameObject currentPanel;
     public GameObject nextPanel;
-
     private Button nextButton;
 
     private void Start()

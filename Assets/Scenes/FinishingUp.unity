@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566529652}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33194ea1dd009b74a859cf8fe717f1b2, type: 3}
   m_Name: 
@@ -1550,8 +1550,8 @@ MonoBehaviour:
   - {fileID: 1399367597}
   - {fileID: 1628525130}
   - {fileID: 1288709548}
-  fadeInDuration: 2
-  fadeOutDuration: 2
+  fadeInDuration: 1
+  fadeOutDuration: 1
   delaysBetweenTexts:
   - 1
   - 1
