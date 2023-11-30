@@ -12,6 +12,7 @@ public class PartitionManager : MonoBehaviour
     public Button btnDelete;
     public Button btnFormat;
     public Button btnNew;
+    public Button btnRefresh;
 
     private int[] possibleSizes = { 128, 256, 512, 1024 };
     private int unallocatedSpaceInGB;
@@ -38,6 +39,7 @@ public class PartitionManager : MonoBehaviour
         newButton.onClick.AddListener(OnNewButtonClicked);
 
         btnNew.onClick.AddListener(OnBtnNewClicked);
+        btnRefresh.onClick.AddListener(LoadPartitionData);
 
         sizePartition.SetActive(false);
 
@@ -48,6 +50,10 @@ public class PartitionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Button newButton = GameObject.Find("ButtonNew").GetComponent<Button>();
+        //newButton.onClick.AddListener(OnNewButtonClicked);
+        //btnNew.onClick.AddListener(OnBtnNewClicked);
+        //btnRefresh.onClick.AddListener(LoadPartitionData);
     }
 
     public void OnUnallocatedSpaceSelected()
@@ -126,7 +132,41 @@ public class PartitionManager : MonoBehaviour
         btnFormat.interactable = true;
         sizePartition.SetActive(false);
 
+        // Menyimpan informasi partisi ke dalam PlayerPrefs
+        string partitionKey = "Partition_" + newButtonCount;
+        PlayerPrefs.SetString(partitionKey + "_Name", "Drive 0 Partition " + newButtonCount);
+        PlayerPrefs.SetInt(partitionKey + "_TotalSize", partitionSizeInGB);
+        PlayerPrefs.SetInt(partitionKey + "_FreeSpace", partitionSizeInGB);
+        PlayerPrefs.SetString(partitionKey + "_Type", "Type: NTFS");
+
+        // Menyimpan jumlah partisi yang telah dibuat
+        PlayerPrefs.SetInt("PartitionCount", newButtonCount);
+
+        PlayerPrefs.Save(); // Simpan perubahan ke PlayerPrefs
+
         newButtonCount++;
+    }
+
+    void LoadPartitionData()
+    {
+        int partitionCount = PlayerPrefs.GetInt("PartitionCount", 0);
+
+        for (int i = 0; i < partitionCount; i++)
+        {
+            string partitionKey = "Partition_" + i;
+            string partitionName = PlayerPrefs.GetString(partitionKey + "_Name", "");
+            int totalSize = PlayerPrefs.GetInt(partitionKey + "_TotalSize", 0);
+            int freeSpace = PlayerPrefs.GetInt(partitionKey + "_FreeSpace", 0);
+            string partitionType = PlayerPrefs.GetString(partitionKey + "_Type", "");
+
+            // Lakukan sesuatu dengan data partisi yang telah dibaca
+            Debug.Log("===========================================");
+            Debug.Log("Partition Name: " + partitionName);
+            Debug.Log("Total Size: " + totalSize + " GB");
+            Debug.Log("Free Space: " + freeSpace + " GB");
+            Debug.Log("Type: " + partitionType);
+            Debug.Log("===========================================");
+        }
     }
 
 
