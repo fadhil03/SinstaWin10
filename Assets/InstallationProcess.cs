@@ -32,7 +32,19 @@ public class InstallationProcess : MonoBehaviour
     {
         btnNextPanel7.onClick.AddListener(OnBtnNextPanel7Click);
         nextPanel.SetActive(false);
+        yield return null; // Ganti dengan null agar coroutine tidak dijalankan saat game object diaktifkan
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(Start());
+        StartCoroutine(InstallationCoroutine());
+    }
+
+    private IEnumerator InstallationCoroutine()
+    {
         yield return new WaitUntil(() => run == true);
+
         // Set teks awal yang tidak bold
         SetTextBold(copyingFiles, false);
         SetTextBold(gettingFiles, false);
@@ -100,7 +112,6 @@ public class InstallationProcess : MonoBehaviour
         progressText.text = "";
     }
 
-
     private IEnumerator DelayedPanelSwitch()
     {
         // Tunggu selama 5 detik
@@ -110,8 +121,6 @@ public class InstallationProcess : MonoBehaviour
         currentPanel.SetActive(false);
         nextPanel.SetActive(true);
     }
-
-
 
     private void SetTextBold(Text text, bool isBold)
     {
