@@ -14,25 +14,12 @@ public class DataHandler : MonoBehaviour
     private void Start()
     {
         // Pada awal permainan, coba mengambil data dari PlayerPrefs dan mengisinya ke InputField
-        LoadData();
+        //LoadData();
     }
 
-    private void Update()
+    public void Update()
     {
-        if (PlayerPrefs.HasKey(usernameKey))
-            usernameInput.text = PlayerPrefs.GetString(usernameKey);
-
-        if (PlayerPrefs.HasKey(passwordKey))
-            passwordInput.text = PlayerPrefs.GetString(passwordKey);
-
-        if (PlayerPrefs.HasKey(securityQuestionKey))
-            securityQuestionInput.text = PlayerPrefs.GetString(securityQuestionKey);
-
-        // Tampilkan data yang diambil dalam Debug.Log
-        Debug.Log("Data loaded:");
-        Debug.Log($"Username: {usernameInput.text}");
-        Debug.Log($"Password: {passwordInput.text}");
-        Debug.Log($"Security Question: {securityQuestionInput.text}");
+        SaveData();
     }
 
     public void SaveData()
