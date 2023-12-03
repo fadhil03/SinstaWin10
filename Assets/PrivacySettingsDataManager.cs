@@ -16,7 +16,6 @@ public class PrivacySettingsDataManager : MonoBehaviour
 
     private void Start()
     {
-        // Load nilai terakhir dari PlayerPrefs pada saat memulai
         //LoadPrivacySettings();
     }
 
@@ -32,8 +31,8 @@ public class PrivacySettingsDataManager : MonoBehaviour
             bool privacySettingValue = privacyToggles[i].isOn;
             string privacySettingKey = privacySettingKeys[i];
 
-            // Simpan nilai privacy setting ke PlayerPrefs
-            PlayerPrefs.SetInt(privacySettingKey, privacySettingValue ? 1 : 0);
+            // Simpan nilai privacy setting ke PlayerPrefs sebagai string "Yes" atau "No"
+            PlayerPrefs.SetString(privacySettingKey, privacySettingValue ? "Yes" : "No");
         }
 
         // Simpan perubahan
@@ -48,11 +47,11 @@ public class PrivacySettingsDataManager : MonoBehaviour
         {
             string privacySettingKey = privacySettingKeys[i];
 
-            // Ambil nilai privacy setting dari PlayerPrefs, defaultnya false
-            bool privacySettingValue = PlayerPrefs.GetInt(privacySettingKey, 0) == 1;
+            // Ambil nilai privacy setting dari PlayerPrefs, defaultnya "No"
+            string privacySettingValue = PlayerPrefs.GetString(privacySettingKey, "No");
 
-            // Atur nilai privacy setting pada SwitchToggle
-            privacyToggles[i].isOn = privacySettingValue;
+            // Atur nilai privacy setting pada SwitchToggle berdasarkan string "Yes" atau "No"
+            privacyToggles[i].isOn = (privacySettingValue == "Yes");
         }
 
         Debug.Log("Privacy settings loaded.");
