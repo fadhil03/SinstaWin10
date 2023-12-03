@@ -4611,7 +4611,7 @@ RectTransform:
   - {fileID: 1982587346}
   - {fileID: 1590742325}
   m_Father: {fileID: 1151724098}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6079,7 +6079,7 @@ RectTransform:
   - {fileID: 1738504225}
   - {fileID: 187083407}
   m_Father: {fileID: 1151724098}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6357,7 +6357,7 @@ RectTransform:
   - {fileID: 1518982410}
   - {fileID: 1743726077}
   m_Father: {fileID: 805484723}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -7024,7 +7024,7 @@ GameObject:
   - component: {fileID: 805484725}
   - component: {fileID: 805484724}
   m_Layer: 5
-  m_Name: Panel3 (1)
+  m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7046,9 +7046,10 @@ RectTransform:
   - {fileID: 923717193}
   - {fileID: 701550156}
   - {fileID: 1030055284}
+  - {fileID: 1668816026}
   - {fileID: 718758477}
   m_Father: {fileID: 1151724098}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -9928,13 +9929,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1556368762}
+  - {fileID: 805484723}
   - {fileID: 1405007940}
   - {fileID: 1585859553}
   - {fileID: 592873958}
   - {fileID: 681229492}
   - {fileID: 1729276873}
   - {fileID: 1419684988}
-  - {fileID: 805484723}
   - {fileID: 1135104087}
   - {fileID: 578089769}
   m_Father: {fileID: 0}
@@ -12585,7 +12586,7 @@ RectTransform:
   - {fileID: 1369560004}
   - {fileID: 1680656232}
   m_Father: {fileID: 1151724098}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12652,6 +12653,7 @@ MonoBehaviour:
   imageComplete4: {fileID: 292634831}
   nextPanel: {fileID: 1556368761}
   currentPanel: {fileID: 1405007939}
+  progressBarPanel: {fileID: 805484722}
   run: 0
   btnNextPanel7: {fileID: 1250916691}
   progressTextCopyingFiles: {fileID: 1556247540}
@@ -12913,7 +12915,7 @@ RectTransform:
   - {fileID: 538282388}
   - {fileID: 961433587}
   m_Father: {fileID: 1151724098}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14680,7 +14682,7 @@ RectTransform:
   - {fileID: 1250916695}
   - {fileID: 746485542}
   m_Father: {fileID: 1151724098}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15408,6 +15410,82 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1668816025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1668816026}
+  - component: {fileID: 1668816028}
+  - component: {fileID: 1668816027}
+  m_Layer: 5
+  m_Name: bgCountDown (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1668816026
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668816025}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 805484723}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 194.74506, y: -14.600159}
+  m_SizeDelta: {x: -390.95004, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1668816027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668816025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 0ae2b74b1edd14bb18dd7b65ae916a54, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1668816028
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668816025}
+  m_CullTransparentMesh: 1
 --- !u!1 &1680456211
 GameObject:
   m_ObjectHideFlags: 0
@@ -16012,7 +16090,7 @@ RectTransform:
   - {fileID: 108830350}
   - {fileID: 948405409}
   m_Father: {fileID: 1151724098}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17681,7 +17759,7 @@ GameObject:
   - component: {fileID: 1987268243}
   - component: {fileID: 1987268244}
   m_Layer: 5
-  m_Name: ProgressBar1 (1)
+  m_Name: ProgressBar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17696,7 +17774,7 @@ RectTransform:
   m_GameObject: {fileID: 1987268242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1144218044}
@@ -17706,7 +17784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 194.21062, y: -770.8648}
+  m_AnchoredPosition: {x: 194.21063, y: -770.8649}
   m_SizeDelta: {x: 166.34, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987268244
@@ -17718,11 +17796,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1987268242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 692ec80126e8e504eae4203a74a4713b, type: 3}
+  m_Script: {fileID: 11500000, guid: d3bde9a81ffe58f4ebf4fde05228a6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foregroundImage: {fileID: 1144218045}
-  backgroundImage: {fileID: 1438434988}
+  foregroundImage: {fileID: 1438434988}
+  backgroundImage: {fileID: 1144218045}
   loadingPanels:
   - {fileID: 13783683}
   - {fileID: 679317546}
