@@ -1,15 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DataHandler : MonoBehaviour
+public class UserDataHandler : MonoBehaviour
 {
     public InputField usernameInput;
     public InputField passwordInput;
-    public InputField securityQuestionInput;
 
     private const string usernameKey = "Username";
     private const string passwordKey = "Password";
-    private const string securityQuestionKey = "SecurityQuestion";
 
     private void Start()
     {
@@ -27,7 +25,6 @@ public class DataHandler : MonoBehaviour
         // Simpan data ke PlayerPrefs
         PlayerPrefs.SetString(usernameKey, usernameInput.text);
         PlayerPrefs.SetString(passwordKey, passwordInput.text);
-        PlayerPrefs.SetString(securityQuestionKey, securityQuestionInput.text);
 
         // Simpan perubahan
         PlayerPrefs.Save();
@@ -36,7 +33,6 @@ public class DataHandler : MonoBehaviour
         Debug.Log("Data saved:");
         Debug.Log($"Username: {usernameInput.text}");
         Debug.Log($"Password: {passwordInput.text}");
-        Debug.Log($"Security Question: {securityQuestionInput.text}");
     }
 
     public void LoadData()
@@ -48,13 +44,9 @@ public class DataHandler : MonoBehaviour
         if (PlayerPrefs.HasKey(passwordKey))
             passwordInput.text = PlayerPrefs.GetString(passwordKey);
 
-        if (PlayerPrefs.HasKey(securityQuestionKey))
-            securityQuestionInput.text = PlayerPrefs.GetString(securityQuestionKey);
-
         // Tampilkan data yang diambil dalam Debug.Log
         Debug.Log("Data loaded:");
         Debug.Log($"Username: {usernameInput.text}");
         Debug.Log($"Password: {passwordInput.text}");
-        Debug.Log($"Security Question: {securityQuestionInput.text}");
     }
 }
