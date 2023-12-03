@@ -23,7 +23,7 @@ public class ProgressBarController : MonoBehaviour
 
     private void Update()
     {
-        // Tidak perlu menambahkan progres di sini
+   
     }
 
     IEnumerator SimulateLoading()

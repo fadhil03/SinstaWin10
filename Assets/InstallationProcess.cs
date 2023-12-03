@@ -14,6 +14,7 @@ public class InstallationProcess : MonoBehaviour
     public GameObject imageComplete4;
     public GameObject nextPanel;
     public GameObject currentPanel;
+    public GameObject progressBarPanel;
     public bool run = false;
     public Button btnNextPanel7;
 
@@ -75,7 +76,7 @@ public class InstallationProcess : MonoBehaviour
 
     private IEnumerator StartLoading(Text text, int startTime, GameObject image, Text progressText, int loadingDuration)
     {
-        Debug.Log("Nilai start time adalah: " + startTime);
+        //Debug.Log("Nilai start time adalah: " + startTime);
         yield return new WaitForSeconds(startTime);
 
         // Membuat teks menjadi tidak bold dan menyembunyikan gambar
@@ -87,11 +88,11 @@ public class InstallationProcess : MonoBehaviour
         while (currentTime <= loadingDuration)
         {
             // Hitung persentase progress
-            Debug.Log("Nilai start time adalah: " + startTime);
+            //Debug.Log("Nilai start time adalah: " + startTime);
             float progress = (float)currentTime / (float)loadingDuration * 100f;
             // Tampilkan persentase progress
             progressText.text = Mathf.Round(progress) + "%";
-            Debug.Log("progres: " + progress);
+            //Debug.Log("progres: " + progress);
 
             if (currentTime == 0)
             {
@@ -118,6 +119,7 @@ public class InstallationProcess : MonoBehaviour
         yield return new WaitForSeconds(30f);
 
         // Nonaktifkan currentPanel dan aktifkan nextPanel
+        progressBarPanel.SetActive(false);
         currentPanel.SetActive(false);
         nextPanel.SetActive(true);
     }

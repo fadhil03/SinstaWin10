@@ -22,21 +22,21 @@ public class CountDownRestart : MonoBehaviour
     // Start is called before the first frame update
     private IEnumerator Start()
 {
-        Debug.Log("Status run" + run);
+        //Debug.Log("Status run" + run);
         if (previousPanel.activeSelf)
     {
-        Debug.Log(previousPanel.name + " aktif.");
+        //Debug.Log(previousPanel.name + " aktif.");
     }
     else
     {
-        Debug.Log(previousPanel.name + " tidak aktif.");
+        //Debug.Log(previousPanel.name + " tidak aktif.");
             run = true;
         }
     
     yield return new WaitUntil(() => run == true);
     
     timeRemaining = maxTime;
-        Debug.Log("Status run" + run);
+        //Debug.Log("Status run" + run);
         nextScene.onClick.AddListener(NextSceneButtonClicked);
     }
 
@@ -50,13 +50,13 @@ public class CountDownRestart : MonoBehaviour
             int timeInSec = Mathf.CeilToInt(timeRemaining);
             tvCountdown.text = "Restarting in " + timeInSec + " seconds";
 
-            Debug.Log("timeRemaining: " + timeRemaining);
+/*            Debug.Log("timeRemaining: " + timeRemaining);
             Debug.Log("Time.deltaTime: " + Time.deltaTime);
             Debug.Log("timerLinearImage.fillAmount: " + timerLinearImage.fillAmount);
             Debug.Log("maxTime: " + maxTime);
             Debug.Log("timeInSec: " + timeInSec);
             Debug.Log("tvCountdown.text: " + tvCountdown.text);
-            Debug.Log("=====================================");
+            Debug.Log("=====================================");*/
         }
         else
         {
