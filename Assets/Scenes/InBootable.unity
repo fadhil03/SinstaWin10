@@ -676,7 +676,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5e7f2e62bb4abdb41b320d1f8018e189, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -1639,6 +1639,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1419684988}
     m_Modifications:
+    - target: {fileID: 5683637125062150205, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5683637125062150206, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3543,7 +3547,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5e7f2e62bb4abdb41b320d1f8018e189, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -4040,7 +4044,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5e7f2e62bb4abdb41b320d1f8018e189, type: 3}
-    m_FontSize: 18
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -4359,7 +4363,6 @@ GameObject:
   - component: {fileID: 578089769}
   - component: {fileID: 578089771}
   - component: {fileID: 578089770}
-  - component: {fileID: 578089772}
   m_Layer: 5
   m_Name: Panel1
   m_TagString: Untagged
@@ -4433,19 +4436,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578089768}
   m_CullTransparentMesh: 1
---- !u!114 &578089772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578089768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d4face193d8e941b64a65fb158d80b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel9: {fileID: 1556368761}
 --- !u!1 &589509865
 GameObject:
   m_ObjectHideFlags: 0
@@ -4713,7 +4703,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5e7f2e62bb4abdb41b320d1f8018e189, type: 3}
-    m_FontSize: 18
+    m_FontSize: 23
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 1
@@ -7234,7 +7224,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option A
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 97f3e41f57f916b4eae5c05fd326ed7f, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7298,7 +7288,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &810502085
@@ -7915,8 +7905,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ' (United States)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 97f3e41f57f916b4eae5c05fd326ed7f, type: 2}
+  m_sharedMaterial: {fileID: -836169010359983916, guid: 97f3e41f57f916b4eae5c05fd326ed7f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10476,17 +10466,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d23441cbfbfa57542a4db91461e0cc25, type: 3}
---- !u!114 &1247944972 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5683637125062150205, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
-  m_PrefabInstance: {fileID: 214354694}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1247944975 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5683637125062150206, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
@@ -12946,16 +12925,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419684985}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4795ae75933d54eb1e21729e741f31, type: 3}
+  m_Script: {fileID: 11500000, guid: f715913c6fc777b42b5c2a081cbff31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPanel: {fileID: 1419684985}
-  previousPanel: {fileID: 1135104086}
-  nextPanel: {fileID: 1729276872}
-  nextButton: {fileID: 1177959803}
-  backButton: {fileID: 1247944972}
+  playerPrefsKey: Product_Key
+  playerData: {fileID: 531177914}
 --- !u!1 &1422316266
 GameObject:
   m_ObjectHideFlags: 0
@@ -15861,7 +15837,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5e7f2e62bb4abdb41b320d1f8018e189, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -15968,6 +15944,20 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 502737626967870865, guid: 119a9eaf4daa1174c84eec20ba2bbe24, type: 3}
   m_PrefabInstance: {fileID: 997097741}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1722645220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722645215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f715913c6fc777b42b5c2a081cbff31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefsKey: Type_Os
+  playerData: {fileID: 696578061}
 --- !u!1 &1724217770
 GameObject:
   m_ObjectHideFlags: 0
@@ -19557,7 +19547,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5e7f2e62bb4abdb41b320d1f8018e189, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
