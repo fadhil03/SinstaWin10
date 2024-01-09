@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SceneSwicher : MonoBehaviour
 {
     public Button nextButton;
+    public string nextScene;
 
     private void Start()
     {
@@ -15,6 +16,6 @@ public class SceneSwicher : MonoBehaviour
     private void NextButtonClicked()
     {
         // Memuat scene dengan nama "InBootable"
-        SceneManager.LoadScene("InBootable");
+        SceneManager.LoadScene(nextScene);
     }
 }
