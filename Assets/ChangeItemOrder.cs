@@ -14,6 +14,9 @@ public class ChangeItemOrder : MonoBehaviour
     {
         // Menetapkan warna awal untuk semua Item
         SetItemColors();
+
+        // Mengecek dan memuat nama item dari PlayerPrefs
+        LoadItemName();
     }
 
     void Update()
@@ -32,11 +35,13 @@ public class ChangeItemOrder : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.F5))
         {
             MoveUp();
+            SaveItemName(); // Menyimpan nama item setelah perubahan urutan
         }
         // Jika tombol F6 ditekan
         else if (Input.GetKeyDown(KeyCode.F6))
         {
             MoveDown();
+            SaveItemName(); // Menyimpan nama item setelah perubahan urutan
         }
     }
 
@@ -102,5 +107,23 @@ public class ChangeItemOrder : MonoBehaviour
             SetItemColor(i, deselectedColor);
         }
         SetItemColor(selectedItemIndex, selectedColor);
+    }
+
+    void SaveItemName()
+    {
+        // Menyimpan nama item pada index ke-0 ke dalam PlayerPrefs
+        string itemName = items[0].name;
+        PlayerPrefs.SetString("ItemBootableBios", itemName);
+        PlayerPrefs.Save();
+    }
+
+    void LoadItemName()
+    {
+        // Memuat nama item dari PlayerPrefs dan mengubah nama item pada index ke-0
+        if (PlayerPrefs.HasKey("ItemBootableBios"))
+        {
+            string itemName = PlayerPrefs.GetString("ItemBootableBios");
+            items[0].name = itemName;
+        }
     }
 }
