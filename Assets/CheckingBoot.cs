@@ -21,19 +21,31 @@ public class CheckingBoot : MonoBehaviour
 
     void Update()
     {
+        // Pengecekan PlayerPrefs sebelum menunggu
+        string bootableValue = PlayerPrefs.GetString("ItemBootableBios", "");
         startTime += Time.deltaTime;
-        if (startTime > 5)
-        {
-            Debug.Log("selesai menunggu");
-            reading.SetActive(false);
-            noBootable.SetActive(true);
-            enterToRestart.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (startTime > 3 && bootableValue == "ItemCdrom")
+        {
+            // Jika PlayerPrefs sesuai, pindah ke scene "InBootable"
+            SceneManager.LoadScene("InBootable");
+        }
+        else
+        {
+            // Jika PlayerPrefs tidak sesuai, lanjutkan menunggu dan tampilkan pesan
+            if (startTime > 5)
             {
-                Debug.Log("Namascene : " + SceneManager.GetActiveScene().name);
-                RestartScene();
-                Debug.Log("=================selesai restart======================= ");
+                Debug.Log("selesai menunggu");
+                reading.SetActive(false);
+                noBootable.SetActive(true);
+                enterToRestart.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    Debug.Log("Namascene : " + SceneManager.GetActiveScene().name);
+                    RestartScene();
+                    Debug.Log("=================selesai restart======================= ");
+                }
             }
         }
     }
