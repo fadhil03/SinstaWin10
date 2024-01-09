@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ExitMenuController : MonoBehaviour
@@ -101,36 +102,42 @@ public class ExitMenuController : MonoBehaviour
         ExecuteItemFunction();
     }
 
-
-
-
     private void ExitSavingChanges()
     {
-        // Fungsi untuk "Exit Saving Changes"
+        // Fungsi untuk "Exit Saving Changes" dimana akan PlayerPrefs.Save(); kemudian berpindah scene ke "InBios"
+        SaveChanges(); // Menyimpan perubahan sebelum keluar
+        SceneManager.LoadScene("Bios");
         Debug.Log("Exit Saving Changes");
     }
 
     private void ExitDiscardingChanges()
     {
-        // Fungsi untuk "Exit Discarding Changes"
+        // Fungsi untuk "Exit Discarding Changes" dimana akan menghapus value yang ada dalam PlayerPrefs ItemBootableBios kemudian berpindah scene ke "InBios" 
+        DiscardChanges(); // Membuang perubahan sebelum keluar
+        SceneManager.LoadScene("Bios");
         Debug.Log("Exit Discarding Changes");
     }
 
     private void LoadSetupDefaults()
     {
-        // Fungsi untuk "Load Setup Defaults"
+        // Fungsi untuk "Load Setup Defaults" dimana akan mengisi PlayerPrefs ItemBootableBios dengan value "ItemHardDrive"
+        PlayerPrefs.SetString("ItemBootableBios", "ItemHardDrive");
+        PlayerPrefs.Save();
         Debug.Log("Load Setup Defaults");
     }
 
     private void DiscardChanges()
     {
-        // Fungsi untuk "Discard Changes"
+        // Fungsi untuk "Discard Changes" dimana akan menghapus value yang ada dalam PlayerPrefs ItemBootableBios
+        PlayerPrefs.DeleteKey("ItemBootableBios");
+        PlayerPrefs.Save();
         Debug.Log("Discard Changes");
     }
 
     private void SaveChanges()
     {
-        // Fungsi untuk "Save Changes"
+        // Fungsi untuk "Save Changes" dimana akan PlayerPrefs.Save();
+        PlayerPrefs.Save();
         Debug.Log("Save Changes");
     }
 }

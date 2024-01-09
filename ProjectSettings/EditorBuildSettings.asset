@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bios.unity
     guid: 411b81683f31e7e45982939accb97b1a
+  - enabled: 1
+    path: Assets/Scenes/InBios.unity
+    guid: 575e3e15d12851c4999b57b0b60c937c
   m_configObjects: {}

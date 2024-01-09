@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BootingBios : MonoBehaviour
 {
     public GameObject BIOSLogo;
     public GameObject F2text;
     public GameObject BootCanvas;
-    public GameObject BiosCanvas;
     public GameObject CheckingCanvas;
 
     public float startTime = 0;
@@ -16,7 +15,6 @@ public class BootingBios : MonoBehaviour
     {
         BIOSLogo.SetActive(false);
         F2text.SetActive(false);
-        BiosCanvas.SetActive(false);
         CheckingCanvas.SetActive(false);
     }
 
@@ -38,14 +36,16 @@ public class BootingBios : MonoBehaviour
 
         if (startTime > 8)
         {
-            BootCanvas.SetActive(false);
+            BIOSLogo.SetActive(false);
+            F2text.SetActive(false);
             CheckingCanvas.SetActive(true);
         }
     }
+
     public void EnterBIOS()
     {
-        BootCanvas.SetActive(false);
-        BiosCanvas.SetActive(true);
+        SceneManager.LoadScene("InBios");
         Debug.Log("Entering BIOS...");
     }
+
 }
