@@ -21,22 +21,20 @@ public class CountDownRestart : MonoBehaviour
 
     // Start is called before the first frame update
     private IEnumerator Start()
-{
-        //Debug.Log("Status run" + run);
+    {
         if (previousPanel.activeSelf)
-    {
-        //Debug.Log(previousPanel.name + " aktif.");
-    }
-    else
-    {
-        //Debug.Log(previousPanel.name + " tidak aktif.");
+        {
+            //Debug.Log(previousPanel.name + " aktif.");
+        }
+        else
+        {
+            //Debug.Log(previousPanel.name + " tidak aktif.");
             run = true;
         }
-    
-    yield return new WaitUntil(() => run == true);
-    
-    timeRemaining = maxTime;
-        //Debug.Log("Status run" + run);
+        yield return new WaitUntil(() => run == true);
+
+        timeRemaining = maxTime;
+        PlayerPrefs.SetInt("isCopyingComplete", 1); 
         nextScene.onClick.AddListener(NextSceneButtonClicked);
     }
 
