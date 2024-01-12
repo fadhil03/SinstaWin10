@@ -23,19 +23,6 @@ public class DelayedNextPanel : MonoBehaviour
         }
     }
 
-    private void CheckPanelActivation()
-    {
-        // Cek apakah currentPanel telah aktif
-        if (currentPanel.activeSelf)
-        {
-            // Mengaktifkan skrip
-            enabled = true;
-
-            // Menghentikan pemanggilan berulang
-            CancelInvoke("CheckPanelActivation");
-        }
-    }
-
     public void DelayedAction()
     {
         if (!string.IsNullOrEmpty(nextScene))
@@ -47,7 +34,7 @@ public class DelayedNextPanel : MonoBehaviour
         else
         {
             // Jika nextScene kosong, lakukan perubahan panel
-            Debug.Log("Posisi  else");
+            Debug.Log("Posisi else");
             currentPanel.SetActive(false);
             nextPanel.SetActive(true);
         }
