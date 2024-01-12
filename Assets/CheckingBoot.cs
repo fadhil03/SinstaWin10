@@ -24,9 +24,15 @@ public class CheckingBoot : MonoBehaviour
         // Pengecekan PlayerPrefs sebelum menunggu
         string bootableValue = PlayerPrefs.GetString("ItemBootableBios", "");
         int isCopyingComplete = PlayerPrefs.GetInt("isCopyingComplete", 0);
+        int isSetupComplete = PlayerPrefs.GetInt("isSetupComplete", 0);
         startTime += Time.deltaTime;
 
-        if (startTime > 3 && isCopyingComplete == 1)
+        if (startTime > 3 && isSetupComplete == 1)
+        {
+            // Jika isCopyingComplete adalah 1, pindah ke scene "WindowsSetup"
+            SceneManager.LoadScene("AccountSetup");
+        }
+        else if (startTime > 3 && isCopyingComplete == 1)
         {
             // Jika isCopyingComplete adalah 1, pindah ke scene "WindowsSetup"
             SceneManager.LoadScene("WindowsSetup");

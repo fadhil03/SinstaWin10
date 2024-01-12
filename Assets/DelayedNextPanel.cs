@@ -1,28 +1,55 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DelayedNextPanel : MonoBehaviour
 {
     public GameObject currentPanel;
     public GameObject nextPanel;
-    private float delayTime = 8.0f;
-    private float startTime;
-    private float currentTime;
-
-    private IEnumerator Start()
+    public float delayTime = 8.0f;
+    public string nextScene; // Nama scene yang ingin dipindahkan
+    
+    public void Awake()
     {
-        startTime = Time.time; // Mengatur waktu awal ketika Start dipanggil
-        currentTime = startTime; // Inisialisasi currentTime dengan startTime
-
-        while (currentTime - startTime < delayTime)
+        enabled = false;
+    }
+    public void Start()
+    {
+        // Cek apakah objek saat ini aktif sebelum melakukan Invoke  
+        enabled = false;
+        if (currentPanel.activeSelf)
         {
-            currentTime = Time.time; // Update currentTime selama penundaan
-            yield return null; // Tunggu frame berikutnya
+            Debug.Log("Posisi if urrentPanel.activeSelf");
+            Invoke("DelayedAction", delayTime);
         }
+    }
 
-        // Nonaktifkan panel saat ini dan aktifkan panel berikutnya
-        yield return new WaitForSeconds(delayTime);
-        currentPanel.SetActive(false);
-        nextPanel.SetActive(true);
+    private void CheckPanelActivation()
+    {
+        // Cek apakah currentPanel telah aktif
+        if (currentPanel.activeSelf)
+        {
+            // Mengaktifkan skrip
+            enabled = true;
+
+            // Menghentikan pemanggilan berulang
+            CancelInvoke("CheckPanelActivation");
+        }
+    }
+
+    public void DelayedAction()
+    {
+        if (!string.IsNullOrEmpty(nextScene))
+        {
+            // Pindah ke scene yang ditentukan jika nextScene tidak kosong
+            Debug.Log("Posisi  if (!string.IsNullOrEmpty(nextScene))");
+            SceneManager.LoadScene(nextScene);
+        }
+        else
+        {
+            // Jika nextScene kosong, lakukan perubahan panel
+            Debug.Log("Posisi  else");
+            currentPanel.SetActive(false);
+            nextPanel.SetActive(true);
+        }
     }
 }

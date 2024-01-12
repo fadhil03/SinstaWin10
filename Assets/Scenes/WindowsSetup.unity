@@ -1640,8 +1640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 0}
-  nextPanel: {fileID: 0}
+  currentPanel: {fileID: 1844143988}
+  nextPanel: {fileID: 619829684}
 --- !u!1 &458684274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,9 +3986,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944090301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 289867680}
@@ -3998,7 +3998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0.000030517578}
   m_SizeDelta: {x: 0, y: 570}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944090304
@@ -4935,6 +4935,7 @@ GameObject:
   - component: {fileID: 1204352553}
   - component: {fileID: 1204352556}
   - component: {fileID: 1204352555}
+  - component: {fileID: 1204352557}
   m_Layer: 5
   m_Name: DiscoverPanel
   m_TagString: Untagged
@@ -5006,6 +5007,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204352552}
   m_CullTransparentMesh: 1
+--- !u!114 &1204352557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204352552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50083d2f73fd0a8458b5d1af0331d66f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1219458056
 GameObject:
   m_ObjectHideFlags: 0
@@ -6081,8 +6094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 0}
-  nextPanel: {fileID: 0}
+  currentPanel: {fileID: 1405788068}
+  nextPanel: {fileID: 830547717}
 --- !u!1 &1523075230 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7911742219008483298, guid: dcf21a2f76fad9040a30744ac5707924, type: 3}
@@ -6285,8 +6298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 0}
-  nextPanel: {fileID: 0}
+  currentPanel: {fileID: 638885363}
+  nextPanel: {fileID: 1405788068}
 --- !u!1 &1545164052
 GameObject:
   m_ObjectHideFlags: 0
@@ -6900,8 +6913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 0}
-  nextPanel: {fileID: 0}
+  currentPanel: {fileID: 830547717}
+  nextPanel: {fileID: 1844143988}
 --- !u!1 &1750196656
 GameObject:
   m_ObjectHideFlags: 0
@@ -7097,8 +7110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 0}
-  nextPanel: {fileID: 0}
+  currentPanel: {fileID: 1405788068}
+  nextPanel: {fileID: 619829684}
 --- !u!1 &1757366680
 GameObject:
   m_ObjectHideFlags: 0
@@ -7994,8 +8007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 0}
-  nextPanel: {fileID: 0}
+  currentPanel: {fileID: 1204352552}
+  nextPanel: {fileID: 619829684}
 --- !u!1 &2023640147
 GameObject:
   m_ObjectHideFlags: 0
@@ -8486,8 +8499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels: []
-  currentPanel: {fileID: 0}
-  nextPanel: {fileID: 0}
+  currentPanel: {fileID: 619829684}
+  nextPanel: {fileID: 1204352552}
 --- !u!1 &2075048343
 GameObject:
   m_ObjectHideFlags: 0
@@ -8609,8 +8622,9 @@ GameObject:
   - component: {fileID: 2076670859}
   - component: {fileID: 2076670858}
   - component: {fileID: 2076670857}
+  - component: {fileID: 2076670860}
   m_Layer: 5
-  m_Name: Text (Legacy) (2)
+  m_Name: BtnContinue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8722,6 +8736,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076670855}
   m_CullTransparentMesh: 1
+--- !u!114 &2076670860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076670855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f75c9320bfdafd46a36ba2d08fd1506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextButton: {fileID: 2076670857}
+  nextScene: Bios
 --- !u!1 &2078861246
 GameObject:
   m_ObjectHideFlags: 0
