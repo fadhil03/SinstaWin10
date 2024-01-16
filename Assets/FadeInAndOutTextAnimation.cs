@@ -5,9 +5,11 @@ using UnityEngine.UI;
 public class FadeInAndOutTextAnimation : MonoBehaviour
 {
     public Text[] textComponents;
+    public GameObject[] textObject;
     public float fadeInDuration = 2f;
     public float fadeOutDuration = 2f;
     public float[] delaysBetweenTexts;
+    private bool isLastTextObject;
 
     private int currentIndex = 0;
 
@@ -19,6 +21,13 @@ public class FadeInAndOutTextAnimation : MonoBehaviour
             textComponent.enabled = false;
         }
 
+        foreach (GameObject textObject in textObject)
+        {
+            textObject.active = false;
+        }
+        isLastTextObject = false;
+        PlayerPrefs.SetInt("LastTextFadeOut", isLastTextObject ? 1 : 0);
+
         // Mulai animasi fade in untuk komponen teks pertama
         StartCoroutine(PlayTextAnimations());
     }
@@ -28,17 +37,29 @@ public class FadeInAndOutTextAnimation : MonoBehaviour
         while (currentIndex < textComponents.Length)
         {
             // Aktifkan komponen teks pada index saat ini
-            textComponents[currentIndex].enabled = true;
+            Debug.Log("current index text = " + currentIndex);
+
 
             // Animasi fade in
             if (currentIndex == 2) // Element 2 and 6 fade in together
             {
+                textComponents[currentIndex].enabled = true;
+                textObject[currentIndex].active = true;
                 yield return StartCoroutine(FadeInText(textComponents[currentIndex]));
+                textObject[5].active = true;
                 textComponents[5].enabled = true;
                 yield return StartCoroutine(FadeInText(textComponents[5]));
             }
+            else if (currentIndex == 5) // Element 4 and 6 fade out together
+            {
+                textComponents[5].enabled = false;
+                textObject[5].active = false;
+                //Destroy(textComponents[5]);
+            }
             else
             {
+                textComponents[currentIndex].enabled = true;
+                textObject[currentIndex].active = true;
                 yield return StartCoroutine(FadeInText(textComponents[currentIndex]));
             }
 
@@ -51,10 +72,15 @@ public class FadeInAndOutTextAnimation : MonoBehaviour
             // Animasi fade out
             if (currentIndex == 4) // Element 4 and 6 fade out together
             {
+                textComponents[currentIndex].enabled = true;
+                textObject[currentIndex].active = true;
                 yield return StartCoroutine(FadeOutText(textComponents[currentIndex]));
                 yield return StartCoroutine(FadeOutText(textComponents[5]));
                 textComponents[5].enabled = false;
-                Destroy(textComponents[5]);
+                textObject[5].active = false;
+                isLastTextObject = true;
+                PlayerPrefs.SetInt("LastTextFadeOut", isLastTextObject ? 1 : 0);
+                //Destroy(textComponents[5]);
             }
             else
             {

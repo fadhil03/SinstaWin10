@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class ColorTintAnimation : MonoBehaviour
 {
     public Image targetImage;
-    public Text textComponent;
+    public GameObject textObject;
+    public GameObject lastTextObject;
     public Color color1 = new Color(0, 0, 0, 1); // Warna hitam
     public Color color2 = new Color(0, 50, 91, 255) / 255f; // Color #00325b
     public Color color3 = new Color(1, 108, 191, 255) / 255f; // Color #016cbf
@@ -17,7 +18,21 @@ public class ColorTintAnimation : MonoBehaviour
     private void Start()
     {
         // Periksa nilai .enabled pada komponen Text
-        if (textComponent.enabled)
+        if (textObject.active)
+        {
+            // Inisialisasi warna targetImage dengan color1 saat komponen teks aktif
+            targetImage.color = color1;
+            // Memulai animasi color tint dari color1 ke color2
+            colorChangeCoroutine = StartCoroutine(AnimateColorTint(color1, color2, true));
+            animationStarted = true;
+        } 
+    }
+
+    private void Update()
+    {
+        bool checkLastFadeOut = PlayerPrefs.GetInt("LastTextFadeOut") == 1 ? true : false;
+        // Periksa nilai .enabled pada komponen Text saat Update dipanggil
+        if (textObject.active && !animationStarted)
         {
             // Inisialisasi warna targetImage dengan color1 saat komponen teks aktif
             targetImage.color = color1;
@@ -25,18 +40,11 @@ public class ColorTintAnimation : MonoBehaviour
             colorChangeCoroutine = StartCoroutine(AnimateColorTint(color1, color2, true));
             animationStarted = true;
         }
-    }
 
-    private void Update()
-    {
-        // Periksa nilai .enabled pada komponen Text saat Update dipanggil
-        if (textComponent.enabled && !animationStarted)
+        if (!lastTextObject.active && checkLastFadeOut == true)
         {
-            // Inisialisasi warna targetImage dengan color1 saat komponen teks aktif
-            targetImage.color = color1;
-            // Memulai animasi color tint dari color1 ke color2
-            colorChangeCoroutine = StartCoroutine(AnimateColorTint(color1, color2, true));
-            animationStarted = true;
+            colorChangeCoroutine = StartCoroutine(AnimateColorTint(color3, color1, false));
+            //animationStarted = false;
         }
     }
 

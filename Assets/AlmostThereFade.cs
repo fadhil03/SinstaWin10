@@ -7,7 +7,7 @@ public class AlmostThereFade : MonoBehaviour
     public GameObject gameObject1;
     public GameObject gameObject2;
     public GameObject gameObject3;
-    public float fadeDuration = 1f;
+    public float fadeDuration;
     public Text textComponent; // Membuat komponen Text publik
 
 /*    private bool _isTextEnabled = false;
