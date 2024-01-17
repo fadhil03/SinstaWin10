@@ -79,6 +79,7 @@ public class FadeInAndOutTextAnimation : MonoBehaviour
                 textComponents[5].enabled = false;
                 textObject[5].active = false;
                 isLastTextObject = true;
+                yield return new WaitForSeconds(2f);
                 PlayerPrefs.SetInt("LastTextFadeOut", isLastTextObject ? 1 : 0);
                 //Destroy(textComponents[5]);
             }

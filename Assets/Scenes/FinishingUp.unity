@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 516828890}
   - component: {fileID: 516828892}
   - component: {fileID: 516828891}
+  - component: {fileID: 516828893}
   m_Layer: 5
   m_Name: WindowsDesktop
   m_TagString: Untagged
@@ -310,7 +311,7 @@ RectTransform:
   m_GameObject: {fileID: 516828889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1808665969}
@@ -318,7 +319,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: -0.000061035156}
   m_SizeDelta: {x: 0, y: 0.000061035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &516828891
@@ -359,6 +360,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516828889}
   m_CullTransparentMesh: 1
+--- !u!225 &516828893
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516828889}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &657381501
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &972381548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,6 +664,7 @@ GameObject:
   - component: {fileID: 1147419189}
   - component: {fileID: 1147419188}
   - component: {fileID: 1147419190}
+  - component: {fileID: 1147419191}
   m_Layer: 5
   m_Name: AlmostThere
   m_TagString: Untagged
@@ -667,7 +681,7 @@ RectTransform:
   m_GameObject: {fileID: 1147419186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000004, y: 1.0000004, z: 1.0000004}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 373064924}
@@ -732,8 +746,19 @@ MonoBehaviour:
   gameObject1: {fileID: 1224123206}
   gameObject2: {fileID: 1147419186}
   gameObject3: {fileID: 516828889}
-  fadeDuration: 0
-  textComponent: {fileID: 1288709548}
+  textObject: {fileID: 1288709546}
+--- !u!225 &1147419191
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147419186}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1222004216
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1224123207}
+  - component: {fileID: 1224123208}
   m_Layer: 5
   m_Name: Preparing
   m_TagString: Untagged
@@ -852,6 +878,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1224123208
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224123206}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1288709546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,31 +1099,13 @@ GameObject:
   - component: {fileID: 1566529656}
   - component: {fileID: 1566529655}
   - component: {fileID: 1566529654}
-  - component: {fileID: 1566529653}
   m_Layer: 5
   m_Name: AlmostThere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1566529653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566529652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33194ea1dd009b74a859cf8fe717f1b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObject1: {fileID: 1808665963}
-  gameObject2: {fileID: 1566529652}
-  gameObject3: {fileID: 972381547}
-  fadeDuration: 3
-  textComponent: {fileID: 1288709548}
+  m_IsActive: 1
 --- !u!114 &1566529654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1581,6 +1601,6 @@ MonoBehaviour:
   delaysBetweenTexts:
   - 2
   - 3
-  - 8
-  - 10
+  - 5
+  - 5
   - 3
