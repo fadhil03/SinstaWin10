@@ -5,16 +5,12 @@ using UnityEngine.UI;
 
 public class ListTypeOs : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject scrollViewContent;
     public GameObject objTypeOs;
-    public Text tvOperatingSystemText;
-    public Text tvArchitecturesText;
-    public Text tvDateModifiedText;
 
-    public int listOsCount = 10;
-
-    string[] operatingSystems = {
+    void Start()
+    {
+        string[] operatingSystems = {
             "Windows 10 Home",
             "Windows 10 Pro",
             "Windows 10 Education",
@@ -27,7 +23,7 @@ public class ListTypeOs : MonoBehaviour
             "Windows 10 Education N"
         };
 
-    string[] architectures = {
+        string[] architectures = {
             "x86",
             "x64",
             "x86",
@@ -40,7 +36,7 @@ public class ListTypeOs : MonoBehaviour
             "x64"
         };
 
-    string[] dateModified = {
+        string[] dateModified = {
             "01/06/2023",
             "15/05/2023",
             "22/04/2023",
@@ -53,43 +49,47 @@ public class ListTypeOs : MonoBehaviour
             "14/09/2022"
         };
 
-    void Start()
-    {
-
         for (int i = 0; i < operatingSystems.Length; i++)
-            {
-                // Membuat GameObject baru dari prefab objTypeOs
-                GameObject listOs = (GameObject)Instantiate(objTypeOs);
+        {
+            // Membuat GameObject baru dari prefab objTypeOs
+            GameObject listOs = Instantiate(objTypeOs);
 
-                // Mengatur parent GameObject ke scrollViewContent
-                listOs.transform.SetParent(scrollViewContent.transform);
+            // Mengatur parent GameObject ke scrollViewContent
+            listOs.transform.SetParent(scrollViewContent.transform);
 
-            // Mencari komponen teks di dalam GameObject yang baru dibuat
+            // Menggunakan GetChild untuk menemukan komponen Text
+            Text osText = listOs.transform.GetChild(0).GetComponent<Text>();
+            Text architecturesText = listOs.transform.GetChild(1).GetComponent<Text>();
+            Text dateModifiedText = listOs.transform.GetChild(2).GetComponent<Text>();
 
-           // Text osText = listOs.transform.Find("tvOperatingSystem").GetComponent<Text>();
-           // Text architecturesText = listOs.transform.Find("tvArchitectures").GetComponent<Text>();
-           // Text dateModifiedText = listOs.transform.Find("tvDateModified").GetComponent<Text>();
-
-            // Mengatur teks pada komponen teks sesuai dengan data dari array
-           // osText.text = operatingSystems[i];
-           // architecturesText.text = architectures[i];
-           // dateModifiedText.text = dateModified[i];
-
-            tvOperatingSystemText.text = operatingSystems[i];
-            tvArchitecturesText.text = architectures[i];
-            tvDateModifiedText.text = dateModified[i];
+            // Mengatur nilai teks pada komponen Text sesuai dengan index
+            osText.text = operatingSystems[i];
+            architecturesText.text = architectures[i];
+            dateModifiedText.text = dateModified[i];
 
             listOs.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            // Menambahkan event listener untuk menanggapi klik pada objek
+            listOs.GetComponent<Button>().onClick.AddListener(() => OnListOsClick(osText.text, architecturesText.text, dateModifiedText.text));
         }
+    }
 
+    void OnListOsClick(string os, string architectures, string dateModified)
+    {
+        // Menyimpan data terkait objek yang terklik ke dalam PlayerPrefs
+        PlayerPrefs.SetString("SelectedOS", os);
+        PlayerPrefs.SetString("SelectedArchitectures", architectures);
+        PlayerPrefs.SetString("SelectedDateModified", dateModified);
 
-
-
-        }
+        // Contoh: Menampilkan data yang disimpan pada PlayerPrefs
+        Debug.Log("Selected OS: " + PlayerPrefs.GetString("SelectedOS"));
+        Debug.Log("Selected Architectures: " + PlayerPrefs.GetString("SelectedArchitectures"));
+        Debug.Log("Selected Date Modified: " + PlayerPrefs.GetString("SelectedDateModified"));
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Update logic (jika diperlukan)
     }
 }
