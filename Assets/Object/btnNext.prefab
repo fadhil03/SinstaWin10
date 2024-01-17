@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 675633873574385056}
   - component: {fileID: 675633873574385063}
   - component: {fileID: 675633873574385062}
+  - component: {fileID: 5348613995927022352}
   m_Layer: 5
   m_Name: btnNext
   m_TagString: Untagged
@@ -191,7 +192,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: c9f84605b2f6cf846aa6af925b205016, type: 3}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: d0a8662145056574ea7a931ddf764f8b, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -218,3 +219,15 @@ MonoBehaviour:
   panels: []
   currentPanel: {fileID: 0}
   nextPanel: {fileID: 0}
+--- !u!114 &5348613995927022352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675633873574385060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c49d061aaf2cd7488a3329df2aecf52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
