@@ -493,7 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 592873957}
-  nextPanel: {fileID: 1585859552}
+  changePanel: {fileID: 1585859552}
 --- !u!224 &91896486 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 944998183794949073, guid: d23441cbfbfa57542a4db91461e0cc25, type: 3}
@@ -748,15 +748,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7882353, g: 0.7882353, b: 0.7882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f7fe8296d41fe8649a52c6638be6d4ad, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1076,6 +1076,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
       propertyPath: nextPanel
+      value: 
+      objectReference: {fileID: 1135104086}
+    - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
+      propertyPath: changePanel
       value: 
       objectReference: {fileID: 1135104086}
     - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
@@ -2503,7 +2507,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 25, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &333475174
 MonoBehaviour:
@@ -2549,7 +2553,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 825323068}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.03367334
+  m_Size: 0.033527493
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2567,15 +2571,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.93333334, g: 0.93333334, b: 0.93333334, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f7fe8296d41fe8649a52c6638be6d4ad, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3810,6 +3814,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 681229492}
     m_Modifications:
+    - target: {fileID: 5683637125062150205, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5683637125062150206, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3898,6 +3906,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: btnBack
       objectReference: {fileID: 0}
+    - target: {fileID: 6498650656942173737, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: changePanel
+      value: 
+      objectReference: {fileID: 1729276872}
+    - target: {fileID: 6498650656942173737, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: currentPanel
+      value: 
+      objectReference: {fileID: 681229491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
 --- !u!1 &526517220
@@ -4701,7 +4717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 1585859552}
-  nextPanel: {fileID: 1405007939}
+  changePanel: {fileID: 0}
 --- !u!114 &597294125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5120,6 +5136,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 592873957}
     - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
+      propertyPath: changePanel
+      value: 
+      objectReference: {fileID: 592873957}
+    - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
       propertyPath: currentPanel
       value: 
       objectReference: {fileID: 681229491}
@@ -5243,7 +5263,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 4.0899963}
-  m_SizeDelta: {x: 20, y: 4.09}
+  m_SizeDelta: {x: 25, y: 4.09}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &627905983
 MonoBehaviour:
@@ -5307,15 +5327,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.93333334, g: 0.93333334, b: 0.93333334, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f7fe8296d41fe8649a52c6638be6d4ad, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5427,6 +5447,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: btnBack
       objectReference: {fileID: 0}
+    - target: {fileID: 6498650656942173737, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: changePanel
+      value: 
+      objectReference: {fileID: 1419684985}
+    - target: {fileID: 6498650656942173737, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: currentPanel
+      value: 
+      objectReference: {fileID: 1729276872}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
 --- !u!1 &631347062
@@ -7257,15 +7285,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7882353, g: 0.7882353, b: 0.7882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f7fe8296d41fe8649a52c6638be6d4ad, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7558,7 +7586,6 @@ GameObject:
   - component: {fileID: 874225653}
   - component: {fileID: 874225652}
   - component: {fileID: 874225651}
-  - component: {fileID: 874225655}
   - component: {fileID: 874225656}
   m_Layer: 5
   m_Name: bntInstall
@@ -7685,21 +7712,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874225649}
   m_CullTransparentMesh: 1
---- !u!114 &874225655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 874225649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611c2a0bd3c3c0f4e8f2953b797a70e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panels: []
-  currentPanel: {fileID: 1135104086}
-  nextPanel: {fileID: 1419684985}
 --- !u!114 &874225656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7714,7 +7726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 1135104086}
-  nextPanel: {fileID: 805484722}
+  changePanel: {fileID: 1419684985}
 --- !u!1 &886309600
 GameObject:
   m_ObjectHideFlags: 0
@@ -9421,6 +9433,7 @@ GameObject:
   - component: {fileID: 1131492733}
   - component: {fileID: 1131492735}
   - component: {fileID: 1131492734}
+  - component: {fileID: 1131492736}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -9469,8 +9482,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f7fe8296d41fe8649a52c6638be6d4ad, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9487,6 +9500,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131492732}
   m_CullTransparentMesh: 1
+--- !u!114 &1131492736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131492732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1135104086
 GameObject:
   m_ObjectHideFlags: 0
@@ -9638,8 +9666,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: 0.0000078678}
-  m_SizeDelta: {x: 28.06, y: 28.063}
+  m_AnchoredPosition: {x: -0.3, y: -0.1}
+  m_SizeDelta: {x: 35.52, y: 35.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143578869
 MonoBehaviour:
@@ -9654,7 +9682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10217,6 +10245,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: btnBack
       objectReference: {fileID: 0}
+    - target: {fileID: 6498650656942173737, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: changePanel
+      value: 
+      objectReference: {fileID: 681229491}
+    - target: {fileID: 6498650656942173737, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: currentPanel
+      value: 
+      objectReference: {fileID: 592873957}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
 --- !u!1 &1237159105
@@ -11306,6 +11342,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1405007939}
     - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
+      propertyPath: changePanel
+      value: 
+      objectReference: {fileID: 1405007939}
+    - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
       propertyPath: currentPanel
       value: 
       objectReference: {fileID: 1585859552}
@@ -12288,6 +12328,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: btnBack
       objectReference: {fileID: 0}
+    - target: {fileID: 6498650656942173737, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: changePanel
+      value: 
+      objectReference: {fileID: 592873957}
+    - target: {fileID: 6498650656942173737, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
+      propertyPath: currentPanel
+      value: 
+      objectReference: {fileID: 1585859552}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1db8b2fd1e71ffc42b320869710c128a, type: 3}
 --- !u!1 &1397518545
@@ -12959,6 +13007,7 @@ MonoBehaviour:
   noKeyButton: {fileID: 1664981313}
   panel3: {fileID: 1419684985}
   panel4: {fileID: 1729276872}
+  progressBar: {fileID: 805484722}
 --- !u!114 &1419684990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13323,7 +13372,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 25, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1451557778
 MonoBehaviour:
@@ -13387,15 +13436,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.93333334, g: 0.93333334, b: 0.93333334, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f7fe8296d41fe8649a52c6638be6d4ad, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14059,6 +14108,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
       propertyPath: nextPanel
+      value: 
+      objectReference: {fileID: 681229491}
+    - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
+      propertyPath: changePanel
       value: 
       objectReference: {fileID: 681229491}
     - target: {fileID: 675633873574385062, guid: 92b2e8c977ea6e14fa35ec52d86158cf, type: 3}
@@ -15941,7 +15994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15949,7 +16002,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5e7f2e62bb4abdb41b320d1f8018e189, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -16331,7 +16384,6 @@ GameObject:
   - component: {fileID: 1729276873}
   - component: {fileID: 1729276876}
   - component: {fileID: 1729276875}
-  - component: {fileID: 1729276877}
   - component: {fileID: 1729276879}
   - component: {fileID: 1729276878}
   m_Layer: 5
@@ -16405,18 +16457,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729276872}
   m_CullTransparentMesh: 1
---- !u!114 &1729276877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729276872}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cd0c2506e2094e458567419d8b2892d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1729276878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17721,15 +17761,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7882353, g: 0.7882353, b: 0.7882353, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f7fe8296d41fe8649a52c6638be6d4ad, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

@@ -8,6 +8,7 @@ public class ProductKeyInpVal : MonoBehaviour
     public Button noKeyButton;
     public GameObject panel3;
     public GameObject panel4;
+    public GameObject progressBar;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class ProductKeyInpVal : MonoBehaviour
 
         // Menonaktifkan tombol next secara awal
         nextButton.interactable = false;
+        progressBar.SetActive(true);
     }
 
     private void ValidateInput(string value)

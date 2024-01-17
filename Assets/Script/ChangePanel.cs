@@ -1,17 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NextPanel : MonoBehaviour
+public class ChangePanel : MonoBehaviour
 {
     public GameObject[] panels;
     public GameObject currentPanel;
-    public GameObject nextPanel;
-    private Button nextButton;
+    public GameObject changePanel;
+    private Button Button;
 
     private void Start()
     {
-        nextButton = GetComponent<Button>();
-        nextButton.onClick.AddListener(NextButtonClicked);
+        Button = GetComponent<Button>();
+        Button.onClick.AddListener(NextButtonClicked);
 
         // Menonaktifkan semua panel yang ada dalam array panels
         foreach (GameObject panel in panels)
@@ -23,6 +23,6 @@ public class NextPanel : MonoBehaviour
     private void NextButtonClicked()
     {
         currentPanel.SetActive(false);
-        nextPanel.SetActive(true);
+        changePanel.SetActive(true);
     }
 }
