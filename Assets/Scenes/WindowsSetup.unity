@@ -1672,7 +1672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 1844143988}
-  nextPanel: {fileID: 1592755654}
+  changePanel: {fileID: 0}
 --- !u!1 &458684274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,7 +1729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateTime: 3
-  disableCompenent: 13
+  disableCompenent: 10
   disableAllTime: 15
   objectToActivate: {fileID: 1146391815}
   objectToDisable: {fileID: 299389994}
@@ -6002,7 +6002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 1405788068}
-  nextPanel: {fileID: 830547717}
+  changePanel: {fileID: 0}
 --- !u!1 &1523075230 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7911742219008483298, guid: dcf21a2f76fad9040a30744ac5707924, type: 3}
@@ -6206,7 +6206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 638885363}
-  nextPanel: {fileID: 1405788068}
+  changePanel: {fileID: 0}
 --- !u!1 &1545164052
 GameObject:
   m_ObjectHideFlags: 0
@@ -6931,7 +6931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 830547717}
-  nextPanel: {fileID: 1844143988}
+  changePanel: {fileID: 0}
 --- !u!1 &1750196656
 GameObject:
   m_ObjectHideFlags: 0
@@ -7128,7 +7128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 1405788068}
-  nextPanel: {fileID: 1592755654}
+  changePanel: {fileID: 0}
 --- !u!1 &1757366680
 GameObject:
   m_ObjectHideFlags: 0
@@ -7511,7 +7511,7 @@ MonoBehaviour:
   - {fileID: 619829684}
   - {fileID: 1204352552}
   currentPanel: {fileID: 1223576404}
-  nextPanel: {fileID: 638885363}
+  changePanel: {fileID: 0}
 --- !u!1 &1829107091
 GameObject:
   m_ObjectHideFlags: 0
@@ -8023,7 +8023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 1204352552}
-  nextPanel: {fileID: 619829684}
+  changePanel: {fileID: 0}
 --- !u!1 &2023640147
 GameObject:
   m_ObjectHideFlags: 0
@@ -8515,7 +8515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 619829684}
-  nextPanel: {fileID: 1204352552}
+  changePanel: {fileID: 0}
 --- !u!1 &2075048343
 GameObject:
   m_ObjectHideFlags: 0
