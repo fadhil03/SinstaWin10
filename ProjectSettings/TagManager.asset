@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - DropArea
+  - UsbDropArea
+  - DiscDropArea
   layers:
   - Default
   - TransparentFX
