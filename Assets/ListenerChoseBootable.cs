@@ -6,7 +6,9 @@ public class ListenerChoseBootable : MonoBehaviour
     public Button button1;
     public Button button2;
     public GameObject usb;
+    public GameObject usbGuide;
     public GameObject disc;
+    public GameObject discGuide;
 
     void Start()
     {
@@ -34,6 +36,8 @@ public class ListenerChoseBootable : MonoBehaviour
         PlayerPrefs.SetString("MediaBootable", "RemovableDevices");
         usb.SetActive(true);
         disc.SetActive(false);
+        usbGuide.SetActive(true);
+        discGuide.SetActive(false);
         Debug.Log("PlayerPrefs key 'MediaBootable' diatur ke nilai 'RemovableDevices'");
     }
 
@@ -42,6 +46,8 @@ public class ListenerChoseBootable : MonoBehaviour
         PlayerPrefs.SetString("MediaBootable", "CDRomDrive");
         usb.SetActive(false);
         disc.SetActive(true);
+        usbGuide.SetActive(false);
+        discGuide.SetActive(true);
         Debug.Log("PlayerPrefs key 'MediaBootable' diatur ke nilai 'CDRomDrive'");
     }
 }

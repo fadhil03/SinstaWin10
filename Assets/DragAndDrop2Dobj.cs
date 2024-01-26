@@ -6,6 +6,7 @@ public class DragAndDrop2Dobj : MonoBehaviour
     public Sprite newSprite; // Gambar sprite baru yang akan digunakan setelah diklik
     public SpriteRenderer spriteRenderer;
     private bool isHitBox;
+    public GameObject handGuide;
 
     Vector3 offset;
     Collider2D collider2d;
@@ -85,6 +86,7 @@ public class DragAndDrop2Dobj : MonoBehaviour
                         // Menggeser objek ke posisi objek yang dituju
                         transform.position = hit.transform.position + new Vector3(0, 0, -0.01f);
                         Debug.Log("hit the box");
+                        handGuide.SetActive(false);
                         //spriteRenderer.sprite = newSprite;
 
                         // Mengatur nilai isHitBox menjadi true dan keluar dari loop
