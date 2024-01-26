@@ -22,7 +22,7 @@ public class DragAndDrop2Dobj : MonoBehaviour
 
     void Update()
     {
-        // spriteRenderer.sprite = oldSprite; // Apakah kamu ingin mengaktifkan baris ini?
+        // spriteRenderer.sprite = oldSprite;
     }
 
     void OnMouseDown()
