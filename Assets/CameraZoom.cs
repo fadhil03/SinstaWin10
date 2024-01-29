@@ -7,22 +7,23 @@ public class CameraZoom : MonoBehaviour
     public Vector3[] Target;
     public Camera Cam;
     public float Speed;
-    // Use this for initialization
-    void Start()
+
+    private void Start()
     {
         Cam = Camera.main;
     }
+
     public void LateUpdate()
     {
         if (ZoomActive)
         {
-            Cam.orthographicSize = Mathf.Lerp(Cam.orthographicSize, 3, Speed);
+            Cam.orthographicSize = Mathf.Lerp(Cam.orthographicSize, 1.38f, Speed);
             Cam.transform.position = Vector3.Lerp(Cam.transform.position, Target[1], Speed);
         }
         else
         {
-            Cam.orthographicSize = Mathf.Lerp(Cam.orthographicSize, 5, Speed);
-            Cam.transform.position = Vector3.Lerp(Cam.transform.position, Target[1], Speed);
+            Cam.orthographicSize = Mathf.Lerp(Cam.orthographicSize, 4.472006f, Speed);
+            Cam.transform.position = Vector3.Lerp(Cam.transform.position, Target[0], Speed);
         }
     }
 }

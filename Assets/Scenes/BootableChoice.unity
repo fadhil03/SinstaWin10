@@ -2812,6 +2812,7 @@ GameObject:
   - component: {fileID: 1680828117}
   - component: {fileID: 1680828116}
   - component: {fileID: 1680828115}
+  - component: {fileID: 1680828119}
   m_Layer: 5
   m_Name: ButtonDisc
   m_TagString: Untagged
@@ -2938,6 +2939,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680828113}
   m_CullTransparentMesh: 1
+--- !u!114 &1680828119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680828113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611c2a0bd3c3c0f4e8f2953b797a70e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panels:
+  - {fileID: 664738215}
+  currentPanel: {fileID: 1431976295}
+  changePanel: {fileID: 664738215}
 --- !u!1 &1806116210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,9 +2987,9 @@ MonoBehaviour:
   ZoomActive: 0
   Target:
   - {x: 0, y: 0, z: -10}
-  - {x: 0, y: 0, z: -10}
+  - {x: 0.18, y: 0.34, z: -10}
   Cam: {fileID: 0}
-  Speed: 10
+  Speed: 0.005
 --- !u!4 &1806116212
 Transform:
   m_ObjectHideFlags: 0
