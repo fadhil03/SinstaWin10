@@ -91,6 +91,7 @@ public class DragAndDrop2Dobj : MonoBehaviour
 
                         // Mengatur nilai isHitBox menjadi true dan keluar dari loop
                         isHitBox = true;
+                        PlayerPrefs.SetInt("MediaIsPlugged", isHitBox ? 1 : 0);
                         break;
                     }
                 }

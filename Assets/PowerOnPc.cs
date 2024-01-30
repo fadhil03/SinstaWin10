@@ -10,21 +10,40 @@ public class PowerOnPc : MonoBehaviour
     public Camera Cam;
     public Vector3[] Target;
     public float Speed;
+    private bool pluggedMedia;
 
     public bool ZoomActive;
+    private bool listenerAdded = false; 
 
     void Start()
     {
-        if (powerButton != null)
+        Cam = Camera.main;
+    }
+
+    private void Update()
+    {
+        pluggedMedia = PlayerPrefs.GetInt("MediaIsPlugged") == 1 ? true : false;
+
+        if (!pluggedMedia)
         {
-            powerButton.onClick.AddListener(OnPowerButtonClicked);
+            powerButton.enabled = false;
+            // Jika listener sudah ditambahkan sebelumnya, hapus listener
+            if (listenerAdded)
+            {
+                powerButton.onClick.RemoveListener(OnPowerButtonClicked);
+                listenerAdded = false;
+            }
         }
         else
         {
-            Debug.LogError("Power button is not assigned!");
+            powerButton.enabled = true;
+            // Jika listener belum ditambahkan sebelumnya, tambahkan listener
+            if (!listenerAdded)
+            {
+                powerButton.onClick.AddListener(OnPowerButtonClicked);
+                listenerAdded = true;
+            }
         }
-
-        Cam = Camera.main;
     }
 
     void LateUpdate()
@@ -52,4 +71,5 @@ public class PowerOnPc : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene("Bios");
     }
+
 }
