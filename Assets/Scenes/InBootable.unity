@@ -9514,7 +9514,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095534254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6478.3525}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6976406, y: 0.7809375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12350,7 +12350,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1879851748, guid: 93f7a33f5df9a8340bd0182b427f9de3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13884,12 +13884,12 @@ MonoBehaviour:
   m_Text: 'The upgrade option isn''t available if you start your computer using Windows
     installation media.
 
-    
 
-    If a copy of Windows is already installed on
-    this computer and you want to upgrade, remove the installation media and restart
-    your computer. After Windows has started normally. insert the installation media
-    and run Windows Setup.'
+
+    If a copy of Windows is already installed on this
+    computer and you want to upgrade, remove the installation media and restart your
+    computer. After Windows has started normally. insert the installation media and
+    run Windows Setup.'
 --- !u!114 &1454585511
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ public class PasswordConfirmation : MonoBehaviour
 {
     public InputField passwordInput;
     public InputField confirmPasswordInput;
+    public Text passwordMatchIndicator;
     public Button nextButton;
 
     private const string passwordKey = "Password";
@@ -29,10 +30,14 @@ public class PasswordConfirmation : MonoBehaviour
         // Tampilkan pesan di Debug.Log
         if (passwordsMatch)
         {
+            passwordMatchIndicator.text = "Password confirmed";
+            passwordMatchIndicator.color = Color.white;
             Debug.Log("Password confirmed.");
         }
         else
         {
+            passwordMatchIndicator.text = "Passwords do not match. Please try again.";
+            passwordMatchIndicator.color = Color.red;
             Debug.Log("Passwords do not match. Please try again.");
         }
     }
