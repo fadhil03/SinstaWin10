@@ -9,6 +9,8 @@ public class AlmostThereFade : MonoBehaviour
     public GameObject gameObject3;
     public GameObject textObject;
 
+    public GameObject layerPreparing;
+
     private bool checkLastFadeOut;
 
     private CanvasGroup canvasGroup1;
@@ -33,28 +35,13 @@ public class AlmostThereFade : MonoBehaviour
             StartCoroutine(FadeCanvasGroup(canvasGroup2, 0f, 1f, 2f));
             StartCoroutine(FadeCanvasGroup(canvasGroup2, 1f, 0f, 2f));
             StartCoroutine(FadeCanvasGroup(canvasGroup3, 0f, 1f, 1f));
-            //gameObject2.active = false;
+            
             checkLastFadeOut = false; // Set checkLastFadeOut menjadi false agar tidak terjadi transisi lagi
             PlayerPrefs.SetInt("LastTextFadeOut", checkLastFadeOut ? 1 : 0);
             Debug.Log("checkLastFadeOut almost there = " + checkLastFadeOut);
         }
     }
 
-    /*IEnumerator StartObjectTransition()
-    {
-        while (true)
-        {
-            // Delay 3 detik sebelum melanjutkan ke transisi selanjutnya
-            yield return new WaitForSeconds(3f);
-
-            // Lakukan transisi fade dari gameObject2 ke gameObject3
-            yield return StartCoroutine(FadeCanvasGroup(canvasGroup2, 1f, 0f, 1f));
-            yield return StartCoroutine(FadeCanvasGroup(canvasGroup3, 0f, 1f, 1f));
-
-        }
-    }*/
-
-    // Coroutine untuk transisi fade pada CanvasGroup
     IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float startAlpha, float endAlpha, float duration)
     {
         float elapsedTime = 0f;
@@ -67,17 +54,4 @@ public class AlmostThereFade : MonoBehaviour
         canvasGroup.alpha = endAlpha;
     }
 
-    void SetActiveGameObject2()
-    {
-        // Lakukan transisi fade dari gameObject3
-        StartCoroutine(FadeCanvasGroup(canvasGroup1, 1f, 0f, 1f));
-        StartCoroutine(FadeCanvasGroup(canvasGroup2, 0f, 1f, 1f));
-        
-    }
-    void SetActiveGameObject3()
-    {
-        // Lakukan transisi fade dari gameObject3
-        StartCoroutine(FadeCanvasGroup(canvasGroup2, 1f, 0f, 1f));
-        StartCoroutine(FadeCanvasGroup(canvasGroup3, 0f, 1f, 1f));
-    }
 }
