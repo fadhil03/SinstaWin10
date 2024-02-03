@@ -16,7 +16,7 @@ public class PartitionManager : MonoBehaviour
 
     private int[] possibleSizes = { 128, 256, 512, 1024 };
     private int unallocatedSpaceInGB;
-    private int newButtonCount = 0; // Melacak berapa kali button "ButtonNew" ditekan.
+    private int newPartitionCount = 0; // Melacak berapa kali button "ButtonNew" ditekan.
     private bool isUnallocatedSpaceSelected = false;
     
 
@@ -35,10 +35,10 @@ public class PartitionManager : MonoBehaviour
         freeSpaceText.text = unallocatedSpaceInGB + " GB";
 
 
-        Button newButton = GameObject.Find("ButtonNew").GetComponent<Button>();
-        newButton.onClick.AddListener(OnNewButtonClicked);
+        Button applyButton = GameObject.Find("ButtonNew").GetComponent<Button>();
+        applyButton.onClick.AddListener(CreatePartition);
 
-        btnNew.onClick.AddListener(OnBtnNewClicked);
+        btnNew.onClick.AddListener(ShowInputSize);
         btnRefresh.onClick.AddListener(LoadPartitionData);
 
         sizePartition.SetActive(false);
@@ -61,13 +61,13 @@ public class PartitionManager : MonoBehaviour
         isUnallocatedSpaceSelected = true;
     }
 
-    void OnBtnNewClicked()
+    void ShowInputSize()
     {
         // Setelah tombol "btnNew" ditekan, aktifkan kembali objek "SizePartition"
         sizePartition.SetActive(true);
     }
 
-    public void OnNewButtonClicked()
+    public void CreatePartition()
     {
 
         if (!isUnallocatedSpaceSelected)
@@ -85,7 +85,7 @@ public class PartitionManager : MonoBehaviour
             // Cek apakah ukuran partisi yang dimasukkan tidak melebihi Unallocated Space yang tersedia
             if (partitionSizeInGB <= unallocatedSpaceInGB)
             {
-                CreateNewButton(partitionSizeInGB);
+                CreateNewPartition(partitionSizeInGB);
                 unallocatedSpaceInGB -= partitionSizeInGB; // Kurangi Unallocated Space berdasarkan ukuran partisi yang baru dibuat
                 Text unallocatedSpaceText = GameObject.Find("UnallocatedSpaceText").GetComponent<Text>();
                 Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
@@ -113,7 +113,7 @@ public class PartitionManager : MonoBehaviour
         }
     }
 
-    void CreateNewButton(int partitionSizeInGB)
+    void CreateNewPartition(int partitionSizeInGB)
     {
         GameObject newButton = Instantiate(buttonTemplate, scrollViewContent.transform);
 
@@ -123,7 +123,7 @@ public class PartitionManager : MonoBehaviour
         Text tvFreeSpace = newButton.transform.Find("tvFreeSpace").GetComponent<Text>();
         Text tvTypePartition = newButton.transform.Find("tvTypePartition").GetComponent<Text>();
 
-        tvNamePartition.text = "Drive 0 Partition " + newButtonCount;
+        tvNamePartition.text = "Drive 0 Partition " + newPartitionCount;
         tvTotalSize.text = partitionSizeInGB + " GB";
         tvFreeSpace.text = partitionSizeInGB + " GB";
         tvTypePartition.text = "Type: NTFS";
@@ -133,18 +133,18 @@ public class PartitionManager : MonoBehaviour
         sizePartition.SetActive(false);
 
         // Menyimpan informasi partisi ke dalam PlayerPrefs
-        string partitionKey = "Partition_" + newButtonCount;
-        PlayerPrefs.SetString(partitionKey + "_Name", "Drive 0 Partition " + newButtonCount);
+        string partitionKey = "Partition_" + newPartitionCount;
+        PlayerPrefs.SetString(partitionKey + "_Name", "Drive 0 Partition " + newPartitionCount);
         PlayerPrefs.SetInt(partitionKey + "_TotalSize", partitionSizeInGB);
         PlayerPrefs.SetInt(partitionKey + "_FreeSpace", partitionSizeInGB);
         PlayerPrefs.SetString(partitionKey + "_Type", "Type: NTFS");
 
         // Menyimpan jumlah partisi yang telah dibuat
-        PlayerPrefs.SetInt("PartitionCount", newButtonCount);
+        PlayerPrefs.SetInt("PartitionCount", newPartitionCount);
 
         PlayerPrefs.Save(); // Simpan perubahan ke PlayerPrefs
 
-        newButtonCount++;
+        newPartitionCount++;
     }
 
     void LoadPartitionData()
