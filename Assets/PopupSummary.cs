@@ -1,15 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopupSummary : MonoBehaviour
 {
     // Start is called before the first frame update
-    IEnumerator Start()
+    public Text tvMedia, tvProductKey, tvTypeOs, tvTypeOsArch, tvTypeOsDate, tvUsername, tvPassword,
+                tvSecQ1, tvSecA1, tvSecQ2, tvSecA2, tvSecQ3, tvSecA3, tvLocation, tvFindDevice,
+                tvDiagnostic, tvInking, tvTailored, tvAdvertising;
+
+    void Start()
     {
-
-
-        return null;
+        // Mengisi teks dari PlayerPrefs
+        tvMedia.text = ": " + PlayerPrefs.GetString("MediaBootable");
+        tvProductKey.text = ": " + PlayerPrefs.GetString("Product_Key");
+        tvTypeOs.text = ": " + PlayerPrefs.GetString("SelectedOS");
+        tvTypeOsArch.text = PlayerPrefs.GetString("SelectedArchitectures");
+        tvTypeOsDate.text = PlayerPrefs.GetString("SelectedDateModified");
+        tvUsername.text = ": " + PlayerPrefs.GetString("Username");
+        tvPassword.text = ": " + PlayerPrefs.GetString("Password");
+        tvSecQ1.text = ": " + PlayerPrefs.GetString("SelectedSecurityQuestions0");
+        tvSecA1.text = ": " + PlayerPrefs.GetString("SecurityQuestionAnswers0");
+        tvSecQ2.text = ": " + PlayerPrefs.GetString("SelectedSecurityQuestions1");
+        tvSecA2.text = ": " + PlayerPrefs.GetString("SecurityQuestionAnswers1");
+        tvSecQ3.text = ": " + PlayerPrefs.GetString("SelectedSecurityQuestions2");
+        tvSecA3.text = ": " + PlayerPrefs.GetString("SecurityQuestionAnswers2");
+        tvLocation.text = ": " + PlayerPrefs.GetString("PrivacySettingLocation");
+        tvFindDevice.text = ": " + PlayerPrefs.GetString("PrivacySettingFindMyDevice");
+        tvDiagnostic.text = ": " + PlayerPrefs.GetString("PrivacySettingDiagnosticData");
+        tvInking.text = ": " + PlayerPrefs.GetString("PrivacySettingInkingTyping");
+        tvTailored.text = ": " + PlayerPrefs.GetString("PrivacySettingTailoredExperiences");
+        tvAdvertising.text = ": " + PlayerPrefs.GetString("PrivacySettingAdvertisingID");
     }
 
     // Update is called once per frame
