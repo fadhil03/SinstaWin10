@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class DpTimeCurrency : MonoBehaviour
 {
-    public Dropdown dropTimeCurrency;
+    public TMP_Dropdown dropTimeCurrency;
     public List<string> options = new List<string>()
 {
+    "English (United States)",
     "Afrikaans (South Africa)",
     "Arabic (Saudi Arabia)",
     "Arabic (United Arab Emirates)",
