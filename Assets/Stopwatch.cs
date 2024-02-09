@@ -10,6 +10,9 @@ public class Stopwatch : MonoBehaviour
 
     void Awake()
     {
+        // Memuat waktu yang disimpan dari PlayerPrefs saat pertama kali skrip dijalankan
+        elapsedTime = PlayerPrefs.GetFloat("Elapsed Time", 0f);
+        UpdateText(); // Memperbarui teks pada TextMeshProUGUI dengan waktu yang sudah disimpan
         DontDestroyOnLoad(gameObject);
     }
 
@@ -39,4 +42,11 @@ public class Stopwatch : MonoBehaviour
     }
 
     // Fungsi-fungsi lain seperti Reset, Pause, Resume bisa disesuaikan sesuai kebutuhan
+
+    void OnDestroy()
+    {
+        // Menyimpan waktu terakhir ke PlayerPrefs saat objek dihancurkan (misalnya saat berpindah scene)
+        PlayerPrefs.SetFloat("Elapsed Time", elapsedTime);
+        PlayerPrefs.Save(); // Simpan perubahan PlayerPrefs
+    }
 }

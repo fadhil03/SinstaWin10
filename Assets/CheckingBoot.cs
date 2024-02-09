@@ -23,9 +23,13 @@ public class CheckingBoot : MonoBehaviour
     {
         // Pengecekan PlayerPrefs sebelum menunggu
         string bootableValue = PlayerPrefs.GetString("ItemBootableBios", "");
+        string mediaBootable = PlayerPrefs.GetString("MediaBootable", "");
         int isCopyingComplete = PlayerPrefs.GetInt("isCopyingComplete", 0);
         int isSetupComplete = PlayerPrefs.GetInt("isSetupComplete", 0);
         startTime += Time.deltaTime;
+
+        Debug.Log("bootableValue = " + bootableValue);
+        Debug.Log("mediaBootable = " + mediaBootable);
 
         if (startTime > 3 && isSetupComplete == 1)
         {
@@ -37,7 +41,7 @@ public class CheckingBoot : MonoBehaviour
             // Jika isCopyingComplete adalah 1, pindah ke scene "WindowsSetup"
             SceneManager.LoadScene("WindowsSetup");
         }
-        else if (startTime > 3 && bootableValue == "ItemCdrom")
+        else if (startTime > 3 && bootableValue == mediaBootable)
         {
             // Jika PlayerPrefs sesuai, pindah ke scene "InBootable"
             SceneManager.LoadScene("InBootable");

@@ -33,12 +33,12 @@ public class ListenerChoseBootable : MonoBehaviour
 
     void OnClickButton1()
     {
-        PlayerPrefs.SetString("MediaBootable", "RemovableDevices");
+        PlayerPrefs.SetString("MediaBootable", "RemovableDevice");
         usb.SetActive(true);
         disc.SetActive(false);
         usbGuide.SetActive(true);
         discGuide.SetActive(false);
-        Debug.Log("PlayerPrefs key 'MediaBootable' diatur ke nilai 'RemovableDevices'");
+        Debug.Log("PlayerPrefs key 'MediaBootable' diatur ke nilai 'RemovableDevice'");
     }
 
     void OnClickButton2()
