@@ -15,22 +15,22 @@ public class ScrollViewLinker : MonoBehaviour
     void Start()
     {
         BtnTextP.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.7711341f;
+            scrollRect.verticalNormalizedPosition = 0.7754633f;
         });
         BtnText1.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.6610773f;
+            scrollRect.verticalNormalizedPosition = 0.6668615f;
         });
         BtnText2.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.5748576f;
+            scrollRect.verticalNormalizedPosition = 0.5809713f;
         });
         BtnText3.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.4984854f;
+            scrollRect.verticalNormalizedPosition = 0.5061297f;
         });
         BtnText4.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.1252235f;
+            scrollRect.verticalNormalizedPosition = 0.1393661f;
         });
         BtnText5.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.0683595f;
+            scrollRect.verticalNormalizedPosition = 0.08247174f;
         });
     }
 
