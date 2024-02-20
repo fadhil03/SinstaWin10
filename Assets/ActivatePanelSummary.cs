@@ -4,6 +4,7 @@ using UnityEngine;
 public class ActivatePanelSummary : MonoBehaviour
 {
     public CanvasGroup canvasGroupCheck; // Referensi ke CanvasGroup yang akan diperiksa
+    public CanvasGroup canvasGroupLoading;
     public GameObject panel; // Panel yang akan diaktifkan jika alpha CanvasGroup adalah 1
 
 
@@ -25,6 +26,7 @@ public class ActivatePanelSummary : MonoBehaviour
                 // Mengaktifkan panel jika alpha adalah 1
                 if (panel != null)
                 {
+                    canvasGroupLoading.alpha = 1f;
                     yield return new WaitForSeconds(3f);
                     panel.SetActive(true);
                 }

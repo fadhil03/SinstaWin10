@@ -910,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2249438642466529331, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
       propertyPath: transitionTime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
