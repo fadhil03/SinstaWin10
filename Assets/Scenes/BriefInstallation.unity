@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1858950005}
+  m_Material: {fileID: 1989217055}
   m_Color: {r: 0, g: 0.6784314, b: 0.70980394, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2012,7 +2012,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &636078742
 GameObject:
@@ -2684,7 +2684,6 @@ GameObject:
   - component: {fileID: 822765105}
   - component: {fileID: 822765109}
   - component: {fileID: 822765108}
-  - component: {fileID: 822765110}
   m_Layer: 5
   m_Name: ButtonStart
   m_TagString: Untagged
@@ -2769,7 +2768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1953945415}
+  m_Material: {fileID: 1868025934}
   m_Color: {r: 0.26666668, g: 0.7137255, b: 0.47058827, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2824,20 +2823,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 30
   image: {fileID: 822765106}
---- !u!114 &822765110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822765103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8014f51d51bfb1c46b9234b6a80c5ce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 822765105}
-  sceneName: BootableChoice
 --- !u!1 &840547363
 GameObject:
   m_ObjectHideFlags: 0
@@ -4247,7 +4232,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1325593819}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.10781684
+  m_Size: 0.10814251
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4976,7 +4961,7 @@ RectTransform:
   - {fileID: 1495461847}
   - {fileID: 1276895807}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5918,7 +5903,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821266274}
   m_CullTransparentMesh: 1
---- !u!21 &1858950005
+--- !u!1001 &1851013821
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2249438642466529329, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_Name
+      value: SceneLoading
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3159953
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33165973
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 567.61975
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529330, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529331, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 822765105}
+    - target: {fileID: 2249438642466529331, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: sceneName
+      value: BootableChoice
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249438642466529331, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+      propertyPath: transitionTime
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74c4f09d08822e24d9934b6748ee4f06, type: 3}
+--- !u!21 &1868025934
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -5952,7 +6006,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 120, g: 45, b: 30, a: 0}
+    - _WidthHeightRadius: {r: 281.99, g: 58.19574, b: 60, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &1877876854
 GameObject:
@@ -6481,7 +6535,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939599103}
   m_CullTransparentMesh: 1
---- !u!21 &1953945415
+--- !u!21 &1989217055
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -6515,7 +6569,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 281.99, g: 58.19574, b: 60, a: 0}
+    - _WidthHeightRadius: {r: 120, g: 45, b: 30, a: 0}
   m_BuildTextureStacks: []
 --- !u!1 &2006830971
 GameObject:

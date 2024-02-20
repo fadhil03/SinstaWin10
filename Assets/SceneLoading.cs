@@ -7,7 +7,7 @@ public class SceneLoading : MonoBehaviour
 {
     public string sceneName;
     public Animator transition;
-    public float transitionTime = 1f;
+    public float transitionTime = 3f;
     public Button button;
 
     void Start()
