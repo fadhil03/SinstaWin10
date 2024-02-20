@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5e7f2e62bb4abdb41b320d1f8018e189, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panels: []
   currentPanel: {fileID: 0}
-  nextPanel: {fileID: 0}
+  changePanel: {fileID: 0}
 --- !u!114 &5348613995927022352
 MonoBehaviour:
   m_ObjectHideFlags: 0

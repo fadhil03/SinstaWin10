@@ -93,10 +93,6 @@ public class PartitionManager : MonoBehaviour
                 freeSpaceText.text = unallocatedSpaceInGB + " GB";
                 if (unallocatedSpaceInGB == 0)
                 {
-                    // Hide, disable, or remove the objUnallocatedSpace GameObject
-                    // objUnallocatedSpace.SetActive(false);
-                    // OR: objUnallocatedSpace.GetComponent<Renderer>().enabled = false;
-                    // OR:
                     Destroy(objUnallocatedSpace);
                     btnNew.interactable = false;
                 }
