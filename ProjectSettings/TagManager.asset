@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UsbDropArea
   - DiscDropArea
+  - Partition
   layers:
   - Default
   - TransparentFX

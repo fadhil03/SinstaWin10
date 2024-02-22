@@ -18,12 +18,11 @@ public class PartitionManager : MonoBehaviour
     private int unallocatedSpaceInGB;
     private int newPartitionCount = 0; // Melacak berapa kali button "ButtonNew" ditekan.
     private bool isUnallocatedSpaceSelected = false;
-    
 
     // Start is called before the first frame update
     void Start()
     {
-        btnDelete.interactable = false;
+        btnDelete.interactable = true;
         btnFormat.interactable = false;
 
         int randomIndex = Random.Range(0, possibleSizes.Length);
@@ -33,7 +32,6 @@ public class PartitionManager : MonoBehaviour
         Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
         unallocatedSpaceText.text = unallocatedSpaceInGB + " GB";
         freeSpaceText.text = unallocatedSpaceInGB + " GB";
-
 
         Button applyButton = GameObject.Find("ButtonNew").GetComponent<Button>();
         applyButton.onClick.AddListener(CreatePartition);
@@ -50,10 +48,22 @@ public class PartitionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Button newButton = GameObject.Find("ButtonNew").GetComponent<Button>();
-        //newButton.onClick.AddListener(OnNewButtonClicked);
-        //btnNew.onClick.AddListener(OnBtnNewClicked);
-        //btnRefresh.onClick.AddListener(LoadPartitionData);
+        if (Input.GetMouseButtonDown(0)) // Jika klik kiri mouse
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                GameObject clickedObject = hit.collider.gameObject;
+
+                // Periksa apakah objek yang diklik adalah objek partisi
+                if (clickedObject.CompareTag("Partition"))
+                {
+                    DeletePartition(clickedObject);
+                }
+            }
+        }
     }
 
     public void OnUnallocatedSpaceSelected()
@@ -69,7 +79,6 @@ public class PartitionManager : MonoBehaviour
 
     public void CreatePartition()
     {
-
         if (!isUnallocatedSpaceSelected)
         {
             Debug.Log("Please select unallocated space first.");
@@ -111,7 +120,13 @@ public class PartitionManager : MonoBehaviour
 
     void CreateNewPartition(int partitionSizeInGB)
     {
+        // Membuat nama objek partisi baru
+        string partitionObjectName = "Partition " + (newPartitionCount + 1);
+
+        // Membuat objek partisi baru
         GameObject newButton = Instantiate(buttonTemplate, scrollViewContent.transform);
+        newButton.name = partitionObjectName;
+        newButton.tag = "Partition"; // Menambahkan tag "Partition" agar bisa dideteksi saat klik
 
         // Akses komponen-komponen text pada button baru dan atur teksnya sesuai dengan data yang diinginkan
         Text tvNamePartition = newButton.transform.Find("tvNamePartition").GetComponent<Text>();
@@ -119,7 +134,7 @@ public class PartitionManager : MonoBehaviour
         Text tvFreeSpace = newButton.transform.Find("tvFreeSpace").GetComponent<Text>();
         Text tvTypePartition = newButton.transform.Find("tvTypePartition").GetComponent<Text>();
 
-        tvNamePartition.text = "Drive 0 Partition " + newPartitionCount;
+        tvNamePartition.text = "Drive 0 " + partitionObjectName;
         tvTotalSize.text = partitionSizeInGB + " GB";
         tvFreeSpace.text = partitionSizeInGB + " GB";
         tvTypePartition.text = "Type: NTFS";
@@ -130,7 +145,7 @@ public class PartitionManager : MonoBehaviour
 
         // Menyimpan informasi partisi ke dalam PlayerPrefs
         string partitionKey = "Partition_" + newPartitionCount;
-        PlayerPrefs.SetString(partitionKey + "_Name", "Drive 0 Partition " + newPartitionCount);
+        PlayerPrefs.SetString(partitionKey + "_Name", "Drive 0 " + partitionObjectName);
         PlayerPrefs.SetInt(partitionKey + "_TotalSize", partitionSizeInGB);
         PlayerPrefs.SetInt(partitionKey + "_FreeSpace", partitionSizeInGB);
         PlayerPrefs.SetString(partitionKey + "_Type", "Type: NTFS");
@@ -165,5 +180,19 @@ public class PartitionManager : MonoBehaviour
         }
     }
 
+    public void DeletePartition(GameObject partitionObject)
+    {
+        // Hapus objek partisi dari hierarki game
+        Destroy(partitionObject);
 
+        // Kurangi jumlah partisi yang telah dibuat
+        newPartitionCount--;
+
+        // Simpan perubahan ke PlayerPrefs
+        PlayerPrefs.SetInt("PartitionCount", newPartitionCount);
+        PlayerPrefs.Save();
+
+        // Perbarui status tombol delete
+        btnDelete.interactable = newPartitionCount > 0;
+    }
 }
