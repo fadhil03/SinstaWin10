@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PartitionManager : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class PartitionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        btnDelete.interactable = true;
+        btnDelete.interactable = false;
         btnFormat.interactable = false;
 
         int randomIndex = Random.Range(0, possibleSizes.Length);
@@ -35,6 +36,8 @@ public class PartitionManager : MonoBehaviour
 
         Button applyButton = GameObject.Find("ButtonNew").GetComponent<Button>();
         applyButton.onClick.AddListener(CreatePartition);
+        Button cancelButton = GameObject.Find("btnCancel").GetComponent<Button>();
+        cancelButton.onClick.AddListener(() => sizePartition.SetActive(false));
 
         btnNew.onClick.AddListener(ShowInputSize);
         btnRefresh.onClick.AddListener(LoadPartitionData);
@@ -48,22 +51,7 @@ public class PartitionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Jika klik kiri mouse
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                GameObject clickedObject = hit.collider.gameObject;
-
-                // Periksa apakah objek yang diklik adalah objek partisi
-                if (clickedObject.CompareTag("Partition"))
-                {
-                    DeletePartition(clickedObject);
-                }
-            }
-        }
+        
     }
 
     public void OnUnallocatedSpaceSelected()
@@ -85,7 +73,8 @@ public class PartitionManager : MonoBehaviour
             return;
         }
 
-        InputField sizeInputField = GameObject.Find("SizeInputField").GetComponent<InputField>();
+        TMP_InputField sizeInputField = GameObject.Find("SizeInputField").GetComponent<TMP_InputField>();
+        //InputField sizeInputField = GameObject.Find("SizeInputField").GetComponent<InputField>();
         if (int.TryParse(sizeInputField.text, out int partitionSizeInMB))
         {
             // Konversi dari MB ke GB
@@ -139,12 +128,12 @@ public class PartitionManager : MonoBehaviour
         tvFreeSpace.text = partitionSizeInGB + " GB";
         tvTypePartition.text = "Type: NTFS";
 
-        btnDelete.interactable = true;
-        btnFormat.interactable = true;
+        //btnDelete.interactable = true;
+        //btnFormat.interactable = true;
         sizePartition.SetActive(false);
 
         // Menyimpan informasi partisi ke dalam PlayerPrefs
-        string partitionKey = "Partition_" + newPartitionCount;
+        string partitionKey = "Partition_" + (newPartitionCount + 1);
         PlayerPrefs.SetString(partitionKey + "_Name", "Drive 0 " + partitionObjectName);
         PlayerPrefs.SetInt(partitionKey + "_TotalSize", partitionSizeInGB);
         PlayerPrefs.SetInt(partitionKey + "_FreeSpace", partitionSizeInGB);
@@ -193,6 +182,6 @@ public class PartitionManager : MonoBehaviour
         PlayerPrefs.Save();
 
         // Perbarui status tombol delete
-        btnDelete.interactable = newPartitionCount > 0;
+        //btnDelete.interactable = newPartitionCount > 0;
     }
 }

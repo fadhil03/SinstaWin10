@@ -1,53 +1,97 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InputHandler : MonoBehaviour
 {
     private Camera _mainCamera;
-    private GameObject _selectedPartition; // Menyimpan objek partisi yang sedang diklik
-    private PartitionManager _partitionManager; // Referensi ke PartitionManager
+    private GameObject _selectedPartition;
+    private PartitionManager _partitionManager;
+    public Button btnDelete;
+    public Button btnFormat;
+    public Color activeColor = Color.blue; // Warna teks saat tombol aktif
+    public Color inactiveColor = Color.gray; // Warna teks saat tombol tidak aktif
 
-    // Start is called before the first frame update
+    private bool btnDeleteClicked = false;
+
     void Awake()
     {
         _mainCamera = Camera.main;
-        _partitionManager = FindObjectOfType<PartitionManager>(); // Cari PartitionManager di scene
+        _partitionManager = FindObjectOfType<PartitionManager>();
         if (_partitionManager == null)
         {
             Debug.LogError("PartitionManager not found.");
         }
     }
 
-    // Update is called once per frame
     public void OnClick(InputAction.CallbackContext context)
     {
         if (!context.started) return;
 
         var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
-        if (!rayHit.collider) return;
+        if (!rayHit.collider)
+        {
+            // Jika tidak ada objek yang tertabrak, lakukan pengecekan terus menerus hingga tombol Delete diklik
+            StartCoroutine(WaitForDeleteButtonClick());
+            return;
+        }
 
         Debug.Log("Object yang sedang di click = " + rayHit.collider.gameObject.name);
 
-        // Jika objek yang diklik adalah partisi
         if (rayHit.collider.CompareTag("Partition"))
         {
             _selectedPartition = rayHit.collider.gameObject;
+            btnDelete.interactable = true;
+            btnFormat.interactable = true;
+            btnDelete.GetComponentInChildren<Text>().color = activeColor;
+            btnFormat.GetComponentInChildren<Text>().color = activeColor;
         }
+    }
+
+    IEnumerator WaitForDeleteButtonClick()
+    {
+        // Tunggu sampai tombol Delete diklik
+        yield return new WaitUntil(() => btnDeleteClicked);
+
+        // Nonaktifkan tombol Delete dan Format setelah tombol Delete diklik
+        btnDelete.interactable = false;
+        btnFormat.interactable = false;
+
+        // Ubah warna teks tombol delete menjadi abu-abu
+        btnDelete.GetComponentInChildren<Text>().color = inactiveColor;
+        btnFormat.GetComponentInChildren<Text>().color = inactiveColor;
+
+        // Setelah tombol Delete diklik, set btnDeleteClicked kembali ke false
+        btnDeleteClicked = false;
+    }
+
+    private void Update()
+    {
+        Debug.Log(" btnDeleteClicked= " + btnDeleteClicked);
     }
 
     public void OnDeleteButtonClick()
     {
         if (_selectedPartition != null)
         {
-            // Panggil method DeletePartition di PartitionManager
             _partitionManager.DeletePartition(_selectedPartition);
-            _selectedPartition = null; // Reset objek partisi yang dipilih setelah dihapus
+            _selectedPartition = null;
         }
         else
         {
             Debug.Log("No partition selected for deletion.");
         }
+        btnDeleteClicked = true;
+
+        // Mulai coroutine untuk mengatur kembali btnDeleteClicked ke false setelah jeda
+        StartCoroutine(ResetBtnDeleteClicked());
+    }
+
+    IEnumerator ResetBtnDeleteClicked()
+    {
+        // Tunggu 1 detik sebelum mengatur kembali btnDeleteClicked ke false
+        yield return new WaitForSeconds(1f);
+        btnDeleteClicked = false;
     }
 }
