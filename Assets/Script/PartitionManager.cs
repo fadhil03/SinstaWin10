@@ -9,6 +9,7 @@ public class PartitionManager : MonoBehaviour
     public GameObject scrollViewContent;
     public GameObject buttonTemplate;
     public GameObject objUnallocatedSpace;
+    public GameObject objUnallocatedSpacePrefab;
     public GameObject sizePartition;
     public Button btnDelete;
     public Button btnFormat;
@@ -23,6 +24,7 @@ public class PartitionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        btnNew.interactable = false;
         btnDelete.interactable = false;
         btnFormat.interactable = false;
 
@@ -51,7 +53,10 @@ public class PartitionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Text unallocatedSpaceText = GameObject.Find("UnallocatedSpaceText").GetComponent<Text>();
+        Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
+        unallocatedSpaceText.text = unallocatedSpaceInGB + " GB";
+        freeSpaceText.text = unallocatedSpaceInGB + " GB";
     }
 
     public void OnUnallocatedSpaceSelected()
@@ -93,6 +98,7 @@ public class PartitionManager : MonoBehaviour
                 {
                     Destroy(objUnallocatedSpace);
                     btnNew.interactable = false;
+                    btnNew.GetComponentInChildren<Text>().color = Color.gray;
                 }
 
             }
@@ -171,11 +177,24 @@ public class PartitionManager : MonoBehaviour
 
     public void DeletePartition(GameObject partitionObject)
     {
+        // Mendapatkan total ukuran partisi yang dihapus
+        Text tvTotalSize = partitionObject.transform.Find("tvTotalSize").GetComponent<Text>();
+        int partitionSizeInGB = int.Parse(tvTotalSize.text.Replace(" GB", ""));
+
+        // Menambahkan ukuran partisi yang dihapus ke Unallocated Space
+        unallocatedSpaceInGB += partitionSizeInGB;
+
         // Hapus objek partisi dari hierarki game
         Destroy(partitionObject);
 
         // Kurangi jumlah partisi yang telah dibuat
         newPartitionCount--;
+
+        // Jika objUnallocatedSpace null atau tidak ada dalam hierarki, buat kembali objek objUnallocatedSpace
+        if (objUnallocatedSpace == null || !objUnallocatedSpace.activeInHierarchy)
+        {
+            objUnallocatedSpace = Instantiate(objUnallocatedSpacePrefab, scrollViewContent.transform); // Ubah dengan nilai yang sesuai
+        }
 
         // Simpan perubahan ke PlayerPrefs
         PlayerPrefs.SetInt("PartitionCount", newPartitionCount);

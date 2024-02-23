@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour
     private PartitionManager _partitionManager;
     public Button btnDelete;
     public Button btnFormat;
+    public Button btnNew;
     public Color activeColor = Color.blue; // Warna teks saat tombol aktif
     public Color inactiveColor = Color.gray; // Warna teks saat tombol tidak aktif
 
@@ -33,6 +34,8 @@ public class InputHandler : MonoBehaviour
         if (!rayHit.collider)
         {
             // Jika tidak ada objek yang tertabrak, lakukan pengecekan terus menerus hingga tombol Delete diklik
+            //btnNew.interactable = false;
+            //btnNew.GetComponentInChildren<Text>().color = inactiveColor;
             StartCoroutine(WaitForDeleteButtonClick());
             return;
         }
@@ -46,6 +49,28 @@ public class InputHandler : MonoBehaviour
             btnFormat.interactable = true;
             btnDelete.GetComponentInChildren<Text>().color = activeColor;
             btnFormat.GetComponentInChildren<Text>().color = activeColor;
+
+            btnNew.interactable = false;
+            btnNew.GetComponentInChildren<Text>().color = inactiveColor;
+        }
+
+        if (rayHit.collider.CompareTag("UnallocatedSpace"))
+        {
+            _selectedPartition = rayHit.collider.gameObject;
+            btnNew.interactable = true;
+            btnNew.GetComponentInChildren<Text>().color = activeColor;
+            // Nonaktifkan tombol Delete dan Format setelah tombol Delete diklik
+            btnDelete.interactable = false;
+            btnFormat.interactable = false;
+
+            // Ubah warna teks tombol delete menjadi abu-abu
+            btnDelete.GetComponentInChildren<Text>().color = inactiveColor;
+            btnFormat.GetComponentInChildren<Text>().color = inactiveColor;
+        }
+        else
+        {
+            btnNew.interactable = false;
+            btnNew.GetComponentInChildren<Text>().color = inactiveColor;
         }
     }
 
@@ -68,7 +93,7 @@ public class InputHandler : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(" btnDeleteClicked= " + btnDeleteClicked);
+        //Debug.Log(" btnDeleteClicked= " + btnDeleteClicked);
     }
 
     public void OnDeleteButtonClick()
