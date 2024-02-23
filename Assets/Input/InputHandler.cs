@@ -28,14 +28,27 @@ public class InputHandler : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
+        Vector2 mousePos;
 
-        var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
+        #if UNITY_ANDROID || UNITY_IOS
+            // Jika aplikasi berjalan di perangkat mobile, gunakan input sentuh
+            if (Input.touchCount > 0)
+            {
+                mousePos = Input.GetTouch(0).position;
+            }
+            else
+            {
+                return;
+            }
+        #else
+            // Jika aplikasi berjalan di PC, gunakan input mouse
+            mousePos = Input.mousePosition;
+        #endif
+
+        var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(mousePos));
         if (!rayHit.collider)
         {
             // Jika tidak ada objek yang tertabrak, lakukan pengecekan terus menerus hingga tombol Delete diklik
-            //btnNew.interactable = false;
-            //btnNew.GetComponentInChildren<Text>().color = inactiveColor;
             StartCoroutine(WaitForDeleteButtonClick());
             return;
         }
