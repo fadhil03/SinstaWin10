@@ -68,6 +68,8 @@ public class PartitionManager : MonoBehaviour
     {
         // Setelah tombol "btnNew" ditekan, aktifkan kembali objek "SizePartition"
         sizePartition.SetActive(true);
+        TMP_InputField sizeInputField = GameObject.Find("SizeInputField").GetComponent<TMP_InputField>();
+        sizeInputField.text = "";
     }
 
     public void CreatePartition()
@@ -194,6 +196,7 @@ public class PartitionManager : MonoBehaviour
         if (objUnallocatedSpace == null || !objUnallocatedSpace.activeInHierarchy)
         {
             objUnallocatedSpace = Instantiate(objUnallocatedSpacePrefab, scrollViewContent.transform); // Ubah dengan nilai yang sesuai
+            objUnallocatedSpace.transform.SetSiblingIndex(1);
         }
 
         // Simpan perubahan ke PlayerPrefs
