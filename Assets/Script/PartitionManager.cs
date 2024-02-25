@@ -56,9 +56,9 @@ public class PartitionManager : MonoBehaviour
 
     void Update()
     {
-        Text unallocatedSpaceText = GameObject.Find("TotalSizeUnallocated").GetComponent<Text>();
+        Text unallocatedSpaceSize = GameObject.Find("TotalSizeUnallocated").GetComponent<Text>();
         Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
-        unallocatedSpaceText.text = unallocatedSpaceInGB + " GB";
+        unallocatedSpaceSize.text = unallocatedSpaceInGB + " GB";
         freeSpaceText.text = unallocatedSpaceInGB + " GB";
 
         childCount = scrollViewContent.transform.childCount;
