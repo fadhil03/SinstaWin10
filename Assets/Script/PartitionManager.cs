@@ -11,6 +11,9 @@ public class PartitionManager : MonoBehaviour
     public GameObject objUnallocatedSpace;
     public GameObject objUnallocatedSpacePrefab;
     public GameObject sizePartition;
+    public GameObject WarningPartitionCountFull;
+    public GameObject WarningPartitionSize;
+    public GameObject WarningPartitionNewSize;
     public Button btnDelete;
     public Button btnFormat;
     public Button btnNew;
@@ -32,7 +35,7 @@ public class PartitionManager : MonoBehaviour
         int randomIndex = Random.Range(0, possibleSizes.Length);
         unallocatedSpaceInGB = possibleSizes[randomIndex];
         Debug.Log("Unallocated Space: " + unallocatedSpaceInGB + " GB");
-        Text unallocatedSpaceText = GameObject.Find("UnallocatedSpaceText").GetComponent<Text>();
+        Text unallocatedSpaceText = GameObject.Find("TotalSizeUnallocated").GetComponent<Text>();
         Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
         unallocatedSpaceText.text = unallocatedSpaceInGB + " GB";
         freeSpaceText.text = unallocatedSpaceInGB + " GB";
@@ -53,13 +56,19 @@ public class PartitionManager : MonoBehaviour
 
     void Update()
     {
-        Text unallocatedSpaceText = GameObject.Find("UnallocatedSpaceText").GetComponent<Text>();
+        Text unallocatedSpaceText = GameObject.Find("TotalSizeUnallocated").GetComponent<Text>();
         Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
         unallocatedSpaceText.text = unallocatedSpaceInGB + " GB";
         freeSpaceText.text = unallocatedSpaceInGB + " GB";
 
         childCount = scrollViewContent.transform.childCount;
         siblingIndex = childCount;
+
+        if (WarningPartitionCountFull.activeSelf || WarningPartitionSize.activeSelf)
+        {
+            WarningPartitionNewSize.SetActive(false);
+            sizePartition.SetActive(false);
+        }
     }
 
     public void OnUnallocatedSpaceSelected()
@@ -91,7 +100,7 @@ public class PartitionManager : MonoBehaviour
             {
                 CreateNewPartition(partitionSizeInGB);
                 unallocatedSpaceInGB -= partitionSizeInGB;
-                Text unallocatedSpaceText = GameObject.Find("UnallocatedSpaceText").GetComponent<Text>();
+                Text unallocatedSpaceText = GameObject.Find("TotalSizeUnallocated").GetComponent<Text>();
                 Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
                 unallocatedSpaceText.text = unallocatedSpaceInGB + " GB";
                 freeSpaceText.text = unallocatedSpaceInGB + " GB";
@@ -101,11 +110,41 @@ public class PartitionManager : MonoBehaviour
                     btnNew.interactable = false;
                     btnNew.GetComponentInChildren<Text>().color = Color.gray;
                 }
-
+                WarningPartitionNewSize.SetActive(false);
             }
             else
             {
+                WarningPartitionNewSize.SetActive(true);
+                Button cancelButton = GameObject.Find("btnCancel").GetComponent<Button>();
+                cancelButton.onClick.AddListener(() => WarningPartitionNewSize.SetActive(false));
                 Debug.Log("Insufficient Unallocated Space!");
+                // Mengisi nilai komponen teks tvMostSizeLeft pada child game object WarningPartitionNewSize
+                TextMeshProUGUI tvMostSizeLeft = WarningPartitionNewSize.GetComponentInChildren<TextMeshProUGUI>();
+                if (tvMostSizeLeft != null)
+                {
+                    Text TotalSizeUnallocatedLeft = GameObject.Find("TotalSizeUnallocated").GetComponent<Text>();
+                    if (TotalSizeUnallocatedLeft != null)
+                    {
+                        string totalSizeUnallocatedText = TotalSizeUnallocatedLeft.text.Replace(" GB", ""); // Menghapus " GB" dari teks
+                        if (int.TryParse(totalSizeUnallocatedText, out int totalSizeUnallocated)) // Mengonversi teks menjadi integer
+                        {
+                            totalSizeUnallocated *= 1000; // Mengalikan dengan 1000
+                            tvMostSizeLeft.text = totalSizeUnallocated.ToString(); // Mengonversi kembali ke string dan mengisi nilai komponen teks
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Failed to parse TotalSizeUnallocated text to integer!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("TotalSizeUnallocated Text component not found!");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("tvMostSizeLeft not found!");
+                }
             }
         }
         else

@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 7498346497260043065}
   - component: {fileID: 7498346497260043066}
   m_Layer: 5
-  m_Name: UnallocatedSpaceText
+  m_Name: TotalSizeUnallocated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

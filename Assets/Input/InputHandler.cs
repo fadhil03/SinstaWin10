@@ -15,9 +15,12 @@ public class InputHandler : MonoBehaviour
     public Text tvDriveName;
     public Color activeColor = Color.blue; // Warna teks saat tombol aktif
     public Color inactiveColor = Color.gray; // Warna teks saat tombol tidak aktif
+    public GameObject WarningPartitionCountFull;
     public GameObject WarningPartitionSize;
+    public ScrollRect scrollView;
 
     private bool btnDeleteClicked = false;
+    private int siblingCount;
 
     void Awake()
     {
@@ -65,6 +68,7 @@ public class InputHandler : MonoBehaviour
             btnFormat.interactable = true;
             btnDelete.GetComponentInChildren<Text>().color = activeColor;
             btnFormat.GetComponentInChildren<Text>().color = activeColor;
+            WarningPartitionCountFull.SetActive(false);
 
             Text[] texts = _selectedPartition.GetComponentsInChildren<Text>();
 
@@ -134,8 +138,18 @@ public class InputHandler : MonoBehaviour
             if (rayHit.collider.CompareTag("UnallocatedSpace"))
         {
             _selectedPartition = rayHit.collider.gameObject;
-            btnNew.interactable = true;
-            btnNew.GetComponentInChildren<Text>().color = activeColor;
+            if (siblingCount >= 6)
+            {
+                btnNew.interactable = false;
+                btnNew.GetComponentInChildren<Text>().color = inactiveColor;
+                WarningPartitionCountFull.SetActive(true);
+            }
+            else
+            {
+                btnNew.interactable = true;
+                btnNew.GetComponentInChildren<Text>().color = activeColor;
+                WarningPartitionCountFull.SetActive(false);
+            }
             // Nonaktifkan tombol Delete dan Format setelah tombol Delete diklik
             btnDelete.interactable = false;
             btnFormat.interactable = false;
@@ -172,7 +186,13 @@ public class InputHandler : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(" btnDeleteClicked= " + btnDeleteClicked);
+        RectTransform content = scrollView.content;
+        siblingCount = content.childCount;
+        if (siblingCount >= 6)
+        {
+            btnNew.interactable = false;
+            btnNew.GetComponentInChildren<Text>().color = inactiveColor;
+        }
     }
 
     public void OnDeleteButtonClick()
