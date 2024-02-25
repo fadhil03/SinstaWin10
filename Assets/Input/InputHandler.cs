@@ -11,8 +11,11 @@ public class InputHandler : MonoBehaviour
     public Button btnDelete;
     public Button btnFormat;
     public Button btnNew;
+    public Button btnNext;
+    public Text tvDriveName;
     public Color activeColor = Color.blue; // Warna teks saat tombol aktif
     public Color inactiveColor = Color.gray; // Warna teks saat tombol tidak aktif
+    public GameObject WarningPartitionSize;
 
     private bool btnDeleteClicked = false;
 
@@ -63,11 +66,72 @@ public class InputHandler : MonoBehaviour
             btnDelete.GetComponentInChildren<Text>().color = activeColor;
             btnFormat.GetComponentInChildren<Text>().color = activeColor;
 
-            btnNew.interactable = false;
-            btnNew.GetComponentInChildren<Text>().color = inactiveColor;
+            Text[] texts = _selectedPartition.GetComponentsInChildren<Text>();
+
+            Text tvFreeSpace = null;
+            Text tvNamePartition = null;
+
+            foreach (Text textComponent in texts)
+            {
+                if (textComponent.name == "tvFreeSpace")
+                {
+                    tvFreeSpace = textComponent;
+                }
+                else if (textComponent.name == "tvNamePartition")
+                {
+                    tvNamePartition = textComponent;
+                }
+
+                // Break jika kedua komponen telah ditemukan
+                if (tvFreeSpace != null && tvNamePartition != null)
+                {
+                    break;
+                }
+            }
+
+            if (tvFreeSpace != null)
+            {
+                // Mendapatkan teks dari komponen tvFreeSpace
+                string freeSpaceText = tvFreeSpace.text;
+
+                // Memeriksa apakah nilai teks mengandung kata "MB"
+                if (freeSpaceText.Contains("MB"))
+                {
+                    // Jika benar, atur aktivasi WarningPartitionSize dan nonaktifkan tombol btnNext
+                    WarningPartitionSize.SetActive(true);
+                    btnNext.interactable = false;
+
+                    // Mengatur teks tvDriveName dengan nilai dari tvNamePartition
+                    tvDriveName.text = tvNamePartition.text;
+                }
+                else
+                {
+                    // Jika tidak, lanjutkan dengan proses sebelumnya
+                    // Menghapus " GB" dari teks sebelum mengonversinya ke int
+                    freeSpaceText = freeSpaceText.Replace(" GB", "");
+
+                    // Mengonversi teks menjadi angka sebelum membandingkannya
+                    if (int.TryParse(freeSpaceText, out int freeSpace) && freeSpace < 10)
+                    {
+                        WarningPartitionSize.SetActive(true);
+                        tvDriveName.text = tvNamePartition.text;
+                        btnNext.interactable = false;
+                    }
+                    else
+                    {
+                        WarningPartitionSize.SetActive(false);
+                        btnNext.interactable = true;
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogWarning("tvFreeSpace not found");
+            }
         }
 
-        if (rayHit.collider.CompareTag("UnallocatedSpace"))
+
+            if (rayHit.collider.CompareTag("UnallocatedSpace"))
         {
             _selectedPartition = rayHit.collider.gameObject;
             btnNew.interactable = true;
@@ -75,10 +139,12 @@ public class InputHandler : MonoBehaviour
             // Nonaktifkan tombol Delete dan Format setelah tombol Delete diklik
             btnDelete.interactable = false;
             btnFormat.interactable = false;
+            btnNext.interactable = false;
 
             // Ubah warna teks tombol delete menjadi abu-abu
             btnDelete.GetComponentInChildren<Text>().color = inactiveColor;
             btnFormat.GetComponentInChildren<Text>().color = inactiveColor;
+            WarningPartitionSize.SetActive(false);
         }
         else
         {
