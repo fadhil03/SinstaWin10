@@ -34,7 +34,7 @@ public class ButtonColorChange : MonoBehaviour
         }
         else
         {
-            buttonText.color = new Color(114 / 255f, 110 / 255f, 112 / 255f); // Warna abu-abu (726E70)
+            buttonText.color = Color.gray;
         }
     }
 }

@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour
     private PartitionManager _partitionManager;
     public Button btnDelete;
     public Button btnFormat;
+    public Button btnLoadDriver;
     public Button btnNew;
     public Button btnNext;
     public Text tvDriveName;
@@ -66,6 +67,8 @@ public class InputHandler : MonoBehaviour
             _selectedPartition = rayHit.collider.gameObject;
             btnDelete.interactable = true;
             btnFormat.interactable = true;
+            btnLoadDriver.interactable = true;
+            btnLoadDriver.GetComponentInChildren<Text>().color = activeColor;
             btnDelete.GetComponentInChildren<Text>().color = activeColor;
             btnFormat.GetComponentInChildren<Text>().color = activeColor;
             WarningPartitionCountFull.SetActive(false);
@@ -154,7 +157,8 @@ public class InputHandler : MonoBehaviour
             btnDelete.interactable = false;
             btnFormat.interactable = false;
             btnNext.interactable = false;
-
+            btnLoadDriver.interactable = false;
+            btnLoadDriver.GetComponentInChildren<Text>().color = inactiveColor;
             // Ubah warna teks tombol delete menjadi abu-abu
             btnDelete.GetComponentInChildren<Text>().color = inactiveColor;
             btnFormat.GetComponentInChildren<Text>().color = inactiveColor;
@@ -175,6 +179,8 @@ public class InputHandler : MonoBehaviour
         // Nonaktifkan tombol Delete dan Format setelah tombol Delete diklik
         btnDelete.interactable = false;
         btnFormat.interactable = false;
+        btnLoadDriver.interactable = false;
+        btnLoadDriver.GetComponentInChildren<Text>().color = inactiveColor;
 
         // Ubah warna teks tombol delete menjadi abu-abu
         btnDelete.GetComponentInChildren<Text>().color = inactiveColor;
