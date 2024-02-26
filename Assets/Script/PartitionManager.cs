@@ -14,6 +14,7 @@ public class PartitionManager : MonoBehaviour
     public GameObject WarningPartitionCountFull;
     public GameObject WarningPartitionSize;
     public GameObject WarningPartitionNewSize;
+    public GameObject PartitionSystemConfirm;
     public Button btnDelete;
     public Button btnFormat;
     public Button btnNew;
@@ -159,6 +160,17 @@ public class PartitionManager : MonoBehaviour
 
         if (newPartitionCount == 0)
         {
+            PartitionSystemConfirm.SetActive(true); // Aktifkan PartitionSystemConfirmPopup
+            Transform parentTransform = PartitionSystemConfirm.transform.parent;
+            if (parentTransform != null)
+            {
+                GameObject popUpNotification = parentTransform.gameObject;
+                popUpNotification.SetActive(true); // Aktifkan PopUpNotification
+            }
+            else
+            {
+                Debug.LogWarning("Parent dari PartitionSystemConfirmPopup tidak ditemukan!");
+            }
             GameObject newButton1 = Instantiate(buttonTemplate, scrollViewContent.transform);
             newButton1.name = partitionObjectName;
             newButton1.tag = "Partition";
