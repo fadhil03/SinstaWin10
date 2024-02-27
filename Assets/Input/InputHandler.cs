@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class InputHandler : MonoBehaviour
 {
@@ -13,12 +14,15 @@ public class InputHandler : MonoBehaviour
     public Button btnLoadDriver;
     public Button btnNew;
     public Button btnNext;
+    public Button btnExtend;
     public Text tvDriveName;
     public Color activeColor = Color.blue; // Warna teks saat tombol aktif
     public Color inactiveColor = Color.gray; // Warna teks saat tombol tidak aktif
     public GameObject WarningPartitionCountFull;
     public GameObject WarningPartitionSize;
     public ScrollRect scrollView;
+    public TMP_InputField sizeInputFieldToExted;
+    public Button applyToExtendButton;
 
     private bool btnDeleteClicked = false;
     private int siblingCount;
@@ -31,6 +35,7 @@ public class InputHandler : MonoBehaviour
         {
             Debug.LogError("PartitionManager not found.");
         }
+        applyToExtendButton.onClick.AddListener(ExtendSelectedPartition);
     }
 
     public void OnClick(InputAction.CallbackContext context)
@@ -68,9 +73,12 @@ public class InputHandler : MonoBehaviour
             btnDelete.interactable = true;
             btnFormat.interactable = true;
             btnLoadDriver.interactable = true;
+            btnExtend.interactable = true;
             btnLoadDriver.GetComponentInChildren<Text>().color = activeColor;
             btnDelete.GetComponentInChildren<Text>().color = activeColor;
             btnFormat.GetComponentInChildren<Text>().color = activeColor;
+            btnExtend.GetComponentInChildren<Text>().color = activeColor;
+
             WarningPartitionCountFull.SetActive(false);
 
             Text[] texts = _selectedPartition.GetComponentsInChildren<Text>();
@@ -158,10 +166,12 @@ public class InputHandler : MonoBehaviour
             btnFormat.interactable = false;
             btnNext.interactable = false;
             btnLoadDriver.interactable = false;
+            btnExtend.interactable = false;
             btnLoadDriver.GetComponentInChildren<Text>().color = inactiveColor;
             // Ubah warna teks tombol delete menjadi abu-abu
             btnDelete.GetComponentInChildren<Text>().color = inactiveColor;
             btnFormat.GetComponentInChildren<Text>().color = inactiveColor;
+            btnExtend.GetComponentInChildren<Text>().color = inactiveColor;
             WarningPartitionSize.SetActive(false);
         }
         else
@@ -180,8 +190,9 @@ public class InputHandler : MonoBehaviour
         btnDelete.interactable = false;
         btnFormat.interactable = false;
         btnLoadDriver.interactable = false;
+        btnExtend.interactable = false;
         btnLoadDriver.GetComponentInChildren<Text>().color = inactiveColor;
-
+        btnExtend.GetComponentInChildren<Text>().color = inactiveColor;
         // Ubah warna teks tombol delete menjadi abu-abu
         btnDelete.GetComponentInChildren<Text>().color = inactiveColor;
         btnFormat.GetComponentInChildren<Text>().color = inactiveColor;
@@ -223,5 +234,26 @@ public class InputHandler : MonoBehaviour
         // Tunggu 1 detik sebelum mengatur kembali btnDeleteClicked ke false
         yield return new WaitForSeconds(1f);
         btnDeleteClicked = false;
+    }
+
+    void ExtendSelectedPartition()
+    {
+        // Baca nilai dari TMP_InputField dan konversikan ke tipe data yang sesuai
+        if (int.TryParse(sizeInputFieldToExted.text, out int additionalSizeInMB))
+        {
+            // Panggil metode ExtendPartition dari PartitionManager dengan nilai tambahan
+            if (_selectedPartition != null && _partitionManager != null)
+            {
+                _partitionManager.ExtendPartition(_selectedPartition, additionalSizeInMB);
+            }
+            else
+            {
+                Debug.LogError("No partition selected or PartitionManager not found.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Invalid input for additional partition size.");
+        }
     }
 }
