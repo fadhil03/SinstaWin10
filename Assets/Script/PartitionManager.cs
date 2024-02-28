@@ -257,19 +257,72 @@ public class PartitionManager : MonoBehaviour
 
         sizePartition.SetActive(false);
 
-        string partitionKey = "Partition_" + (newPartitionCount + 1);
-        PlayerPrefs.SetString(partitionKey + "_Name", "Drive 0 " + partitionObjectName);
-        PlayerPrefs.SetInt(partitionKey + "_TotalSize", sizeInGB);
-        PlayerPrefs.SetInt(partitionKey + "_FreeSpace", sizeInGB);
-        PlayerPrefs.SetString(partitionKey + "_Type", newPartitionCount == 0 ? "Type: System" : "Type: NTFS");
-
-        PlayerPrefs.SetInt("PartitionCount", newPartitionCount);
-        PlayerPrefs.Save();
         childCount = scrollViewContent.transform.childCount;
         siblingIndex = childCount;
         objUnallocatedSpace.transform.SetSiblingIndex(siblingIndex);
         newPartitionCount++;
     }
+
+    public void SavePartitionToPlayerPrefs()
+    {
+        // Dapatkan jumlah partisi di dalam scroll view content
+        int partitionCount = scrollViewContent.transform.childCount;
+
+        // Jika objUnallocatedSpace tidak null, simpan informasi tambahan
+        if (objUnallocatedSpace != null)
+        {
+            Text tvTotalSizeUnallocated = objUnallocatedSpace.transform.Find("TotalSizeUnallocated").GetComponent<Text>();
+            Text freeSpaceText = objUnallocatedSpace.transform.Find("freeSpaceText").GetComponent<Text>();
+            Text typePartitionText = objUnallocatedSpace.transform.Find("TypePartition").GetComponent<Text>();
+
+            // Simpan informasi unallocated space ke PlayerPrefs
+            PlayerPrefs.SetString("Unallocated_Name", "Drive 0 Unallocated Space");
+            PlayerPrefs.SetString("Unallocated_TotalSize", tvTotalSizeUnallocated.text);
+            PlayerPrefs.SetString("Unallocated_FreeSpace", freeSpaceText.text);
+            PlayerPrefs.SetString("Unallocated_Type", typePartitionText.text);
+        }
+        else
+        {
+            Debug.Log("objUnallocatedSpace is null.");
+            PlayerPrefs.SetString("Unallocated_Name", "Drive 0 Unallocated Space");
+            PlayerPrefs.SetString("Unallocated_TotalSize", "0 GB");
+            PlayerPrefs.SetString("Unallocated_FreeSpace", "0 GB");
+            PlayerPrefs.SetString("Unallocated_Type", "");
+        }
+
+        // Loop melalui setiap partisi
+        for (int i = 1; i < partitionCount; i++)
+        {
+            GameObject partitionObject = scrollViewContent.transform.GetChild(i).gameObject;
+
+            // Dapatkan komponen teks dari setiap partisi
+            Text tvNamePartition = partitionObject.transform.Find("tvNamePartition")?.GetComponent<Text>();
+            Text tvTotalSize = partitionObject.transform.Find("tvTotalSize")?.GetComponent<Text>();
+            Text tvFreeSpace = partitionObject.transform.Find("tvFreeSpace")?.GetComponent<Text>();
+            Text tvTypePartition = partitionObject.transform.Find("tvTypePartition")?.GetComponent<Text>();
+
+            // Buat kunci unik untuk setiap partisi
+            string partitionKey = "Partition_" + i;
+
+            // Jika komponen teks ada, simpan data partisi ke PlayerPrefs
+            if (tvNamePartition != null && tvTotalSize != null && tvFreeSpace != null && tvTypePartition != null)
+            {
+                PlayerPrefs.SetString(partitionKey + "_Name", tvNamePartition.text);
+                PlayerPrefs.SetString(partitionKey + "_TotalSize", tvTotalSize.text);
+                PlayerPrefs.SetString(partitionKey + "_FreeSpace", tvFreeSpace.text);
+                PlayerPrefs.SetString(partitionKey + "_Type", tvTypePartition.text);
+            }
+            else
+            {
+                Debug.LogWarning("One or more text components not found for partition " + i);
+            }
+        }
+
+        // Simpan jumlah partisi ke PlayerPrefs
+        PlayerPrefs.SetInt("PartitionCount", partitionCount);
+        PlayerPrefs.Save();
+    }
+
 
     void LoadPartitionData()
     {
