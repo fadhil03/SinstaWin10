@@ -73,13 +73,23 @@ public class InputHandler : MonoBehaviour
             btnDelete.interactable = true;
             btnFormat.interactable = true;
             btnLoadDriver.interactable = true;
-            btnExtend.interactable = true;
             btnLoadDriver.GetComponentInChildren<Text>().color = activeColor;
             btnDelete.GetComponentInChildren<Text>().color = activeColor;
-            btnFormat.GetComponentInChildren<Text>().color = activeColor;
-            btnExtend.GetComponentInChildren<Text>().color = activeColor;
+            btnFormat.GetComponentInChildren<Text>().color = activeColor;           
 
             WarningPartitionCountFull.SetActive(false);
+
+            int unallocatedSpace = _partitionManager.GetUnallocatedSpace();
+            if (unallocatedSpace == 0)
+            {
+                btnExtend.interactable = false;
+                btnExtend.GetComponentInChildren<Text>().color = inactiveColor;
+            }
+            else
+            {
+                btnExtend.interactable = true;
+                btnExtend.GetComponentInChildren<Text>().color = activeColor;
+            }
 
             Text[] texts = _selectedPartition.GetComponentsInChildren<Text>();
 

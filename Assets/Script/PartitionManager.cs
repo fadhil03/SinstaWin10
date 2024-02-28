@@ -64,11 +64,6 @@ public class PartitionManager : MonoBehaviour
 
     void Update()
     {
-        Text unallocatedSpaceSize = GameObject.Find("TotalSizeUnallocated").GetComponent<Text>();
-        Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
-        unallocatedSpaceSize.text = unallocatedSpaceInGB + " GB";
-        freeSpaceText.text = unallocatedSpaceInGB + " GB";
-
         childCount = scrollViewContent.transform.childCount;
         siblingIndex = childCount;
 
@@ -77,18 +72,32 @@ public class PartitionManager : MonoBehaviour
             WarningPartitionNewSize.SetActive(false);
             sizePartition.SetActive(false);
         }
-        Debug.Log("sisa unallocatedSpaceInGB = " + unallocatedSpaceInGB);
-        Debug.Log("sisa unallocatedSpaceSize = " + unallocatedSpaceSize);
-        Debug.Log(" ");
-        Debug.Log(" ");
-        Debug.Log(" ");
-        Debug.Log(" ");
-        Debug.Log(" ");
+        UpdateSizeUnallocated();
+    }
+
+    private void UpdateSizeUnallocated()
+    {
+        if (objUnallocatedSpace != null)
+        {
+            Text unallocatedSpaceSize = GameObject.Find("TotalSizeUnallocated").GetComponent<Text>();
+            Text freeSpaceText = GameObject.Find("freeSpaceText").GetComponent<Text>();
+            unallocatedSpaceSize.text = unallocatedSpaceInGB + " GB";
+            freeSpaceText.text = unallocatedSpaceInGB + " GB";
+        }
+        else
+        {
+            Debug.Log("objUnallocatedSpace is null.");
+        }
     }
 
     public void OnUnallocatedSpaceSelected()
     {
         isUnallocatedSpaceSelected = true;
+    }
+
+    public int GetUnallocatedSpace()
+    {
+        return unallocatedSpaceInGB;
     }
 
     void ShowInputSize()
