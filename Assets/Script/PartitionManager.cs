@@ -409,4 +409,45 @@ public class PartitionManager : MonoBehaviour
             Debug.LogWarning("tvMostSizeLeft not found!");
         }
     }
+
+    public void FormatPartition(GameObject partitionObject)
+    {
+        Text tvTotalSize = partitionObject.transform.Find("tvTotalSize").GetComponent<Text>();
+        Text tvFreeSpace = partitionObject.transform.Find("tvFreeSpace").GetComponent<Text>();
+
+        if (tvTotalSize != null && tvFreeSpace != null)
+        {
+            // Mengambil nilai total size
+            string totalSizeText = tvTotalSize.text;
+            int totalSizeGB = ParseSizeTextToGB(totalSizeText);
+
+            // Mengubah nilai free space menjadi sama dengan total size
+            tvFreeSpace.text = totalSizeGB + " GB";
+        }
+        else
+        {
+            Debug.LogWarning("tvTotalSize or tvFreeSpace not found!");
+        }
+    }
+
+    // Method untuk mengonversi teks ukuran menjadi GB
+    private int ParseSizeTextToGB(string sizeText)
+    {
+        int sizeInGB = 0;
+
+        if (sizeText.Contains("GB"))
+        {
+            int.TryParse(sizeText.Replace(" GB", ""), out sizeInGB);
+        }
+        else if (sizeText.Contains("MB"))
+        {
+            int sizeInMB = 0;
+            if (int.TryParse(sizeText.Replace(" MB", ""), out sizeInMB))
+            {
+                sizeInGB = sizeInMB / 1000;
+            }
+        }
+
+        return sizeInGB;
+    }
 }

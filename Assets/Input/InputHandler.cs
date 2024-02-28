@@ -256,4 +256,16 @@ public class InputHandler : MonoBehaviour
             Debug.LogError("Invalid input for additional partition size.");
         }
     }
+
+    public void OnFormatButtonClick()
+    {
+        if (_selectedPartition != null && _partitionManager != null)
+        {
+            _partitionManager.FormatPartition(_selectedPartition);
+        }
+        else
+        {
+            Debug.LogError("No partition selected or PartitionManager not found.");
+        }
+    }
 }
