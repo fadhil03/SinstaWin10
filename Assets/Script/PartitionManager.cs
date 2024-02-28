@@ -415,6 +415,26 @@ public class PartitionManager : MonoBehaviour
         Text tvTotalSize = partitionObject.transform.Find("tvTotalSize").GetComponent<Text>();
         Text tvFreeSpace = partitionObject.transform.Find("tvFreeSpace").GetComponent<Text>();
 
+        int ParseSizeTextToGB(string sizeText)
+        {
+            int sizeInGB = 0;
+
+            if (sizeText.Contains("GB"))
+            {
+                int.TryParse(sizeText.Replace(" GB", ""), out sizeInGB);
+            }
+            else if (sizeText.Contains("MB"))
+            {
+                int sizeInMB = 0;
+                if (int.TryParse(sizeText.Replace(" MB", ""), out sizeInMB))
+                {
+                    sizeInGB = sizeInMB / 1000;
+                }
+            }
+
+            return sizeInGB;
+        }
+
         if (tvTotalSize != null && tvFreeSpace != null)
         {
             // Mengambil nilai total size
@@ -428,26 +448,5 @@ public class PartitionManager : MonoBehaviour
         {
             Debug.LogWarning("tvTotalSize or tvFreeSpace not found!");
         }
-    }
-
-    // Method untuk mengonversi teks ukuran menjadi GB
-    private int ParseSizeTextToGB(string sizeText)
-    {
-        int sizeInGB = 0;
-
-        if (sizeText.Contains("GB"))
-        {
-            int.TryParse(sizeText.Replace(" GB", ""), out sizeInGB);
-        }
-        else if (sizeText.Contains("MB"))
-        {
-            int sizeInMB = 0;
-            if (int.TryParse(sizeText.Replace(" MB", ""), out sizeInMB))
-            {
-                sizeInGB = sizeInMB / 1000;
-            }
-        }
-
-        return sizeInGB;
     }
 }
