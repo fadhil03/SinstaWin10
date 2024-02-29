@@ -32,6 +32,7 @@ public class ProgressBarController : MonoBehaviour
         float panelIncrement = totalProgress / loadingPanels.Length; // Increment progres per panel
 
         float currentFillAmount = 0.0f;
+        UpdateLoading(currentFillAmount);
 
         foreach (var panel in loadingPanels)
         {
@@ -40,6 +41,8 @@ public class ProgressBarController : MonoBehaviour
 
             // Tambahkan progres
             currentFillAmount += panelIncrement;
+            Debug.Log("currentFillAmount =" + currentFillAmount);
+            Debug.Log("panelIncrement =" + panelIncrement);
             UpdateLoading(currentFillAmount);
 
             yield return null; // Jeda untuk memberi kesempatan update UI

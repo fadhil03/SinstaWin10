@@ -15,6 +15,7 @@ public class InstallationProcess : MonoBehaviour
     public GameObject nextPanel;
     public GameObject currentPanel;
     public GameObject progressBarPanel;
+    public GameObject progressBarPanel2;
     public bool run = false;
     public Button btnNextPanel7;
 
@@ -120,6 +121,7 @@ public class InstallationProcess : MonoBehaviour
 
         // Nonaktifkan currentPanel dan aktifkan nextPanel
         progressBarPanel.SetActive(false);
+        progressBarPanel2.SetActive(false);
         currentPanel.SetActive(false);
         nextPanel.SetActive(true);
     }
@@ -133,6 +135,7 @@ public class InstallationProcess : MonoBehaviour
     void OnBtnNextPanel7Click()
     {
         run = true;
+        progressBarPanel2.SetActive(true);
     }
 
     // ...
