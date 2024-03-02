@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,7 +9,32 @@ public class ExitMenuController : MonoBehaviour
     public GameObject[] items; // Array dari semua item yang ada di panel
     private int selectedItemIndex = 0; // Index dari item yang sedang dipilih
 
-    private void Update()
+    private InputAction moveUpAction;
+    private InputAction moveDownAction;
+    private InputAction enterAction;
+
+    private void Start()
+    {
+        moveUpAction = new InputAction("Navigate Up", InputActionType.Button, "<Keyboard>/upArrow");
+        moveUpAction.Enable();
+        moveUpAction.performed += _ =>
+        {
+            selectedItemIndex = (selectedItemIndex - 1 + items.Length) % items.Length;
+            UpdateSelection();
+        };
+        moveDownAction = new InputAction("Navigate Down", InputActionType.Button, "<Keyboard>/downArrow");
+        moveDownAction.Enable();
+        moveDownAction.performed += _ => 
+        {
+            selectedItemIndex = (selectedItemIndex + 1) % items.Length;
+            UpdateSelection();
+        };
+        enterAction = new InputAction("Enter", InputActionType.Button, "<Keyboard>/enter");
+        enterAction.Enable();
+        enterAction.performed += _ => ExecuteItemFunction();
+    }
+
+   /* private void Update()
     {
         // Navigasi menggunakan tombol panah
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -31,7 +57,7 @@ public class ExitMenuController : MonoBehaviour
         {
             ExecuteItemFunction();
         }
-    }
+    }*/
 
     private void UpdateSelection()
     {

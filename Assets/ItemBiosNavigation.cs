@@ -1,24 +1,32 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ItemBiosNavigation : MonoBehaviour
 {
-    public GameObject mainPanel;
     public GameObject[] items; // Array untuk menyimpan semua Item
     public Color selectedColor = new Color(1f, 1f, 1f); // Warna saat item terpilih
     public Color deselectedColor = new Color(0f, 0f, 0.6667f); // Warna saat item tidak terpilih
 
     private int selectedItemIndex = 0;
+    private InputAction moveUpAction;
+    private InputAction moveDownAction;
 
     void Start()
     {
         // Menetapkan warna awal untuk semua Item
         SetItemColors();
+        moveUpAction = new InputAction("Navigate Up", InputActionType.Button, "<Keyboard>/upArrow");
+        moveUpAction.Enable();
+        moveUpAction.performed += _ => NavigateToPreviousItem();
+        moveDownAction = new InputAction("Navigate Down", InputActionType.Button, "<Keyboard>/downArrow");
+        moveDownAction.Enable();
+        moveDownAction.performed += _ =>  NavigateToNextItem();
     }
 
     void Update()
     {
-        // Navigasi ke bawah
+/*        // Navigasi ke bawah
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Debug.Log("Tombol bawah ditekan");
@@ -29,7 +37,7 @@ public class ItemBiosNavigation : MonoBehaviour
         {
             Debug.Log("Tombol atas ditekan");
             NavigateToPreviousItem();
-        }
+        }*/
     }
 
     void NavigateToNextItem()

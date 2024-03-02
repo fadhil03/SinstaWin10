@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ChangeItemOrder : MonoBehaviour
@@ -9,6 +10,10 @@ public class ChangeItemOrder : MonoBehaviour
     public Color deselectedColor = new Color(0f, 0f, 0.6667f); // Warna saat item tidak terpilih
 
     private int selectedItemIndex = 0;
+    private InputAction moveUpAction;
+    private InputAction moveDownAction;
+    private InputAction moveItemUpAction;
+    private InputAction moveItemDownAction;
 
     void Start()
     {
@@ -17,12 +22,34 @@ public class ChangeItemOrder : MonoBehaviour
 
         // Mengecek dan memuat nama item dari PlayerPrefs
         LoadItemName();
-    }
+
+        moveUpAction = new InputAction("Navigate Up", InputActionType.Button, "<Keyboard>/upArrow");
+        moveUpAction.Enable();
+        moveUpAction.performed += _ => NavigateToPreviousItem();
+        moveDownAction = new InputAction("Navigate Down", InputActionType.Button, "<Keyboard>/downArrow");
+        moveDownAction.Enable();
+        moveDownAction.performed += _ => NavigateToNextItem();
+
+        moveItemUpAction = new InputAction("Navigate Item Up", InputActionType.Button, "<Keyboard>/f5");
+        moveItemUpAction.Enable();
+        moveItemUpAction.performed += _ =>
+        {
+            MoveUp();
+            SaveItemName();
+        };
+        moveItemDownAction = new InputAction("Navigate Item Down", InputActionType.Button, "<Keyboard>/f6");
+        moveItemDownAction.Enable();
+        moveItemDownAction.performed += _ =>
+        {
+            MoveDown(); 
+            SaveItemName();
+        };
+     }   
 
     void Update()
     {
         // Navigasi ke bawah
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+/*        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             NavigateToNextItem();
         }
@@ -30,9 +57,9 @@ public class ChangeItemOrder : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             NavigateToPreviousItem();
-        }
+        }*/
         // Jika tombol F5 ditekan
-        else if (Input.GetKeyDown(KeyCode.F5))
+/*        if (Input.GetKeyDown(KeyCode.F5))
         {
             MoveUp();
             SaveItemName(); // Menyimpan nama item setelah perubahan urutan
@@ -42,7 +69,7 @@ public class ChangeItemOrder : MonoBehaviour
         {
             MoveDown();
             SaveItemName(); // Menyimpan nama item setelah perubahan urutan
-        }
+        }*/
     }
 
     void NavigateToNextItem()

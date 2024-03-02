@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class BiosNavigation : MonoBehaviour
@@ -16,6 +17,8 @@ public class BiosNavigation : MonoBehaviour
     public Button exitButton;
 
     private GameObject currentPanel;
+    private InputAction moveLeftAction;
+    private InputAction moveRightAction;
 
     private void Start()
     {
@@ -29,22 +32,14 @@ public class BiosNavigation : MonoBehaviour
         SetButtonColors(securityButton, false);
         SetButtonColors(bootButton, false);
         SetButtonColors(exitButton, false);
-    }
 
-    private void Update()
-    {
-        // Navigasi ke kiri (Previous)
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Debug.Log("Tombol kiri ditekan");
-            NavigateToPreviousPanel();
-        }
-        // Navigasi ke kanan (Next)
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Debug.Log("Tombol kanan ditekan");
-            NavigateToNextPanel();
-        }
+        moveLeftAction = new InputAction("Navigate Left", InputActionType.Button, "<Keyboard>/leftArrow");
+        moveLeftAction.Enable();
+        moveLeftAction.performed += _ => NavigateToPreviousPanel();
+
+        moveRightAction = new InputAction("Navigate Right", InputActionType.Button, "<Keyboard>/rightArrow");
+        moveRightAction.Enable();
+        moveRightAction.performed += _ => NavigateToNextPanel();
     }
 
     private void NavigateToNextPanel()
