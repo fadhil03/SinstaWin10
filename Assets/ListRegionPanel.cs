@@ -48,6 +48,7 @@ public class ListRegionPanel : MonoBehaviour
         {
             GameObject listRegion = (GameObject)Instantiate(objRegion);
             listRegion.transform.SetParent(scrollViewContent.transform);
+            listRegion.transform.localPosition = new Vector3(0f, 0f, 0f);
 
             Text childText = listRegion.GetComponentInChildren<Text>();
             if (childText != null)
@@ -67,6 +68,7 @@ public class ListRegionPanel : MonoBehaviour
 
             Debug.Log("Index: " + i + ", Country: " + regionList[i]);
             listRegion.transform.localScale = new Vector3(1f, 1f, 1f);
+
         }
 
     }

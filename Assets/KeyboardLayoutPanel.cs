@@ -308,6 +308,7 @@ public class KeyboardLayoutPanel : MonoBehaviour
         {
             GameObject listKeyboard = (GameObject)Instantiate(objKeyboard);
             listKeyboard.transform.SetParent(scrollViewContent.transform);
+            listKeyboard.transform.localPosition = new Vector3(0f, 0f, 0f);
 
             Text childText = listKeyboard.GetComponentInChildren<Text>();
             if (childText != null)
