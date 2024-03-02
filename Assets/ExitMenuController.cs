@@ -13,7 +13,7 @@ public class ExitMenuController : MonoBehaviour
     private InputAction moveDownAction;
     private InputAction enterAction;
 
-    private void Start()
+    private void OnEnable()
     {
         moveUpAction = new InputAction("Navigate Up", InputActionType.Button, "<Keyboard>/upArrow");
         moveUpAction.Enable();
@@ -34,30 +34,12 @@ public class ExitMenuController : MonoBehaviour
         enterAction.performed += _ => ExecuteItemFunction();
     }
 
-   /* private void Update()
+    private void OnDisable()
     {
-        // Navigasi menggunakan tombol panah
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            // Menentukan indeks item selanjutnya
-            selectedItemIndex = (selectedItemIndex + 1) % items.Length;
-            UpdateSelection();
-            Debug.Log("sekarang indeks selanjutnya adalah: " + selectedItemIndex);
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            // Menentukan indeks item sebelumnya
-            selectedItemIndex = (selectedItemIndex - 1 + items.Length) % items.Length;
-            UpdateSelection();
-            Debug.Log("sekarang indeks sebelumnya adalah: " + selectedItemIndex);
-        }
-
-        // Eksekusi fungsi item ketika tombol Enter ditekan
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            ExecuteItemFunction();
-        }
-    }*/
+        moveUpAction.Disable();
+        moveDownAction.Disable();
+        enterAction.Disable();
+    }
 
     private void UpdateSelection()
     {
