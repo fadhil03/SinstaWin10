@@ -41,7 +41,10 @@ public class Stopwatch : MonoBehaviour
         }
     }
 
-    // Fungsi-fungsi lain seperti Reset, Pause, Resume bisa disesuaikan sesuai kebutuhan
+    public void StopTimer()
+    {
+        isTiming = false;
+    }
 
     void OnDestroy()
     {
