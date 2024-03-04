@@ -4,19 +4,20 @@ using UnityEngine.UI;
 public class PasswordCheck : MonoBehaviour
 {
     public Button btnNext; // Tombol next
-    public InputField passwordInputField; // InputField untuk memasukkan password
-    public Text passwordMatchIndicator; // Indikator kesesuaian password
+    public InputField passwordInputField;
+    public Text passwordMatchIndicator;
 
     void Start()
     {
-        // Menambahkan listener untuk event klik pada tombol
-        btnNext.onClick.AddListener(CheckPassword);
+        // Tambahkan listener untuk event OnEndEdit
+        passwordInputField.onEndEdit.AddListener(EndEditHandler);
+        btnNext.interactable = false;
     }
 
-    void CheckPassword()
+    // Metode yang akan dipanggil saat pengguna selesai mengedit InputField
+    public void EndEditHandler(string text)
     {
-        // Mendapatkan password yang dimasukkan oleh pengguna
-        string enteredPassword = passwordInputField.text;
+        string enteredPassword = text;
 
         // Mendapatkan password yang disimpan di PlayerPrefs
         string storedPassword = PlayerPrefs.GetString("Password");
@@ -28,5 +29,18 @@ public class PasswordCheck : MonoBehaviour
             passwordMatchIndicator.text = "Passwords do not match. Please try again.";
             passwordMatchIndicator.color = Color.red;
         }
+        else
+        {
+            // Jika sama, mengubah teks dan warna teks pada indicator
+            passwordMatchIndicator.text = "Passwords match!";
+            passwordMatchIndicator.color = Color.white;
+            btnNext.interactable = true;
+        }
+    }
+
+    // Pastikan untuk membersihkan listener saat objek dihancurkan (jika diperlukan)
+    private void OnDestroy()
+    {
+        passwordInputField.onEndEdit.RemoveListener(EndEditHandler);
     }
 }
