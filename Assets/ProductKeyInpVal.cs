@@ -21,6 +21,10 @@ public class ProductKeyInpVal : MonoBehaviour
 
         // Menonaktifkan tombol next secara awal
         nextButton.interactable = false;
+    }
+
+    private void OnEnable()
+    {
         progressBar.SetActive(true);
     }
 
