@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BriefInstallation.unity
     guid: 9396dfaffa94f6c4b95116f53f1e4e51
   - enabled: 1
+    path: Assets/Scenes/SimulationHistory.unity
+    guid: ef20d2211fbeacc4990ee9ecc161fb95
+  - enabled: 1
     path: Assets/Scenes/BootableChoice.unity
     guid: a05e01b1305a87741bf28b52dcc55314
   - enabled: 1
