@@ -9,49 +9,71 @@ public class ItemHistoryDatabase : MonoBehaviour
 {
     public string DataBaseName;
     public GameObject itemHistoryPrefab;
+    public TextMeshProUGUI debugCon, debugDB;
     public Transform scrollViewContent;
 
     void Start()
     {
         string conn = SetDataBaseClass.SetDataBase(DataBaseName + ".db");
+
+        // Pengecekan koneksi ke database
+        if (conn == null)
+        {
+            Debug.LogError("Failed to connect to the database.");
+            debugCon.text = "Failed to connect to the database.";
+            return;
+        }
+
         IDbConnection dbcon;
         IDbCommand dbcmd;
         IDataReader reader;
 
-        dbcon = new SqliteConnection(conn);
-        dbcon.Open();
-        dbcmd = dbcon.CreateCommand();
-        string SQLQuery = "SELECT * FROM users"; // Select semua record dari tabel users
-        dbcmd.CommandText = SQLQuery;
-        reader = dbcmd.ExecuteReader();
-
-        while (reader.Read())
+        try
         {
-            // Membuat instance baru dari prefab ItemHistory
-            GameObject newItemHistory = Instantiate(itemHistoryPrefab, scrollViewContent);
+            dbcon = new SqliteConnection(conn);
+            dbcon.Open();
+            dbcmd = dbcon.CreateCommand();
+            string SQLQuery = "SELECT * FROM users"; // Select semua record dari tabel users
+            dbcmd.CommandText = SQLQuery;
+            reader = dbcmd.ExecuteReader();
 
-            // Mendapatkan komponen skrip yang bertanggung jawab untuk menampilkan data
-            ItemHistoryDisplay itemDisplay = newItemHistory.GetComponent<ItemHistoryDisplay>();
+            // Jika koneksi berhasil, tampilkan pesan info
+            Debug.Log("Connected to the database.");
+            debugDB.text = "Connected to the database.";
 
-            // Mengisi nilai pada setiap child Text sesuai dengan nilai dari field-field dalam record
-            for (int i = 0; i < reader.FieldCount; i++)
+            while (reader.Read())
             {
-                // Mendapatkan nama field
-                string fieldName = reader.GetName(i);
+                // Membuat instance baru dari prefab ItemHistory
+                GameObject newItemHistory = Instantiate(itemHistoryPrefab, scrollViewContent);
 
-                // Mendapatkan nilai dari field
-                string fieldValue = reader.GetValue(i).ToString();
+                // Mendapatkan komponen skrip yang bertanggung jawab untuk menampilkan data
+                ItemHistoryDisplay itemDisplay = newItemHistory.GetComponent<ItemHistoryDisplay>();
 
-                // Mengatur nilai teks pada child Text yang sesuai dengan nama field
-                itemDisplay.SetText(fieldName, fieldValue);
+                // Mengisi nilai pada setiap child Text sesuai dengan nilai dari field-field dalam record
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    // Mendapatkan nama field
+                    string fieldName = reader.GetName(i);
+
+                    // Mendapatkan nilai dari field
+                    string fieldValue = reader.GetValue(i).ToString();
+
+                    // Mengatur nilai teks pada child Text yang sesuai dengan nama field
+                    itemDisplay.SetText(fieldName, fieldValue);
+                }
             }
-        }
 
-        reader.Close();
-        reader = null;
-        dbcmd.Dispose();
-        dbcmd = null;
-        dbcon.Close();
-        dbcon = null;
+            reader.Close();
+            reader = null;
+            dbcmd.Dispose();
+            dbcmd = null;
+            dbcon.Close();
+            dbcon = null;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Error accessing database: " + ex.Message);
+            debugDB.text = "Error accessing database: " + ex.Message;
+        }
     }
 }
