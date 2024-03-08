@@ -4,11 +4,13 @@ using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
 using TMPro;
+using UnityEngine.UI;
 
 public class ItemHistoryDatabase : MonoBehaviour
 {
     public string DataBaseName;
     public GameObject itemHistoryPrefab;
+    public ScrollRect scrollView;
     public TextMeshProUGUI debugCon, debugDB;
     public Transform scrollViewContent;
 
@@ -75,5 +77,32 @@ public class ItemHistoryDatabase : MonoBehaviour
             Debug.LogError("Error accessing database: " + ex.Message);
             debugDB.text = "Error accessing database: " + ex.Message;
         }
+    }
+
+    public void DeleteAllRecords()
+    {
+        string conn = SetDataBaseClass.SetDataBase(DataBaseName + ".db");
+        IDbConnection dbcon;
+        IDbCommand dbcmd;
+
+        dbcon = new SqliteConnection(conn);
+        dbcon.Open();
+        dbcmd = dbcon.CreateCommand();
+        string SQLQuery = "DELETE FROM Users"; // Menghapus semua record dari tabel Users
+        dbcmd.CommandText = SQLQuery;
+        dbcmd.ExecuteNonQuery(); // Jalankan perintah SQL untuk menghapus record
+
+        dbcmd.Dispose();
+        dbcmd = null;
+        dbcon.Close();
+        dbcon = null;
+
+        RefreshScrollView();
+    }
+
+    void RefreshScrollView()
+    {
+        scrollView.content.gameObject.SetActive(false); // Menonaktifkan konten scroll view
+        scrollView.content.gameObject.SetActive(true); // Mengaktifkan kembali konten scroll view
     }
 }

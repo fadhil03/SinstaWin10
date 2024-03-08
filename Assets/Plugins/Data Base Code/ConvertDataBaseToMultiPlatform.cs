@@ -16,7 +16,7 @@ public class ConvertDataBaseToMultiPlatform : MonoBehaviour
     {
 #if UNITY_EDITOR
         string dbPath = Application.dataPath + "/StreamingAssets/" + DatabaseName;
-        Debug.Log("Convet multi get currtent directory = " + System.IO.Directory.GetCurrentDirectory());
+        Debug.Log("persistent datapath = " + Application.persistentDataPath);
 #else
         //check if file exists in Application.persistentDataPath
         string filepath = Application.persistentDataPath + "/" + DatabaseName;
