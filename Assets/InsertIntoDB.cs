@@ -16,7 +16,7 @@ public class InsertIntoDB : MonoBehaviour
         var _NameInput = NameInput.text.Trim();
         var _MediaBootable = PlayerPrefs.GetString("MediaBootable");
         var _ProductKey = PlayerPrefs.GetString("Product_Key");
-        var _TypeOs = PlayerPrefs.GetString("Type_Os");
+        var _TypeOs = PlayerPrefs.GetString("SelectedOS");
         var _Unallocated = PlayerPrefs.GetString("Unallocated_TotalSize");
         var _Partition1 = PlayerPrefs.GetString("Partition_1_TotalSize");
         var _Partition2 = PlayerPrefs.GetString("Partition_2_TotalSize");

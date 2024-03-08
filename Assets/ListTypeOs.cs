@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,46 +8,51 @@ public class ListTypeOs : MonoBehaviour
 {
     public GameObject scrollViewContent;
     public GameObject objTypeOs;
+    public Button btnNext;
+    public TextMeshProUGUI DescriptionText;
 
     void Start()
     {
         string[] operatingSystems = {
             "Windows 10 Home",
-            "Windows 10 Pro",
+            "Windows 10 Home N",
+            "Windows 10 Home Single Language",
             "Windows 10 Education",
-            "Windows 10 Enterprise",
-            "Windows 10 S",
-            "Windows 10 Team",
-            "Windows 10 IoT Core",
+            "Windows 10 Education N",
+            "Windows 10 Pro",
+            "Windows 10 Pro N",
+            "Windows 10 Pro Education",
+            "Windows 10 Pro Education N",
             "Windows 10 Pro for Workstations",
-            "Windows 10 IoT Enterprise",
-            "Windows 10 Education N"
+            "Windows 10 Pro N for Workstations"
         };
 
         string[] architectures = {
-            "x86",
-            "x64",
-            "x86",
             "x64",
             "x64",
             "x64",
-            "ARM",
             "x64",
-            "x86",
+            "x64",
+            "x64",
+            "x64",
+            "x64",
+            "x64",
+            "x64",
             "x64"
         };
 
         string[] dateModified = {
-            "01/06/2023",
-            "15/05/2023",
-            "22/04/2023",
-            "30/03/2023",
-            "12/02/2023",
-            "05/01/2023",
-            "18/12/2022",
-            "24/11/2022",
-            "07/10/2022",
-            "14/09/2022"
+            "10/6/2021",
+            "10/6/2021",
+            "10/6/2021",
+            "10/6/2021",
+            "10/6/2021",
+            "10/6/2021",
+            "10/6/2021",
+            "10/6/2021",
+            "10/6/2021",
+            "10/6/2021",
+            "10/6/2021"
         };
 
         for (int i = 0; i < operatingSystems.Length; i++)
@@ -80,6 +86,9 @@ public class ListTypeOs : MonoBehaviour
         PlayerPrefs.SetString("SelectedOS", os);
         PlayerPrefs.SetString("SelectedArchitectures", architectures);
         PlayerPrefs.SetString("SelectedDateModified", dateModified);
+
+        btnNext.interactable = true;
+        DescriptionText.text = os;
 
         // Contoh: Menampilkan data yang disimpan pada PlayerPrefs
         Debug.Log("Selected OS: " + PlayerPrefs.GetString("SelectedOS"));

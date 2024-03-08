@@ -21,7 +21,7 @@ public class PopupSummary : MonoBehaviour
     {
         MediaBootableText.text = ": " + PlayerPrefs.GetString("MediaBootable");
         ProductKeyText.text = ": " + PlayerPrefs.GetString("Product_Key");
-        TypeOsText.text = ": " + PlayerPrefs.GetString("Type_Os");
+        TypeOsText.text = ": " + PlayerPrefs.GetString("SelectedOS");
         UnallocatedText.text = ": " + PlayerPrefs.GetString("Unallocated_TotalSize");
         Partition1Text.text = ": " + PlayerPrefs.GetString("Partition_1_TotalSize");
         Partition2Text.text = ": " + PlayerPrefs.GetString("Partition_2_TotalSize");
