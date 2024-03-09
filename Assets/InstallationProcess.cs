@@ -18,6 +18,7 @@ public class InstallationProcess : MonoBehaviour
     public GameObject progressBarPanel2;
     public bool run = false;
     public Button btnNextPanel7;
+    public Button btnNextPanel7Second;
 
     private int copyingFilesStartTime = 0; // 5 menit dalam detik
     private int gettingFilesStartTime = 15; // 10 menit dalam detik
@@ -33,6 +34,7 @@ public class InstallationProcess : MonoBehaviour
     private IEnumerator Start()
     {
         btnNextPanel7.onClick.AddListener(OnBtnNextPanel7Click);
+        btnNextPanel7Second.onClick.AddListener(OnBtnNextPanel7Click);
         nextPanel.SetActive(false);
         yield return null; // Ganti dengan null agar coroutine tidak dijalankan saat game object diaktifkan
     }
