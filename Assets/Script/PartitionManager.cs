@@ -73,6 +73,7 @@ public class PartitionManager : MonoBehaviour
             sizePartition.SetActive(false);
         }
         UpdateSizeUnallocated();
+        UpdatePartitionNames();
     }
 
     private void UpdateSizeUnallocated()
@@ -186,9 +187,10 @@ public class PartitionManager : MonoBehaviour
 
     void CreateNewPartition(int sizeInGB)
     {
-        string partitionObjectName = "Partition " + (newPartitionCount + 1);
+        int partitionSiblingIndex = scrollViewContent.transform.childCount;
+        string partitionObjectName = "Partition " + partitionSiblingIndex;
 
-        if (newPartitionCount == 0)
+        if (newPartitionCount == 0 || NoSystemPartitionExists())
         {
             PartitionSystemConfirm.SetActive(true); // Aktifkan PartitionSystemConfirmPopup
             Transform parentTransform = PartitionSystemConfirm.transform.parent;
@@ -204,13 +206,14 @@ public class PartitionManager : MonoBehaviour
             GameObject newButton1 = Instantiate(buttonTemplate, scrollViewContent.transform);
             newButton1.name = partitionObjectName;
             newButton1.tag = "Partition";
+            newButton1.transform.SetSiblingIndex(1);
 
             Text tvNamePartition1 = newButton1.transform.Find("tvNamePartition").GetComponent<Text>();
             Text tvTotalSize1 = newButton1.transform.Find("tvTotalSize").GetComponent<Text>();
             Text tvFreeSpace1 = newButton1.transform.Find("tvFreeSpace").GetComponent<Text>();
             Text tvTypePartition1 = newButton1.transform.Find("tvTypePartition").GetComponent<Text>();
 
-            tvNamePartition1.text = "Drive 0 " + partitionObjectName + " : System Reserved";
+            tvNamePartition1.text = "Drive 0 " + "Partition 1" + " : System Reserved";
             tvTypePartition1.text = "System";
 
             int partitionSizeInMB = 50; // Ukuran yang ditentukan untuk partisi pertama
@@ -223,13 +226,14 @@ public class PartitionManager : MonoBehaviour
             partitionObjectName = "Partition " + (newPartitionCount + 2);
             newButton2.name = partitionObjectName;
             newButton2.tag = "Partition";
+            newButton2.transform.SetSiblingIndex(2);
 
             Text tvNamePartition2 = newButton2.transform.Find("tvNamePartition").GetComponent<Text>();
             Text tvTotalSize2 = newButton2.transform.Find("tvTotalSize").GetComponent<Text>();
             Text tvFreeSpace2 = newButton2.transform.Find("tvFreeSpace").GetComponent<Text>();
             Text tvTypePartition2 = newButton2.transform.Find("tvTypePartition").GetComponent<Text>();
 
-            tvNamePartition2.text = "Drive 0 " + partitionObjectName;
+            tvNamePartition2.text = "Drive 0 " + "Partition 2";
             tvTypePartition2.text = "Primary";
             tvTotalSize2.text = sizeInGB + " GB";
             tvFreeSpace2.text = sizeInGB + " GB";
@@ -261,6 +265,49 @@ public class PartitionManager : MonoBehaviour
         siblingIndex = childCount;
         objUnallocatedSpace.transform.SetSiblingIndex(siblingIndex);
         newPartitionCount++;
+    }
+
+    bool NoSystemPartitionExists()
+    {
+        foreach (Transform child in scrollViewContent.transform)
+        {
+            Text tvTypePartition = child.Find("tvTypePartition")?.GetComponent<Text>();
+            if (tvTypePartition != null && tvTypePartition.text == "System")
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void UpdatePartitionNames()
+    {
+        // Dapatkan semua anak dari scrollViewContent
+        foreach (Transform child in scrollViewContent.transform)
+        {
+            // Periksa apakah anak memiliki tag "Partition"
+            if (child.CompareTag("Partition"))
+            {
+                // Ubah nama objek partisi sesuai dengan nomor siblingnya
+                child.name = "Partition " + child.GetSiblingIndex();
+
+                // Dapatkan komponen teks tvNamePartition dari objek partisi
+                Text tvNamePartition = child.Find("tvNamePartition").GetComponent<Text>();
+                Text tvTypePartition = child.Find("tvTypePartition").GetComponent<Text>();
+
+                // Ubah teks tvNamePartition sesuai dengan nomor siblingnya
+                if (tvTypePartition.text == "System")
+                {
+                    // Jika tvTypePartition bernilai "System", ubah teks tvNamePartition sesuai
+                    tvNamePartition.text = "Drive 0 Partition " + child.GetSiblingIndex() + " : System Reserved";
+                }
+                else
+                {
+                    // Jika tvTypePartition tidak bernilai "System", gunakan teks default
+                    tvNamePartition.text = "Drive 0 Partition " + child.GetSiblingIndex();
+                }
+            }
+        }
     }
 
     public void SavePartitionToPlayerPrefs()
