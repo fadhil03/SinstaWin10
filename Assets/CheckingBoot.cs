@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class CheckingBoot : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CheckingBoot : MonoBehaviour
     public Button btnRestart;
 
     public float startTime = 0;
+
+    private InputAction enterAction;
 
     void Awake()
     {
@@ -56,13 +59,24 @@ public class CheckingBoot : MonoBehaviour
                 noBootable.SetActive(true);
                 enterToRestart.SetActive(true);
 
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                // Membuat InputAction untuk tombol Enter
+                if (enterAction == null)
                 {
-                    Debug.Log("Namascene : " + SceneManager.GetActiveScene().name);
-                    RestartScene();
-                    Debug.Log("=================selesai restart======================= ");
+                    enterAction = new InputAction("Press Enter", InputActionType.Button, "<Keyboard>/enter");
+                    enterAction.Enable();
+                    enterAction.performed += _ => RestartScene(); // Menambahkan listener untuk menjalankan RestartScene saat tombol Enter ditekan
                 }
             }
+        }
+    }
+
+    private void OnDisable()
+    {
+        // Menonaktifkan InputAction saat script dinonaktifkan
+        if (enterAction != null)
+        {
+            enterAction.Disable();
+            enterAction.performed -= _ => RestartScene(); // Menghapus listener saat skrip dinonaktifkan
         }
     }
 
