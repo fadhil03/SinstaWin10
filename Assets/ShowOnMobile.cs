@@ -9,7 +9,7 @@ public class ShowOnMobile : MonoBehaviour
 
     void Start()
     {
-        //gameObject.SetActive(Application.isMobilePlatform);
+        gameObject.SetActive(Application.isMobilePlatform);
 
         // Mendapatkan komponen Text dari button
         buttonText = openCloseButton.GetComponentInChildren<Text>();

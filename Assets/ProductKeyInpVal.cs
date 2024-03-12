@@ -26,6 +26,8 @@ public class ProductKeyInpVal : MonoBehaviour
     private void OnEnable()
     {
         progressBar.SetActive(true);
+        PlayerPrefs.SetString("Product_Key", "-");
+        PlayerPrefs.Save();
     }
 
     private void ValidateInput(string value)
@@ -33,11 +35,19 @@ public class ProductKeyInpVal : MonoBehaviour
         // Memeriksa apakah input field memiliki 25 karakter atau lebih
         if (value.Length >= 25)
         {
+            // Memasukkan nilai input ke dalam PlayerPrefs jika panjangnya lebih dari atau sama dengan 25
+            PlayerPrefs.SetString("Product_Key", value);
+            PlayerPrefs.Save();
+
             // Mengaktifkan tombol next jika input field memenuhi syarat
             nextButton.interactable = true;
         }
         else
         {
+            // Menyimpan "-" ke dalam PlayerPrefs jika panjang nilai input kurang dari 25
+            PlayerPrefs.SetString("Product_Key", "-");
+            PlayerPrefs.Save();
+
             // Menonaktifkan tombol next jika input field tidak memenuhi syarat
             nextButton.interactable = false;
         }
