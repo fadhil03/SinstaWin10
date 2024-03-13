@@ -15,13 +15,19 @@ public class SidePanel : MonoBehaviour
     public Button ButtonYesEnd;
     public Button ButtonNoEnd;
 
-    // Start is called before the first frame update
+    private bool isOpen = false; 
     void Start()
     {
-        PanelBrief.SetActive(false);
-        PanelConfirmEnd.SetActive(false);
-        ButtonCloseSidePanel.interactable = false;
-        ButtonCloseSidePanel.gameObject.SetActive(false);
+        isOpen = PlayerPrefs.GetInt("IsSidePanelOpen", 0) == 1;
+
+        if (isOpen)
+        {
+            OpenPanelBrief();
+        }
+        else
+        {
+            ClosePanelBrief();
+        }
 
         ButtonOpenSidePanel.onClick.AddListener(OpenPanelBrief);
         ButtonCloseSidePanel.onClick.AddListener(ClosePanelBrief);
@@ -30,6 +36,10 @@ public class SidePanel : MonoBehaviour
 
     void OpenPanelBrief()
     {
+        isOpen = true; 
+        PlayerPrefs.SetInt("IsSidePanelOpen", isOpen ? 1 : 0); 
+        PlayerPrefs.Save();
+
         ButtonOpenSidePanel.interactable = false;
         ButtonOpenSidePanel.gameObject.SetActive(false);
         ButtonCloseSidePanel.interactable = true;
@@ -39,6 +49,10 @@ public class SidePanel : MonoBehaviour
 
     void ClosePanelBrief()
     {
+        isOpen = false;
+        PlayerPrefs.SetInt("IsSidePanelOpen", isOpen ? 1 : 0);
+        PlayerPrefs.Save();
+
         ButtonOpenSidePanel.interactable = true;
         ButtonOpenSidePanel.gameObject.SetActive(true);
         ButtonCloseSidePanel.interactable = false;
