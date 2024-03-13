@@ -15,51 +15,28 @@ public class ScrollViewLinker : MonoBehaviour
     void Start()
     {
         BtnTextP.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.7754633f;
+            scrollRect.verticalNormalizedPosition = 0.8252147f;
         });
         BtnText1.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.6668615f;
+            scrollRect.verticalNormalizedPosition = 0.642906f;
         });
         BtnText2.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.5809713f;
+            scrollRect.verticalNormalizedPosition = 0.5421333f;
         });
         BtnText3.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.5061297f;
+            scrollRect.verticalNormalizedPosition = 0.4623179f;
         });
         BtnText4.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.1393661f;
+            scrollRect.verticalNormalizedPosition = 0.1479631f;
         });
         BtnText5.onClick.AddListener(() => {
-            scrollRect.verticalNormalizedPosition = 0.08247174f;
+            scrollRect.verticalNormalizedPosition = 0.08656542f;
         });
     }
 
-    private void Update()
+    void Update()
     {
         Debug.Log("scrollRect.verticalNormalizedPosition = " + scrollRect.verticalNormalizedPosition);
     }
 
-    public void ScrollToTugas1()
-    {
-        //ScrollTo(TextIsiTugas1);
-        Debug.Log("TextIsiTugas1");
-        scrollRect.verticalNormalizedPosition = 0.7572725f;
-    }
-
-    public void ScrollToTugas2()
-    {
-        // ScrollTo(TextIsiTugas2);
-        Debug.Log("TextIsiTugas2");
-        scrollRect.verticalNormalizedPosition = 0.6499775f;
-    }
-
-    public void ScrollToTugas3()
-    {
-        // ScrollTo(TextIsiTugas3);
-        Debug.Log("TextIsiTugas3");
-        scrollRect.verticalNormalizedPosition = 0.5660478f;
-    }
-
-
-  
 }

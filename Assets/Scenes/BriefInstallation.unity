@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 605880292}
+  m_Material: {fileID: 2112575550}
   m_Color: {r: 0, g: 0.6784314, b: 0.70980394, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Persiapan. Pemilihan Media Instalasi
+  m_text: Persiapan. Pemilihan Jenis Instalasi dan Media Instalasi
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 349108b9a9eb658488138799f1ad47bf, type: 2}
   m_sharedMaterial: {fileID: 6700626552418300224, guid: 349108b9a9eb658488138799f1ad47bf, type: 2}
@@ -1233,42 +1233,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380603931}
   m_CullTransparentMesh: 1
---- !u!21 &409392857
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 281.99, g: 58.19574, b: 60, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &479621029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,8 +1683,8 @@ RectTransform:
   - {fileID: 2006830972}
   - {fileID: 840547364}
   - {fileID: 1538550369}
-  - {fileID: 1125378239}
   - {fileID: 2055640857}
+  - {fileID: 1125378239}
   - {fileID: 1934464352}
   - {fileID: 2073688776}
   - {fileID: 808727160}
@@ -1861,16 +1825,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<indent=1%>1.<indent=4%>Masukkan nama pengguna.</indent>\n2. <indent=4%>Atur
-    password pengguna dengan ketentuan:\r</indent>\n<indent=5%>-</indent><indent=8%>Jika
+  m_text: "<indent=1%>1.<indent=4%>Masukkan nama pengguna Windows.</indent>\n2. <indent=4%>Atur
+    password pengguna Windows dengan ketentuan:\r</indent>\n<indent=5%>-</indent><indent=8%>Jika
     tidak ingin menambahkan password, tekan tombol \"Next\" langsung. \r</indent>\n\r<indent=5%>-</indent><indent=8%>Jika
     ingin menambahkan password:\n-<indent=11%>Masukkan password pada kolom password,
     kemudian tekan tombol \"Next\".</indent>\n-<indent=11%>Masukkan kembali password
     sebelumnya untuk mengkonfirmasi, lalu tekan tombol \"Next\".\r</indent>\n-<indent=11%>Masukkan
     pertanyaan dan jawaban keamanan, kemudian tekan tombol \"Next\". Pertanyaan dan
     jawaban keamanan ini berjumlah 3 pasang.</indent></indent>\n3. <indent=4%>Pilih
-    pengaturan kerahasiaan pribadi untuk perangkat dengan memilih Yes untuk setuju
-    atau No jika tidak setuju :</indent>\n<indent=5%>-</indent><indent=8%>Location:
+    <i>Privacy Settings</i> pada beberapa komponen dengan memilih <b>Yes</b> untuk
+    setuju atau <b>No</b> jika tidak setuju :</indent>\n<indent=5%>-</indent><indent=8%>Location:
     Menyimpan informasi lokasi Anda untuk memberikan layanan yang lebih baik dan
     relevan.\r</indent>\n<indent=5%>-</indent><indent=8%>Find my device: Memungkinkan
     Anda untuk melacak perangkat Anda jika hilang atau dicuri.\r</indent>\n<indent=5%>-</indent><indent=8%>Diagnostic
@@ -1879,7 +1843,7 @@ MonoBehaviour:
     experiences: Menyesuaikan pengalaman Anda dengan menampilkan rekomendasi yang
     sesuai dengan minat dan aktivitas Anda.\r</indent>\n<indent=5%>-</indent><indent=8%>Advertising
     ID: Memungkinkan iklan yang lebih relevan dan personal berdasarkan minat Anda.</indent>\n4.<indent=4%>Setelah
-    memilih pengaturan kerahasiaan pribadi, tekan tombol \"Accept\" untuk menyetujuinya.</indent>\n5.<indent=4%>Tunggu
+    memilih <i>Privacy Settings</i>, tekan tombol \"Accept\" untuk menyetujuinya.</indent>\n5.<indent=4%>Tunggu
     hingga proses selesai.</indent>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83077b2425f29e7448bdb1c3250c792d, type: 2}
@@ -2062,42 +2026,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &605880292
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 120, g: 45, b: 30, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &636078742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,7 +2310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Persiapan. \nPemilihan Media Instalasi"
+  m_text: "Persiapan. \nPemilihan Jenis Instalasi \ndan Media Instalasi"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 64ccf913130a145429abe42f48e84f57, type: 2}
   m_sharedMaterial: {fileID: -8886137867596258202, guid: 64ccf913130a145429abe42f48e84f57, type: 2}
@@ -2534,15 +2462,18 @@ MonoBehaviour:
       m_Calls: []
   m_text: "<indent=1%>1.<indent=4%> Ketika komputer menyala, segera tekan tombol
     F2 untuk masuk ke BIOS. Jika tidak berhasil masuk ke BIOS, silakan restart komputer
-    simulator.\r</indent>\n2. <indent=4%>Setelah berhasil masuk ke BIOS, arahkan
-    menu ke tab \"Boot\"\r</indent>\n3. <indent=4%>Untuk memastikan komputer booting
-    pertama kali dari media instalasi, Anda perlu mengatur urutan boot dengan memilih
-    opsi yang sesuai dengan jenis media instalasi yang dipilih sebelumnya. \r\n<indent=5%>-</indent><indent=8%>Jika
-    media instalasinya berupa Flash Drive, pilih \"Removable Devices\". \r</indent>\n\r<indent=5%>-</indent><indent=8%>Jika
-    menggunakan CD/DVD, pilih \"CD-ROM Drive\". \nSetelah itu, gunakan tombol +/-
-    untuk menggeser urutan hingga media instalasi berada di posisi teratas.\r</indent>\r</indent>\n4.<indent=4%>Setelah
-    mengatur urutan boot, keluar dari BIOS dengan cara arahkan menu ke tab \"Exit\"
-    dan memilih opsi \"Exit Saving Changes\" lalu pilih \"Yes\"\r</indent>\n</indent>"
+    simulator dengan menekan tombol Enter.</indent>\n2. <indent=4%>Setelah berhasil
+    masuk ke BIOS, arahkan menu ke tab \"Boot\" dengan menekan tombol arah panah
+    </indent>\n3. <indent=4%>Untuk memastikan komputer booting pertama kali dari
+    media instalasi, Anda perlu mengatur urutan boot dengan memilih opsi yang sesuai
+    dengan jenis media instalasi yang dipilih sebelumnya dengan menggunakan tombol
+    arah panah . \r\n<indent=5%>-</indent><indent=8%>Jika media instalasinya berupa
+    Flash Drive, arahkan pilihannya ke \"Removable Devices\". \r</indent>\n\r<indent=5%>-</indent><indent=8%>Jika
+    menggunakan CD/DVD, arahkan pilihannya ke \"CD-ROM Drive\". \nSetelah itu, gunakan
+    tombol <b>F5</b> atau <b>F6</b> - untuk menggeser urutan hingga media instalasi
+    berada di posisi teratas.\r</indent>\r</indent>\n4.<indent=4%>Setelah mengatur
+    urutan boot, keluar dari BIOS dengan cara arahkan menu ke tab \"Exit\" dan memilih
+    opsi \"Exit Saving Changes\" kemudian tekan tombol Enter</indent>\n</indent>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83077b2425f29e7448bdb1c3250c792d, type: 2}
   m_sharedMaterial: {fileID: -2034424358699130891, guid: 83077b2425f29e7448bdb1c3250c792d, type: 2}
@@ -2865,7 +2796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 409392857}
+  m_Material: {fileID: 966843147}
   m_Color: {r: 0.26666668, g: 0.7137255, b: 0.47058827, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3408,6 +3339,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863834922}
   m_CullTransparentMesh: 1
+--- !u!21 &966843147
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 281.99, g: 58.19574, b: 60, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &977032363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,7 +3799,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 550587670}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3873,25 +3840,51 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>A. Instalasi Ulang</b>\n<indent=1%>1.<indent=4%>Hapus Partisi yang
-    Tidak Diperlukan:\r\n<indent=5%>-</indent><indent=8%>Hapus Drive 0 Partition
-    2 (partisi C:) dan Drive 0 Partition 1: System Reserved dengan cara :\r\n-<indent=11%>mengklik
-    Drive 0 Partition 2 dan menekan tombol Delete, </indent>\n-<indent=11%>serta
-    melakukan hal yang sama untuk Drive 0 Partition 1: System Reserved dengan mengkliknya
-    dan menekan tombol Delete\r</indent>\n-<indent=11%>Setelah dihapus, kedua partisi
-    tersebut akan otomatis menjadi Unallocated Space (belum dipartisi\r) </indent>\n<indent=1%>2.<indent=4%>Buat
-    Partisi Baru:\r\n<indent=5%>-</indent><indent=8%>Buat partisi baru pada Unallocated
-    Space yang tersedia dengan langkah-langkah berikut:\n-<indent=11%>Klik Unallocated
-    Space, kemudian tekan tombol New.</indent>\n-<indent=11%>Masukkan ukuran total
-    kapasitas hardisk yang diinginkan (disarankan hingga maksimum Total size).</indent>\n-<indent=11%>Tekan
-    tombol Apply untuk menyimpan perubahan. </indent>\n-<indent=11%>Setelah itu,
-    klik Drive 0 Partition 2 untuk menjadikannya sebagai lokasi instalasi sistem
-    operasi Windows 10.</indent>\n<indent=1%>3.<indent=4%>Lanjutkan Instalasi:\n<indent=5%>-</indent><indent=8%>Setelah
-    membuat partisi baru dan menetapkan Drive 0 Partition 2 sebagai lokasi instalasi,
-    lanjutkan dengan menekan tombol \"Next\" untuk melanjutkan proses instalasi.
-    \n<indent=5%>-</indent><indent=8%>Tunggu hingga proses penyalinan file selesai
-    dan komputer simulasi secara otomatis akan me-restart, atau Anda dapat menekan
-    tombol 'Restart Now' setelah proses selesai</indent></indent>\n"
+  m_text: '<b>B. Instalasi Ulang</b>
+
+    <indent=1%>1.<indent=4%>Hapus Partisi yang
+    Tidak Diperlukan:
+
+    <indent=5%>-</indent><indent=8%>Hapus <b>Drive 0 Partition
+    1: System Reserved</b> dan <b>Drive 0 Partition 2</b> (partisi C:) dengan cara
+    :
+
+    -<indent=11%>mengklik <b>Drive 0 Partition 1: System Reserved</b> dan
+    menekan tombol Delete</indent>
+
+    -<indent=11%>lakukan hal yang sama untuk
+    <b>Drive 0 Partition 2</b> dengan mengkliknya dan menekan tombol Delete</indent>
+
+    -<indent=11%>Setelah
+    dihapus, kedua partisi tersebut akan otomatis menjadi <b>Drive 0 Unallocated
+    Space</b> (belum dipartisi). </indent>
+
+    <indent=1%>2.<indent=4%>Buat Partisi
+    Baru:
+
+    <indent=5%>-</indent><indent=8%>Buat partisi baru pada <b>Drive 0
+    Unallocated Space</b> yang tersedia dengan langkah-langkah berikut :
+
+    -<indent=11%>Klik
+    <b>Drive 0 Unallocated Space</b>, kemudian tekan tombol New.</indent>
+
+    -<indent=11%>Masukkan
+    ukuran total kapasitas yang diinginkan (direkomendasikan hingga maksimum Total
+    size <b>Drive 0 Unallocated Space</b>).</indent>
+
+    -<indent=11%>Tekan tombol
+    Apply untuk menyimpan perubahan. </indent>
+
+    <indent=1%>3.<indent=4%>Lanjutkan
+    Instalasi:
+
+    <indent=5%>-</indent><indent=8%>Setelah itu, klik <b>Drive 0
+    Partition 2</b> untuk menjadikannya sebagai lokasi instalasi sistem operasi Windows
+    10, kemudian klik "Next" untuk melanjutkan Instalasi
+
+    <indent=1%>4.<indent=4%>Tunggu
+    hingga proses penyalinan file selesai dan komputer simulasi secara otomatis akan
+    me-restart, atau Anda dapat menekan tombol ''Restart Now'' setelah proses selesai.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83077b2425f29e7448bdb1c3250c792d, type: 2}
   m_sharedMaterial: {fileID: -2034424358699130891, guid: 83077b2425f29e7448bdb1c3250c792d, type: 2}
@@ -4341,7 +4334,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1325593819}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.093587704
+  m_Size: 0.117735684
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5153,7 +5146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -156.58167, y: -35.050034}
+  m_AnchoredPosition: {x: -156.58167, y: -35.05005}
   m_SizeDelta: {x: 311.99, y: -94.58002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495461848
@@ -5267,21 +5260,31 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Media instalasi adalah perangkat atau media yang digunakan untuk menginstal
-    atau memperbarui sistem operasi atau perangkat lunak pada sebuah komputer. Media
-    ini berfungsi sebagai sarana untuk memasukkan file instalasi Windows 10 ke dalam
-    sistem komputer yang akan diinstal. Media instalasi biasanya berupa:\r\n<indent=5%><b>-</b></indent><indent=8%><b>CD/DVD</b>:
+  m_text: "Jenis instalasi pada sistem operasi terdapat 2, yaitu:\r\n<indent=5%><b>-</b></indent><indent=8%><b>Instalasi
+    Ulang (Reinstallation)</b>: Instalasi yang dilakukan pada komputer/laptop baru
+    yang belum memiliki sistem operasi sebelumnya. Tujuan clean install adalah untuk
+    menginstal sistem operasi baru tanpa mempertimbangkan data atau pengaturan yang
+    ada sebelumnya.\r</indent>\r\n<indent=5%><b>-</b></indent><indent=8%><b>Instalasi
+    Baru (Clean Installation)</b>: Instalasi yang dilakukan pada komputer/laptop
+    yang sudah memiliki sistem operasi dan data-data di dalamnya. Tujuan instalasi
+    ulang biasanya untuk memperbaiki masalah sistem operasi atau membersihkan sistem
+    dari file-file yang tidak diperlukan.\r</indent>\r\nMedia instalasi adalah perangkat
+    atau media yang digunakan untuk menginstal atau memperbarui sistem operasi atau
+    perangkat lunak pada sebuah komputer. Media ini berfungsi sebagai sarana untuk
+    memasukkan file instalasi Windows 10 ke dalam sistem komputer yang akan diinstal.
+    Media instalasi biasanya berupa:\r\n<indent=5%><b>-</b></indent><indent=8%><b>CD/DVD</b>:
     Merupakan media fisik berbentuk cakram optik yang biasa digunakan untuk menyimpan
     file instalasi. Pengguna dapat menjalankan instalasi dengan memasukkan cakram
     optik ke dalam drive CD/DVD komputer.\r</indent>\n<indent=5%><b>-</b></indent><indent=8%><b>Flash
     Drive (USB)</b>: Merupakan media penyimpanan berbasis USB yang biasa digunakan
     untuk menyimpan file instalasi. Pengguna dapat menjalankan instalasi dengan memasukkan
     flash drive ke dalam port USB komputer dan booting dari flash drive tersebut.\r
-    </indent>\n<indent=1%>1. <indent=4%>Pilih media instalasi yang sesuai dengan
-    preferensi dan kebutuhan, seperti kecepatan transfer data, ketersediaan perangkat
-    keras, dan kenyamanan penggunaan.\r</indent>\n2. <indent=4%>Masukkan media instalasi
-    ke dalam port USB jika menggunakan Flash Drive atau ke dalam drive CD/DVD jika
-    menggunakan CD/DVD\r</indent>\n3.<indent=4%>Nyalakan komputer simulator\r\r</indent></indent>\n"
+    </indent>\n<indent=1%>1. <indent=4%>Pilih jenis simulasi instalasi yang ingin
+    dilakukan, apakah Instalasi Baru (Clean Installation) atau Instalasi Ulang (Reinstallation).</indent>\n<indent=1%>2.
+    <indent=4%>Pilih media instalasi yang diinginkan.\r</indent>\n3. <indent=4%>Masukkan
+    media instalasi ke dalam port USB jika menggunakan Flash Drive atau ke dalam
+    drive CD/DVD jika menggunakan CD/DVD\r</indent>\n4.<indent=4%>Nyalakan komputer
+    simulator\r\r</indent></indent>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83077b2425f29e7448bdb1c3250c792d, type: 2}
   m_sharedMaterial: {fileID: -2034424358699130891, guid: 83077b2425f29e7448bdb1c3250c792d, type: 2}
@@ -5432,14 +5435,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Pada tahap partisi, tolong diperhatikan dengan seksama karena ini berhubungan
-    dengan data penting Anda.\r\nTahap partisi hardisk terdapat dua kondisi yaitu
-    :\r\n<indent=5%><b>-</b></indent><indent=8%><b>Instalasi Ulang\r</b>\nInstalasi
-    dilakukan pada komputer/laptop yang sudah memiliki sistem operasi dan data-data
-    di dalamnya.\r \nTujuan instalasi ulang biasanya untuk memperbaiki masalah sistem
-    operasi atau membersihkan sistem dari file-file yang tidak diperlukan.\r</indent>\n<indent=5%><b>-</b></indent><indent=8%><b>Clean
-    Install</b>\r\nInstalasi dilakukan pada komputer/laptop baru yang belum memiliki
-    sistem operasi sebelumnya.\r \nTujuan clean install adalah untuk menginstal sistem
-    operasi baru tanpa mempertimbangkan data atau pengaturan yang ada sebelumnya.\r</indent>\n"
+    dengan data penting Anda.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83077b2425f29e7448bdb1c3250c792d, type: 2}
   m_sharedMaterial: {fileID: -2034424358699130891, guid: 83077b2425f29e7448bdb1c3250c792d, type: 2}
@@ -5676,7 +5672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 492, y: -29.729965}
+  m_AnchoredPosition: {x: 492, y: -29.72998}
   m_SizeDelta: {x: 824, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1729877508
@@ -7094,7 +7090,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 550587670}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7135,23 +7131,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>B. Clean Install</b>\n<indent=1%>1.<indent=4%>Persiapan Partisi:\r\n<indent=5%>-</indent><indent=8%>Perhatikan
-    bahwa terdapat ruang hardisk laptop masih kosong (Unallocated Space). Anda perlu
-    mempartisinya terlebih dahulu sebelum melanjutkan. Disarankan untuk membuat minimal
-    2 partisi atau lebih, sesuai dengan kebutuhan.\n<indent=1%>2.<indent=4%>Buat
-    Partisi Baru:\r\n<indent=5%>-</indent><indent=8%>Pilih Drive 0 Unallocated Space,
-    kemudian klik \"New\".\n<indent=1%>3.<indent=4%>Tentukan Ukuran Partisi\n<indent=5%>-</indent><indent=8%>Tentukan
-    ukuran untuk partisi tersebut, lalu klik \"Apply\". \nDisarankan untuk tidak
-    memberikan ukuran terlalu besar atau terlalu kecil. Sebagai panduan kasar, jika
-    ukuran penyimpanan komputer/laptop adalah 500GB, beri ukuran minimal 100GB untuk
-    partisi pertama. Partisi pertama yang Anda buat ini akan menjadi partisi sistem
-    atau yang biasa disebut dengan partisi C:.</indent></indent>\n<indent=1%>4.<indent=4%>Buat
-    System Reserved Partition:\n<indent=5%>-</indent><indent=8%>Setelah itu, pilih
-    \"OK\" untuk membuat partisi sistem yang dikenal sebagai System Reserved Partition</indent></indent>\n<indent=1%>5.<indent=4%>Buat
+  m_text: "<b>A. Instalasi Baru (Clean Install)</b>\n<indent=1%>1.<indent=4%>Persiapan
+    Partisi:\r\n<indent=5%>-</indent><indent=8%>Perhatikan bahwa terdapat ruang hardisk
+    laptop masih kosong (Unallocated Space). Anda perlu mempartisinya terlebih dahulu
+    sebelum melanjutkan. Disarankan untuk membuat minimal 2 partisi atau lebih, sesuai
+    dengan kebutuhan.\n<indent=1%>2.<indent=4%>Buat Partisi Baru:\r\n<indent=5%>-</indent><indent=8%>Pilih
+    <b>Drive 0 Unallocated Space</b>, kemudian klik \"New\".\n<indent=1%>3.<indent=4%>Tentukan
+    Ukuran Partisi\n<indent=5%>-</indent><indent=8%>Tentukan ukuran untuk partisi
+    tersebut, lalu klik \"Apply\". \nDisarankan untuk tidak memberikan ukuran terlalu
+    besar atau terlalu kecil. Sebagai panduan kasar, beri ukuran minimal 100GB untuk
+    partisi yang dibuat pertama kali.</indent></indent>\n<indent=1%>4.<indent=4%>Buat
+    System Reserved Partition:\n<indent=5%>-</indent><indent=8%>Setelah mengklik
+    tombol \"Apply\" sebelumnya maka akan muncul popup notifikasi. Klik \"OK\" untuk
+    membuat partisi sistem yang dikenal sebagai System Reserved Partition.</indent></indent>\n<indent=1%>5.<indent=4%>Buat
     Partisi Tambahan:\n<indent=5%>-</indent><indent=8%>Anda dapat membuat satu atau
     lebih partisi lagi dengan langkah yang sama seperti pada Langkah 2 dan 3.</indent></indent>\n<indent=1%>6.<indent=4%>Pilih
     Lokasi Instalasi:\n<indent=5%>-</indent><indent=8%>Selanjutnya, pilih Drive 0
-    Partition 2 sebagai lokasi instalasi, kemudian klik \"Next\".</indent></indent>\n<indent=1%>7.<indent=4%>Tunggu
+    Partition 2 sebagai lokasi instalasi Windows 10, kemudian klik \"Next\".</indent></indent>\n<indent=1%>7.<indent=4%>Tunggu
     hingga proses penyalinan file selesai dan komputer simulasi secara otomatis akan
     me-restart, atau Anda dapat menekan tombol 'Restart Now' setelah proses selesai"
   m_isRightToLeft: 0
@@ -7306,8 +7302,8 @@ MonoBehaviour:
   m_text: "<indent=1%>1.<indent=4%>Pilih region \"Indonesia\", kemudian klik tombol
     \"Yes\".\r</indent>\n2. <indent=4%>Untuk keyboard layout, pilih \"US\", lalu
     tekan klik \"Yes\".\r</indent>\n3. <indent=4%>Jika tidak ingin menambahkan layout
-    keyboard tambahan, pilih \"Skip\".</indent>\n4. <indent=4%>Pada opsi \"Let\u2019s
-    connect you to a network\", pilih \"I don\u2019t have internet\" karena diasumsikan
+    keyboard tambahan, pilih \"Skip\".</indent>\n4. <indent=4%>Pada opsi \"Let's
+    connect you to a network\", pilih \"I don't have internet\" karena diasumsikan
     pada simulasi ini tidak ada koneksi internet.</indent>\n5. <indent=4%>Klik \"Continue
     with limited setup\" untuk melanjutkan ke tahap berikutnya, di mana komputer
     simulasi akan restart untuk memasuki Konfigurasi Pengguna.</indent>"
@@ -7387,3 +7383,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073688775}
   m_CullTransparentMesh: 1
+--- !u!21 &2112575550
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 120, g: 45, b: 30, a: 0}
+  m_BuildTextureStacks: []
