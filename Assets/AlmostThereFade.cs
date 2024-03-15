@@ -39,6 +39,7 @@ public class AlmostThereFade : MonoBehaviour
             checkLastFadeOut = false; // Set checkLastFadeOut menjadi false agar tidak terjadi transisi lagi
             PlayerPrefs.SetInt("LastTextFadeOut", checkLastFadeOut ? 1 : 0);
             Debug.Log("checkLastFadeOut almost there = " + checkLastFadeOut);
+            return;
         }
     }
 

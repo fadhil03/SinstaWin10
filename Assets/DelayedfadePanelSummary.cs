@@ -1,14 +1,20 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DelayedfadePanelSummary : MonoBehaviour
 {
     public CanvasGroup canvasGroupPanel; // Referensi ke CanvasGroup yang akan diubah
+    public GameObject AlmostThere;
+    public GameObject Preparing;
+    public Button buttonSave;
 
     void OnEnable()
     {
         // Mengeksekusi fungsi DelayedStart setelah game object diaktifkan
         StartCoroutine(DelayedStart());
+        AlmostThere.SetActive(false);
+        Preparing.SetActive(false);
     }
 
     IEnumerator DelayedStart()
@@ -30,5 +36,10 @@ public class DelayedfadePanelSummary : MonoBehaviour
             yield return null;
         }
         canvasGroup.alpha = endAlpha;
+    }
+
+    public void SaveButtonIntractable()
+    {
+        buttonSave.interactable = true;
     }
 }
