@@ -12,7 +12,7 @@ public class SceneLoading : MonoBehaviour
 
     void Start()
     {
-        button.onClick.AddListener(LoadNextScene); // Hapus tanda kurung di LoadScene
+        button.onClick.AddListener(LoadNextScene);
     }
 
     void Update()
