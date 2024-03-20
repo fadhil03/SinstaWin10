@@ -36,10 +36,12 @@ public class InputHandler : MonoBehaviour
             Debug.LogError("PartitionManager not found.");
         }
         applyToExtendButton.onClick.AddListener(ExtendSelectedPartition);
+        Debug.Log("Awake InputHandler");
     }
 
     public void OnClick(InputAction.CallbackContext context)
     {
+        Debug.Log("Onclick InputHandler");
         Vector2 mousePos;
 
         #if UNITY_ANDROID || UNITY_IOS

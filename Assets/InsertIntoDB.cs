@@ -22,6 +22,8 @@ public class InsertIntoDB : MonoBehaviour
         var _Partition2 = PlayerPrefs.GetString("Partition_2_TotalSize");
         var _Partition3 = PlayerPrefs.HasKey("Partition_3_TotalSize") ? PlayerPrefs.GetString("Partition_3_TotalSize") : "-";
         var _Partition4 = PlayerPrefs.HasKey("Partition_4_TotalSize") ? PlayerPrefs.GetString("Partition_4_TotalSize") : "-";
+        var _Region = PlayerPrefs.GetString("Region");
+        var _KeyboardLayout = PlayerPrefs.GetString("KeyboardLayout");
         var _Username = PlayerPrefs.GetString("Username");
         var _Password = PlayerPrefs.HasKey("Password") ? PlayerPrefs.GetString("Password") : "-";
         var _ElapsedSimulationTime = PlayerPrefs.GetString("ElapsedSimulationTime");
@@ -34,8 +36,8 @@ public class InsertIntoDB : MonoBehaviour
         dbcon = new SqliteConnection(conn);
         dbcon.Open();
         dbcmd = dbcon.CreateCommand();
-        string SQLQuery = "INSERT INTO Users (TanggalInput, Name, MediaBootable, ProductKey, TypeOs, UnallocatedPartition, Partition1, Partition2, Partition3, Partition4, UsernameWin, PasswordWin, SimulationTime) " +
-                  "VALUES (DATETIME('now', 'localtime'), '" + _NameInput + "', '" + _MediaBootable + "', '" + _ProductKey + "', '" + _TypeOs + "', '" + _Unallocated + "', '" + _Partition1 + "', '" + _Partition2 + "', '" + _Partition3 + "', '" + _Partition4 + "', '" + _Username + "', '" + _Password + "', '" + _ElapsedSimulationTime + "')";
+        string SQLQuery = "INSERT INTO Users (TanggalInput, Name, MediaBootable, ProductKey, TypeOs, UnallocatedPartition, Partition1, Partition2, Partition3, Partition4, Region, KeyboardLayout, UsernameWin, PasswordWin, SimulationTime) " +
+                  "VALUES (DATETIME('now', 'localtime'), '" + _NameInput + "', '" + _MediaBootable + "', '" + _ProductKey + "', '" + _TypeOs + "', '" + _Unallocated + "', '" + _Partition1 + "', '" + _Partition2 + "', '" + _Partition3 + "', '" + _Partition4 + "', '" + _Region + "', '" + _KeyboardLayout + "', '" + _Username + "', '" + _Password + "', '" + _ElapsedSimulationTime + "')";
         dbcmd.CommandText = SQLQuery;
         reader = dbcmd.ExecuteReader();
         while (reader.Read())

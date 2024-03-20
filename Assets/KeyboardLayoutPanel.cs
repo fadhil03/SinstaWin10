@@ -17,6 +17,7 @@ public class KeyboardLayoutPanel : MonoBehaviour
 
     public GameObject scrollViewContent;
     public GameObject objKeyboard;
+    public Button nextButton;
 
     string[] listKeyboardLayouts = {
         "US",
@@ -324,8 +325,32 @@ public class KeyboardLayoutPanel : MonoBehaviour
                 colors.pressedColor = pressedAndSelectedColor;
                 colors.selectedColor = pressedAndSelectedColor;
                 button.colors = colors;
+                button.onClick.AddListener(() => OnKeyboardLayoutButtonClick(childText.text));
             }
             listKeyboard.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+    }
+
+    void OnKeyboardLayoutButtonClick(string layout)
+    {
+        // Simpan nilai teks tombol keyboard yang diklik ke dalam PlayerPrefs
+        PlayerPrefs.SetString("KeyboardLayout", layout);
+        Debug.Log("Selected Keyboard Layout: " + layout);
+        CheckNextButtonInteractable();
+    }
+
+    void CheckNextButtonInteractable()
+    {
+        // Cek apakah nilai Region telah diset di PlayerPrefs
+        if (PlayerPrefs.HasKey("KeyboardLayout"))
+        {
+            // Jika telah diset, aktifkan tombol next
+            nextButton.interactable = true;
+        }
+        else
+        {
+            // Jika belum diset, jadikan tombol next tidak interaktif
+            nextButton.interactable = false;
         }
     }
 

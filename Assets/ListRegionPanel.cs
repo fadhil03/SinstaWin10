@@ -7,6 +7,7 @@ public class ListRegionPanel : MonoBehaviour
 {
     public GameObject scrollViewContent;
     public GameObject objRegion;
+    public Button nextButton;
     //public Text tvChild;
 
     //public int listRegionCount = 70;
@@ -46,9 +47,8 @@ public class ListRegionPanel : MonoBehaviour
 
         for (int i = 0; i < regionList.Length; i++)
         {
-            GameObject listRegion = (GameObject)Instantiate(objRegion);
-            listRegion.transform.SetParent(scrollViewContent.transform);
-            listRegion.transform.localPosition = new Vector3(0f, 0f, 0f);
+            GameObject listRegion = Instantiate(objRegion, scrollViewContent.transform);
+            listRegion.transform.localPosition = Vector3.zero;
 
             Text childText = listRegion.GetComponentInChildren<Text>();
             if (childText != null)
@@ -64,18 +64,41 @@ public class ListRegionPanel : MonoBehaviour
                 colors.pressedColor = pressedAndSelectedColor;
                 colors.selectedColor = pressedAndSelectedColor;
                 button.colors = colors;
+
+                // Menambahkan event listener untuk tombol
+                int index = i; // Simpan indeks agar bisa diakses dalam event listener
+                button.onClick.AddListener(() => OnRegionButtonClick(regionList[index]));
             }
 
             Debug.Log("Index: " + i + ", Country: " + regionList[i]);
-            listRegion.transform.localScale = new Vector3(1f, 1f, 1f);
-
+            listRegion.transform.localScale = Vector3.one;
         }
-
     }
 
-    private void Update()
+    // Fungsi untuk menangani klik tombol region
+    void OnRegionButtonClick(string region)
     {
-        
+        // Simpan nilai region ke dalam PlayerPrefs
+        PlayerPrefs.SetString("Region", region);
+        Debug.Log("Selected Region: " + region);
+
+        // Panggil metode untuk memeriksa apakah tombol next harus diaktifkan
+        CheckNextButtonInteractable();
     }
 
+    // Metode untuk memeriksa apakah tombol next harus diaktifkan
+    void CheckNextButtonInteractable()
+    {
+        // Cek apakah nilai Region telah diset di PlayerPrefs
+        if (PlayerPrefs.HasKey("Region"))
+        {
+            // Jika telah diset, aktifkan tombol next
+            nextButton.interactable = true;
+        }
+        else
+        {
+            // Jika belum diset, jadikan tombol next tidak interaktif
+            nextButton.interactable = false;
+        }
+    }
 }
