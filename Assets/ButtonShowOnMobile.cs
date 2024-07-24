@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShowOnMobile : MonoBehaviour
+public class ButtonShowOnMobile : MonoBehaviour
 {
     public Button openCloseButton;
     private bool isOpen = true; // Inisialisasi isOpen ke true

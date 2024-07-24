@@ -15,14 +15,6 @@ public class SceneLoading : MonoBehaviour
         button.onClick.AddListener(LoadNextScene);
     }
 
-    void Update()
-    {
-/*        if (Input.GetMouseButtonDown(0))
-        {
-            LoadNextScene();
-        }*/
-    }
-
     public void LoadNextScene()
     {
         StartCoroutine(LoadScene());

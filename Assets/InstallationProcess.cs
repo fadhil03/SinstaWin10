@@ -21,10 +21,10 @@ public class InstallationProcess : MonoBehaviour
     public Button btnNextPanel7Second;
 
     private int copyingFilesStartTime = 0; // 5 menit dalam detik
-    private int gettingFilesStartTime = 15; // 10 menit dalam detik
-    private int installingFeaturesStartTime = 20; // 6 menit dalam detik
-    private int finishingUpStartTime = 25;
-    private int endStartTime = 30;
+    private int gettingFilesStartTime = 180; // 10 menit dalam detik
+    private int installingFeaturesStartTime = 360; // 6 menit dalam detik
+    private int finishingUpStartTime = 540;
+    private int endStartTime = 600;
 
     public Text progressTextCopyingFiles;
     public Text progressTextGettingFiles;
@@ -60,13 +60,13 @@ public class InstallationProcess : MonoBehaviour
         imageComplete4.SetActive(false);
 
         // Memulai proses loading untuk masing-masing teks dan gambar
-        StartCoroutine(StartLoading(copyingFiles, copyingFilesStartTime, imageComplete1, progressTextCopyingFiles, 15)); // Durasi loading 100 detik
+        StartCoroutine(StartLoading(copyingFiles, copyingFilesStartTime, imageComplete1, progressTextCopyingFiles, 180)); // Durasi loading 100 detik
         yield return new WaitForSeconds(2f);
-        StartCoroutine(StartLoading(gettingFiles, gettingFilesStartTime, imageComplete2, progressTextGettingFiles, 5)); // Durasi loading 200 detik
+        StartCoroutine(StartLoading(gettingFiles, gettingFilesStartTime, imageComplete2, progressTextGettingFiles, 180)); // Durasi loading 200 detik
         yield return new WaitForSeconds(2f);
-        StartCoroutine(StartLoading(installingFeatures, installingFeaturesStartTime, imageComplete3, progressTextInstallingFeatures, 5)); // Durasi loading 150 detik
+        StartCoroutine(StartLoading(installingFeatures, installingFeaturesStartTime, imageComplete3, progressTextInstallingFeatures, 180)); // Durasi loading 150 detik
         yield return new WaitForSeconds(2f);
-        StartCoroutine(StartLoading(finishingUp, finishingUpStartTime, imageComplete4, progressTextFinishingUp, 3)); // Durasi loading 180 detik
+        StartCoroutine(StartLoading(finishingUp, finishingUpStartTime, imageComplete4, progressTextFinishingUp, 60)); // Durasi loading 180 detik
 
         StartCoroutine(DelayedPanelSwitch());
     }
@@ -119,7 +119,7 @@ public class InstallationProcess : MonoBehaviour
     private IEnumerator DelayedPanelSwitch()
     {
         // Tunggu selama 5 detik
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(600f);
 
         // Nonaktifkan currentPanel dan aktifkan nextPanel
         progressBarPanel.SetActive(false);

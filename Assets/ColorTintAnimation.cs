@@ -25,12 +25,18 @@ public class ColorTintAnimation : MonoBehaviour
             // Memulai animasi color tint dari color1 ke color2
             colorChangeCoroutine = StartCoroutine(AnimateColorTint(color1, color2, true));
             animationStarted = true;
-        } 
+        }
     }
 
     private void Update()
     {
-        bool checkLastFadeOut = PlayerPrefs.GetInt("LastTextFadeOut") == 1 ? true : false;
+        CheckAndStartAnimation();
+    }
+
+    private void CheckAndStartAnimation()
+    {
+        bool checkLastFadeOut = PlayerPrefs.GetInt("LastTextFadeOut") == 1;
+
         // Periksa nilai .enabled pada komponen Text saat Update dipanggil
         if (textObject.active && !animationStarted)
         {
@@ -41,7 +47,7 @@ public class ColorTintAnimation : MonoBehaviour
             animationStarted = true;
         }
 
-        if (!lastTextObject.active && checkLastFadeOut == true)
+        if (!lastTextObject.active && checkLastFadeOut)
         {
             colorChangeCoroutine = StartCoroutine(AnimateColorTint(color3, color1, false));
             //animationStarted = false;
@@ -63,12 +69,10 @@ public class ColorTintAnimation : MonoBehaviour
         {
             // Setelah transisi pertama selesai, memulai transisi kedua dari color2 ke color3
             colorChangeCoroutine = StartCoroutine(AnimateColorTint(color2, color3, false));
-            //colorChangeCoroutine = StartCoroutine(AnimateColorTint(color3, color2, false));
         }
         else
         {
             // Setelah transisi kedua selesai, memulai transisi pertama lagi dari color1 ke color2
-            colorChangeCoroutine = StartCoroutine(AnimateColorTint(color2, color3, true));
             colorChangeCoroutine = StartCoroutine(AnimateColorTint(color3, color2, true));
         }
     }
