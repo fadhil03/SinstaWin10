@@ -8,6 +8,7 @@ public class SidePanel : MonoBehaviour
 {
     public GameObject PanelBrief;
     public GameObject PanelConfirmEnd;
+    public GameObject PanelSummary;
 
     public Button ButtonOpenSidePanel;
     public Button ButtonCloseSidePanel;
@@ -63,7 +64,7 @@ public class SidePanel : MonoBehaviour
     void ActiveConfirmEnd()
     {
         PanelConfirmEnd.SetActive(true);
-        ButtonYesEnd.onClick.AddListener(() => SceneManager.LoadScene("MainMenu"));
+        ButtonYesEnd.onClick.AddListener(() => PanelSummary.SetActive(true));
         ButtonNoEnd.onClick.AddListener(() => PanelConfirmEnd.SetActive(false));
     }
 }

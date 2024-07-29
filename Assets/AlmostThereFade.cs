@@ -9,8 +9,6 @@ public class AlmostThereFade : MonoBehaviour
     public GameObject gameObject3;
     public GameObject textObject;
 
-    public GameObject layerPreparing;
-
     private bool checkLastFadeOut;
 
     private CanvasGroup canvasGroup1;

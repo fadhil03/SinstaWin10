@@ -21,18 +21,18 @@ public class PopupSummary : MonoBehaviour
 
     void Start()
     {
-        MediaBootableText.text = ": " + PlayerPrefs.GetString("MediaBootable");
-        ProductKeyText.text = ": " + PlayerPrefs.GetString("Product_Key");
-        TypeOsText.text = ": " + PlayerPrefs.GetString("SelectedOS");
-        UnallocatedText.text = ": " + PlayerPrefs.GetString("Unallocated_TotalSize");
-        Partition1Text.text = ": " + PlayerPrefs.GetString("Partition_1_TotalSize");
-        Partition2Text.text = ": " + PlayerPrefs.GetString("Partition_2_TotalSize");
+        MediaBootableText.text = ": " + (PlayerPrefs.HasKey("MediaBootable") ? PlayerPrefs.GetString("MediaBootable") : "-");
+        ProductKeyText.text = ": " + (PlayerPrefs.HasKey("Product_Key") ? PlayerPrefs.GetString("Product_Key") : "-");
+        TypeOsText.text = ": " + (PlayerPrefs.HasKey("SelectedOS") ? PlayerPrefs.GetString("SelectedOS") : "-");
+        UnallocatedText.text = ": " + (PlayerPrefs.HasKey("Unallocated_TotalSize") ? PlayerPrefs.GetString("Unallocated_TotalSize") : "-");
+        Partition1Text.text = ": " + (PlayerPrefs.HasKey("Partition_1_TotalSize") ? PlayerPrefs.GetString("Partition_1_TotalSize") : "-");
+        Partition2Text.text = ": " + (PlayerPrefs.HasKey("Partition_2_TotalSize") ? PlayerPrefs.GetString("Partition_2_TotalSize") : "-");
         Partition3Text.text = ": " + (PlayerPrefs.HasKey("Partition_3_TotalSize") ? PlayerPrefs.GetString("Partition_3_TotalSize") : "-");
         Partition4Text.text = ": " + (PlayerPrefs.HasKey("Partition_4_TotalSize") ? PlayerPrefs.GetString("Partition_4_TotalSize") : "-");
-        RegionText.text = ": " + PlayerPrefs.GetString("Region");
-        KeyboardLayoutText.text = ": " + PlayerPrefs.GetString("KeyboardLayout");
-        UsernameText.text = ": " + PlayerPrefs.GetString("Username");
+        RegionText.text = ": " + (PlayerPrefs.HasKey("Region") ? PlayerPrefs.GetString("Region") : "-");
+        KeyboardLayoutText.text = ": " + (PlayerPrefs.HasKey("KeyboardLayout") ? PlayerPrefs.GetString("KeyboardLayout") : "-");
+        UsernameText.text = ": " + (PlayerPrefs.HasKey("Username") ? PlayerPrefs.GetString("Username") : "-");
         PasswordText.text = ": " + (PlayerPrefs.HasKey("Password") ? PlayerPrefs.GetString("Password") : "-");
-        ElapsedSimulationTimeText.text = ": " + PlayerPrefs.GetString("ElapsedSimulationTime");
+        ElapsedSimulationTimeText.text = ": " + (PlayerPrefs.HasKey("ElapsedSimulationTime") ? PlayerPrefs.GetString("ElapsedSimulationTime") : "-");
     }
 }
